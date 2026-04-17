@@ -1,171 +1,694 @@
-
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAYMENT EZRA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>ZENIX PAYMENT | Premium Gateway</title>
+  <!-- Google Fonts Premium -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      width: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
+      font-family: 'Inter', 'Space Grotesk', sans-serif;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated grain & glow */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 8px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 40vw;
+      height: 40vw;
+      background: #2b6e4f;
+      top: -10vh;
+      right: -10vw;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+
+    .orb-2 {
+      width: 35vw;
+      height: 35vw;
+      background: #1e3c72;
+      bottom: -15vh;
+      left: -10vw;
+      animation: float 18s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(5%, 5%) scale(1.1); }
+    }
+
+    /* Main premium card */
+    .premium-card {
+      position: relative;
+      z-index: 10;
+      max-width: 550px;
+      width: 100%;
+      background: rgba(12, 20, 30, 0.55);
+      backdrop-filter: blur(16px);
+      border-radius: 3rem;
+      border: 1px solid rgba(72, 187, 120, 0.25);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(72, 187, 120, 0.2) inset;
+      padding: 2rem 1.8rem 2.2rem;
+      transition: all 0.3s ease;
+    }
+
+    /* Logo area */
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 30px;
+      box-shadow: 0 20px 35px -8px rgba(0,0,0,0.5), 0 0 0 2px rgba(72, 187, 120, 0.3);
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    /* Title & tagline */
+    .brand {
       text-align: center;
-    }h1 {
-  margin-bottom: 40px;
-  font-size: 2em;
-}
-
-.logo {
-  width: 120px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-.btn {
-  background: #1f1f1f;
-  color: #fff;
-  border: none;
-  padding: 15px 30px;
-  margin: 10px;
-  font-size: 1em;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 1px;
-}
-
-.btn:hover {
-  background: #4caf50;
-  transform: scale(1.05);
-}
-
-#output-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  flex-direction: column;
-}
-
-#output {
-  font-size: 2em;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  min-height: 100px;
-  min-width: 250px;
-  color: white;
-}
-
-img {
-  max-width: 300px;
-  margin-top: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-.typing {
-  border-right: .15em solid white;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 2s steps(30, end) forwards, blink-caret .75s step-end infinite;
-  font-family: 'Share Tech Mono', monospace;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: white; }
-}
-
-.close-btn {
-  margin-top: 30px;
-  background: #e53935;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  font-family: 'Orbitron', sans-serif;
-}
-
-footer {
-  position: absolute;
-  bottom: 10px;
-  font-size: 0.8em;
-  color: #bbb;
-  font-family: 'Share Tech Mono', monospace;
-}
-
-  </style>
-</head>
-<body>
-  <audio id="bg-music" loop>
-    <source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio><button class="btn" onclick="toggleMusic()" style="position: absolute; top: 10px; right: 10px;">Play/Pause Musik</button>
-
-  <img src="https://files.catbox.moe/5awz68.jpg" alt="Logo" class="logo">
-  <h1>All Payment Ezra</h1><button class="btn" onclick="showFullScreen('085608969326')">NOMOR DANA</button> <button class="btn" onclick="showFullScreen('g ada mek')">NOMOR GOPAY</button> <button class="btn" onclick="showFullScreen('g ada mek')">NOMOR OVO</button> <button class="btn" onclick="showQRIS()">QRIS</button>
-
-  <div id="output-wrapper">
-    <div id="output"></div>
-    <button class="close-btn" onclick="closeOutput()">TUTUP</button>
-  </div>  <footer>© Copyright Ezra Hosting</footer>  <script>
-    function showFullScreen(text) {
-      const wrapper = document.getElementById("output-wrapper");
-      const output = document.getElementById("output");
-      wrapper.style.display = "flex";
-      output.innerHTML = `<div class='typing'>${text}</div>`;
+      margin-bottom: 2rem;
     }
 
-    function showQRIS() {
-      const wrapper = document.getElementById("output-wrapper");
-      const output = document.getElementById("output");
-      wrapper.style.display = "flex";
-      output.innerHTML = `<img src='https://files.catbox.moe/qwbsk8.jpg' alt='QRIS'>`;  // ganti dengan foto qris lu
+    .brand h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #E6F7EC, #A3E4C1, #4CAF7A);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    function closeOutput() {
-      document.getElementById("output-wrapper").style.display = "none";
+    .badge {
+      display: inline-block;
+      background: rgba(76, 175, 122, 0.2);
+      backdrop-filter: blur(4px);
+      border-radius: 60px;
+      padding: 0.3rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #b0f0cf;
+      border: 0.5px solid rgba(76, 175, 122, 0.5);
+      margin-top: 0.5rem;
     }
 
-    function toggleMusic() {
-      const music = document.getElementById("bg-music");
-      if (music.paused) {
-        music.play();
-      } else {
-        music.pause();
+    /* Grid tombol premium */
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0 1rem;
+    }
+
+    .premium-btn {
+      flex: 1;
+      min-width: 140px;
+      background: rgba(20, 30, 45, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 2rem;
+      padding: 1rem 0.8rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #f0faf5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease-out;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.3px;
+    }
+
+    .premium-btn i {
+      font-size: 1.4rem;
+      transition: transform 0.2s;
+    }
+
+    /* Warna spesifik tombol */
+    .btn-dana {
+      border-bottom: 2px solid #2b7e4f;
+      background: linear-gradient(135deg, rgba(27, 54, 43, 0.8), rgba(18, 38, 30, 0.9));
+    }
+    .btn-gopay {
+      border-bottom: 2px solid #3c9eff;
+    }
+    .btn-ovo {
+      border-bottom: 2px solid #562b9b;
+    }
+    .btn-qris {
+      border-bottom: 2px solid #e0b33b;
+      background: linear-gradient(135deg, rgba(56, 48, 28, 0.8), rgba(30, 26, 18, 0.9));
+    }
+
+    .premium-btn:hover {
+      transform: translateY(-5px);
+      background: rgba(30, 45, 60, 0.85);
+      border-color: rgba(76, 175, 122, 0.6);
+      box-shadow: 0 18px 30px -8px black;
+    }
+
+    .premium-btn:active {
+      transform: translateY(2px);
+    }
+
+    /* Music toggle button premium */
+    .music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,240,0.2);
+      border-radius: 60px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: 0.2s;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .music-toggle:hover {
+      background: #2b6e4f;
+      transform: scale(1.05);
+    }
+
+    /* MODAL PREMIUM */
+    .modal-premium {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-premium.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-container {
+      background: rgba(10, 18, 24, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 2rem;
+      max-width: 90vw;
+      width: 450px;
+      padding: 1.8rem;
+      text-align: center;
+      border: 1px solid rgba(76, 175, 122, 0.5);
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+      animation: modalPop 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    @keyframes modalPop {
+      from {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
       }
     }
 
-    window.addEventListener("load", () => {
-      const music = document.getElementById("bg-music");
-      music.play().catch(() => {});
+    .modal-content {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.7rem;
+      font-weight: 600;
+      background: linear-gradient(145deg, #fff, #b9f5d4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 1rem 0;
+      word-break: break-all;
+    }
+
+    .modal-content img {
+      max-width: 220px;
+      border-radius: 24px;
+      margin: 0.5rem 0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,215,0,0.3);
+    }
+
+    .copy-notice {
+      background: #1f3a2c;
+      padding: 8px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      color: #c3f2da;
+      margin: 12px 0 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+      border: 0.5px solid #4caf7a;
+    }
+
+    .copy-notice:hover {
+      background: #2b5e44;
+      transform: scale(0.98);
+    }
+
+    .close-modal-btn {
+      margin-top: 24px;
+      background: rgba(229, 57, 53, 0.8);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .close-modal-btn:hover {
+      background: #e53935;
+      transform: scale(1.02);
+    }
+
+    /* Toast notification premium */
+    .toast-notify {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      padding: 10px 20px;
+      border-radius: 50px;
+      color: #e4ffe9;
+      font-weight: 500;
+      z-index: 1100;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      font-size: 0.85rem;
+      border-left: 3px solid #4caf50;
+      font-family: monospace;
+    }
+
+    .toast-notify.show {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: #a2bbaf;
+      letter-spacing: 1px;
+      border-top: 0.5px solid rgba(76, 175, 122, 0.3);
+      padding-top: 1.2rem;
+      font-family: monospace;
+    }
+
+    @media (max-width: 500px) {
+      .premium-card {
+        padding: 1.5rem;
+      }
+      .button-grid {
+        gap: 0.8rem;
+      }
+      .premium-btn {
+        min-width: 120px;
+        font-size: 0.9rem;
+        padding: 0.8rem 0.5rem;
+      }
+      .modal-content {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="premium-card">
+    <div class="logo-wrapper">
+      <img src="https://files.catbox.moe/5awz68.jpg" alt="Zenix Logo" class="logo" onerror="this.src='https://placehold.co/200x200?text=ZENIX'">
+    </div>
+    <div class="brand">
+      <h1>✦ ZENIX PAYMENT ✦</h1>
+      <div class="badge"><i class="fas fa-shield-alt"></i> VERIFIED GATEWAY</div>
+    </div>
+
+    <div class="button-grid">
+      <button class="premium-btn btn-dana" id="btn-dana">
+        <i class="fas fa-mobile-alt"></i> DANA
+      </button>
+      <button class="premium-btn btn-gopay" id="btn-gopay">
+        <i class="fab fa-google-pay"></i> GOPAY
+      </button>
+      <button class="premium-btn btn-ovo" id="btn-ovo">
+        <i class="fas fa-wallet"></i> OVO
+      </button>
+      <button class="premium-btn btn-qris" id="btn-qris">
+        <i class="fas fa-qrcode"></i> QRIS
+      </button>
+    </div>
+
+    <footer>
+      <i class="fas fa-lock"></i> 100% aman & instant • Powered by Zenix Official
+    </footer>
+  </div>
+
+  <!-- Music Toggle Premium -->
+  <div class="music-toggle" id="musicToggleBtn">
+    <i class="fas fa-music"></i>
+  </div>
+
+  <!-- MODAL PREMIUM -->
+  <div id="premiumModal" class="modal-premium">
+    <div class="modal-container">
+      <div id="modalDisplay" class="modal-content">
+        <!-- dynamic content: text or qr image -->
+      </div>
+      <div class="copy-notice" id="copyTriggerBtn" style="display: none;">
+        <i class="fas fa-copy"></i> Salin ke clipboard
+      </div>
+      <button class="close-modal-btn" id="closeModalBtn">
+        <i class="fas fa-times-circle"></i> Tutup
+      </button>
+    </div>
+  </div>
+
+  <div id="toastMsg" class="toast-notify">✓ Tersalin!</div>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // ======================== PREMIUM LOGIC ========================
+    const modal = document.getElementById('premiumModal');
+    const modalContent = document.getElementById('modalDisplay');
+    const copyBtnDiv = document.getElementById('copyTriggerBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const toast = document.getElementById('toastMsg');
+
+    // Data untuk payment (karena gopay & ovo masih placeholder "g ada mek")
+    const paymentData = {
+      dana: "085608969326",
+      gopay: "g ada mek",
+      ovo: "g ada mek"
+    };
+
+    // QRIS url
+    const qrisImageUrl = "https://files.catbox.moe/qwbsk8.jpg";
+
+    let currentCopyText = "";   // menyimpan teks yang akan di-copy
+    let isQRISMode = false;      // flag apakah modal menampilkan QRIS
+
+    // Fungsi show modal dengan tipe
+    function showModal(contentHTML, copyableText = null, isQR = false) {
+      modalContent.innerHTML = contentHTML;
+      modal.classList.add('active');
+      isQRISMode = isQR;
+      
+      if (copyableText && !isQR) {
+        currentCopyText = copyableText;
+        copyBtnDiv.style.display = "inline-flex";
+      } else if (isQR) {
+        // QRIS: tidak menampilkan tombol copy teks (bisa optional tapi lebih rapih sembunyikan)
+        copyBtnDiv.style.display = "none";
+        currentCopyText = "";
+      } else {
+        copyBtnDiv.style.display = "none";
+        currentCopyText = "";
+      }
+    }
+
+    // Fungsi close modal
+    function closeModal() {
+      modal.classList.remove('active');
+      // reset content
+      modalContent.innerHTML = "";
+      copyBtnDiv.style.display = "none";
+      isQRISMode = false;
+    }
+
+    // Fungsi copy ke clipboard dengan notifikasi premium
+    async function copyToClipboard(text) {
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(`✓ ${text} tersalin ke clipboard`);
+      } catch (err) {
+        // fallback
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast(`✓ Disalin: ${text}`);
+      }
+    }
+
+    function showToast(msg) {
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    // Event untuk tombol DANA (tampilkan nomor + copy)
+    document.getElementById('btn-dana').addEventListener('click', () => {
+      const danaNumber = paymentData.dana;
+      const displayHTML = `
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <i class="fas fa-mobile-alt" style="font-size:2.5rem; color:#4caf7a;"></i>
+          <div style="font-size: 2rem; font-weight: bold; letter-spacing: 2px; margin-top:12px;">${danaNumber}</div>
+          <div style="font-size:0.8rem; margin-top: 8px; color:#b9f5d4;">Nomor DANA Aktif</div>
+        </div>
+      `;
+      showModal(displayHTML, danaNumber, false);
     });
-  </script></body>
+
+    // GOPAY (placeholder)
+    document.getElementById('btn-gopay').addEventListener('click', () => {
+      const gopayVal = paymentData.gopay;
+      const displayHTML = `
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <i class="fab fa-google-pay" style="font-size:2.5rem; color:#3c9eff;"></i>
+          <div style="font-size: 1.7rem; font-weight: bold; margin-top:12px;">${gopayVal}</div>
+          <div style="font-size:0.7rem; margin-top: 10px; background:#1f2c38; padding:4px 12px; border-radius:50px;">🚧 Sedang maintenance</div>
+        </div>
+      `;
+      showModal(displayHTML, gopayVal === "g ada mek" ? null : gopayVal, false);
+    });
+
+    // OVO (placeholder)
+    document.getElementById('btn-ovo').addEventListener('click', () => {
+      const ovoVal = paymentData.ovo;
+      const displayHTML = `
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <i class="fas fa-wallet" style="font-size:2.5rem; color:#a06eff;"></i>
+          <div style="font-size: 1.7rem; font-weight: bold; margin-top:12px;">${ovoVal}</div>
+          <div style="font-size:0.7rem; margin-top: 10px; background:#1f2c38; padding:4px 12px; border-radius:50px;">⏳ Segera hadir</div>
+        </div>
+      `;
+      showModal(displayHTML, null, false);
+    });
+
+    // QRIS
+    document.getElementById('btn-qris').addEventListener('click', () => {
+      const displayHTML = `
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <i class="fas fa-qrcode" style="font-size:2rem; color:#e0b33b; margin-bottom:6px;"></i>
+          <img src="${qrisImageUrl}" alt="QRIS Payment" style="max-width: 220px; width:100%; border-radius: 20px;" onerror="this.src='https://placehold.co/300x300?text=QRIS+Code'">
+          <div style="font-size:0.75rem; margin-top: 12px;">Scan QRIS untuk pembayaran instant</div>
+        </div>
+      `;
+      showModal(displayHTML, null, true);
+    });
+
+    // Tombol copy di modal
+    copyBtnDiv.addEventListener('click', () => {
+      if (currentCopyText && !isQRISMode) {
+        copyToClipboard(currentCopyText);
+      } else if (!currentCopyText) {
+        showToast("❌ Tidak ada teks untuk disalin");
+      }
+    });
+
+    // Tutup modal via tombol close
+    closeModalBtn.addEventListener('click', closeModal);
+
+    // Tutup modal ketika klik backdrop (area gelap)
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // ================ MUSIC PREMIUM ================
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('musicToggleBtn');
+    let musicPlaying = false;
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play().then(() => {
+          musicPlaying = true;
+          updateMusicIcon(true);
+        }).catch(err => {
+          console.log("Autoplay blocked, but user interacted");
+          // tetap ubah status setelah user klik
+          musicPlaying = true;
+          updateMusicIcon(true);
+        });
+      } else {
+        music.pause();
+        musicPlaying = false;
+        updateMusicIcon(false);
+      }
+    }
+
+    function updateMusicIcon(playing) {
+      const icon = musicBtn.querySelector('i');
+      if (playing) {
+        icon.className = 'fas fa-volume-up';
+      } else {
+        icon.className = 'fas fa-music';
+      }
+    }
+
+    musicBtn.addEventListener('click', toggleMusic);
+
+    // Coba autoplay dengan interaksi pertama kali (browser modern mencegah autoplay tanpa interaksi)
+    // Tapi kita coba jalankan saat load, namun biasanya gagal, kita set agar interaksi pertama kali user klik tombol atau halaman
+    // Agar pengalaman lebih baik: ketika user pertama kali klik tombol apapun atau modal terbuka bisa coba mainkan?
+    // Tapi tidak perlu memaksa, cukup beri tombol musik manual.
+    // Karena sudah ada tombol play/pause, kita juga bisa coba play saat load diam-diam, namun tidak masalah
+    window.addEventListener('load', () => {
+      // mencoba play (muted dulu?) tapi lebih aman tidak memaksa, biarkan user mengaktifkan manual
+      // Tapi sesuai original code, dia memanggil music.play().catch, kita tetap panggil agar jika diijinkan browser berjalan.
+      music.play().catch(e => console.log("Auto-music requires user interaction, click play button"));
+    });
+
+    // Efek tambahan: sentuhan premium: menambahkan efek ripple pada tombol (opsional)
+    const allBtns = document.querySelectorAll('.premium-btn');
+    allBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        let ripple = document.createElement('span');
+        ripple.classList.add('ripple-effect');
+        const rect = btn.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+        ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.background = 'rgba(255,255,255,0.3)';
+        ripple.style.transform = 'scale(0)';
+        ripple.style.transition = 'transform 0.4s ease-out, opacity 0.6s';
+        ripple.style.pointerEvents = 'none';
+        btn.style.position = 'relative';
+        btn.style.overflow = 'hidden';
+        btn.appendChild(ripple);
+        setTimeout(() => {
+          ripple.style.transform = 'scale(4)';
+          ripple.style.opacity = '0';
+        }, 10);
+        setTimeout(() => {
+          if(ripple && ripple.remove) ripple.remove();
+        }, 500);
+      });
+    });
+
+    // Tambahan: jika nomor dana di modal bisa langsung diklik copy juga melalui teks? 
+    // Sudah ada tombol copy terpisah, tapi kita tambahkan fitur double-click pada nomor di modal untuk copy
+    // Ini akan membuat pengalaman lebih premium
+    document.addEventListener('click', (e) => {
+      // Jika modal terbuka dan target adalah elemen yang berisi nomor (detect berdasarkan class atau selector)
+      if (modal.classList.contains('active') && !isQRISMode && currentCopyText) {
+        const modalTextDiv = modalContent.querySelector('div[style*="font-size: 2rem"]') || modalContent.querySelector('div[style*="font-size: 1.7rem"]');
+        if (modalTextDiv && (e.target === modalTextDiv || modalTextDiv.contains(e.target))) {
+          copyToClipboard(currentCopyText);
+        }
+      }
+    });
+
+    // Tambahkan tooltip modern? tidak perlu, sudah cukup.
+    // Validasi gambar QRIS jika gagal load, tetap menampilkan placeholder.
+    // Selesai, semua fungsi bawaan tetap bekerja.
+    console.log("Premium Payment Interface Ready — ZENIX");
+  </script>
+</body>
 </html>
