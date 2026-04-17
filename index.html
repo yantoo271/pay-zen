@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>ZENIX PAYMENT | Premium Gateway</title>
-  <!-- Google Fonts Premium -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (free) -->
+  <title>Zenix Business | Premium Hosting, Script, Rekber, VPS</title>
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -16,679 +15,499 @@
     }
 
     body {
-      min-height: 100vh;
-      background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
-      font-family: 'Inter', 'Space Grotesk', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      position: relative;
+      background: #05070f;
+      font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+      color: #edf4ff;
       overflow-x: hidden;
     }
 
-    /* Animated grain & glow */
-    body::before {
-      content: "";
+    /* Animated background */
+    .bg-glow {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, #0b1a1c, #010101);
+      z-index: -2;
+    }
+
+    .noise {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 8px);
+      background: repeating-radial-gradient(circle at 20% 30%, rgba(0,255,180,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 8px);
       pointer-events: none;
-      z-index: 0;
+      z-index: -1;
     }
 
-    /* Floating orbs */
-    .orb {
+    .orb-bg {
       position: fixed;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.4;
-      z-index: 0;
-      pointer-events: none;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(0,255,200,0.1), transparent);
+      filter: blur(100px);
+      bottom: -20vh;
+      right: -20vw;
+      z-index: -1;
     }
 
-    .orb-1 {
-      width: 40vw;
-      height: 40vw;
-      background: #2b6e4f;
-      top: -10vh;
-      right: -10vw;
-      animation: float 20s infinite alternate ease-in-out;
-    }
-
-    .orb-2 {
-      width: 35vw;
-      height: 35vw;
-      background: #1e3c72;
-      bottom: -15vh;
-      left: -10vw;
-      animation: float 18s infinite alternate-reverse ease-in-out;
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(5%, 5%) scale(1.1); }
-    }
-
-    /* Main premium card */
-    .premium-card {
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
       position: relative;
-      z-index: 10;
-      max-width: 550px;
-      width: 100%;
-      background: rgba(12, 20, 30, 0.55);
-      backdrop-filter: blur(16px);
-      border-radius: 3rem;
-      border: 1px solid rgba(72, 187, 120, 0.25);
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(72, 187, 120, 0.2) inset;
-      padding: 2rem 1.8rem 2.2rem;
-      transition: all 0.3s ease;
+      z-index: 5;
     }
 
-    /* Logo area */
-    .logo-wrapper {
+    /* header premium */
+    .header {
       display: flex;
-      justify-content: center;
-      margin-bottom: 1.2rem;
-    }
-
-    .logo {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 30px;
-      box-shadow: 0 20px 35px -8px rgba(0,0,0,0.5), 0 0 0 2px rgba(72, 187, 120, 0.3);
-      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-
-    .logo:hover {
-      transform: scale(1.02);
-    }
-
-    /* Title & tagline */
-    .brand {
-      text-align: center;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
       margin-bottom: 2rem;
+      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 80px;
+      padding: 0.8rem 1.8rem;
+      border: 0.5px solid rgba(0, 255, 200, 0.2);
     }
 
-    .brand h1 {
-      font-size: 2.1rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #E6F7EC, #A3E4C1, #4CAF7A);
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 10px #4cffb0;
+    }
+
+    .brand-name {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF, #9effcf);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: -0.5px;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .badge {
-      display: inline-block;
-      background: rgba(76, 175, 122, 0.2);
-      backdrop-filter: blur(4px);
+    .music-glass {
+      background: rgba(255,255,245,0.08);
       border-radius: 60px;
-      padding: 0.3rem 1rem;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      color: #b0f0cf;
-      border: 0.5px solid rgba(76, 175, 122, 0.5);
-      margin-top: 0.5rem;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1.1rem;
+      border: 1px solid rgba(76,255,160,0.3);
     }
 
-    /* Grid tombol premium */
-    .button-grid {
+    /* hero */
+    .hero {
+      text-align: center;
+      margin: 2rem 0 3rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #f0fff0, #6effb0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #b3ecd0;
+      max-width: 700px;
+      margin: 1rem auto 0;
+    }
+
+    /* services grid premium */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 5px solid #4cffa0;
+      padding-left: 20px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .service-card {
+      background: rgba(15, 25, 35, 0.55);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(76, 255, 160, 0.2);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.5);
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: #4cffaa;
+      box-shadow: 0 20px 35px -12px #00cc8840;
+      background: rgba(20, 35, 45, 0.7);
+    }
+    .card-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .service-desc {
+      font-size: 0.85rem;
+      color: #bbffe6;
+      margin: 0.75rem 0;
+      line-height: 1.4;
+    }
+    .price-tag {
+      font-family: monospace;
+      font-weight: bold;
+      background: #00000055;
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      margin: 10px 0;
+    }
+    .btn-order {
+      background: linear-gradient(95deg, #1f4637, #0b2a21);
+      border: none;
+      padding: 10px 0;
+      width: 100%;
+      border-radius: 60px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .btn-order:hover {
+      background: #2b8f65;
+      transform: scale(0.97);
+    }
+
+    /* payment buttons */
+    .payment-section {
+      margin: 2rem 0 2rem;
+    }
+    .payment-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
-      margin: 2rem 0 1rem;
     }
-
-    .premium-btn {
-      flex: 1;
-      min-width: 140px;
-      background: rgba(20, 30, 45, 0.7);
+    .pay-btn {
+      background: rgba(0,0,0,0.5);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 2rem;
-      padding: 1rem 0.8rem;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #f0faf5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      cursor: pointer;
-      transition: all 0.25s ease-out;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      letter-spacing: 0.3px;
-    }
-
-    .premium-btn i {
-      font-size: 1.4rem;
-      transition: transform 0.2s;
-    }
-
-    /* Warna spesifik tombol */
-    .btn-dana {
-      border-bottom: 2px solid #2b7e4f;
-      background: linear-gradient(135deg, rgba(27, 54, 43, 0.8), rgba(18, 38, 30, 0.9));
-    }
-    .btn-gopay {
-      border-bottom: 2px solid #3c9eff;
-    }
-    .btn-ovo {
-      border-bottom: 2px solid #562b9b;
-    }
-    .btn-qris {
-      border-bottom: 2px solid #e0b33b;
-      background: linear-gradient(135deg, rgba(56, 48, 28, 0.8), rgba(30, 26, 18, 0.9));
-    }
-
-    .premium-btn:hover {
-      transform: translateY(-5px);
-      background: rgba(30, 45, 60, 0.85);
-      border-color: rgba(76, 175, 122, 0.6);
-      box-shadow: 0 18px 30px -8px black;
-    }
-
-    .premium-btn:active {
-      transform: translateY(2px);
-    }
-
-    /* Music toggle button premium */
-    .music-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 50;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,240,0.2);
+      border: 1px solid rgba(255,255,200,0.2);
       border-radius: 60px;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 1rem;
       cursor: pointer;
       transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pay-btn i { font-size: 1.3rem; }
+    .pay-btn:hover { background: #1f4a3a; transform: translateY(-3px); border-color: #4cffaa; }
+
+    /* Telegram official */
+    .telegram-official {
+      background: rgba(0, 30, 40, 0.5);
+      border-radius: 2rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border: 0.5px solid #26A5E4;
+    }
+    .tele-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .tele-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: #00000033;
+      padding: 10px 18px;
+      border-radius: 60px;
+      margin-bottom: 10px;
+    }
+    .copy-tele-btn {
+      background: #1e3b46;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 30px;
       color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      cursor: pointer;
+      font-size: 0.7rem;
     }
 
-    .music-toggle:hover {
-      background: #2b6e4f;
-      transform: scale(1.05);
-    }
-
-    /* MODAL PREMIUM */
+    /* modal */
     .modal-premium {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0,0,0,0.9);
       backdrop-filter: blur(20px);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      z-index: 2000;
     }
-
-    .modal-premium.active {
-      display: flex;
-      opacity: 1;
-    }
-
-    .modal-container {
-      background: rgba(10, 18, 24, 0.95);
-      backdrop-filter: blur(20px);
+    .modal-card {
+      background: #0e1a1f;
       border-radius: 2rem;
-      max-width: 90vw;
-      width: 450px;
-      padding: 1.8rem;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
       text-align: center;
-      border: 1px solid rgba(76, 175, 122, 0.5);
-      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
-      animation: modalPop 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid #4cffb0;
     }
-
-    @keyframes modalPop {
-      from {
-        opacity: 0;
-        transform: scale(0.92);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .modal-content {
-      font-family: 'Space Grotesk', monospace;
-      font-size: 1.7rem;
-      font-weight: 600;
-      background: linear-gradient(145deg, #fff, #b9f5d4);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin: 1rem 0;
-      word-break: break-all;
-    }
-
-    .modal-content img {
-      max-width: 220px;
-      border-radius: 24px;
-      margin: 0.5rem 0;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,215,0,0.3);
-    }
-
-    .copy-notice {
-      background: #1f3a2c;
-      padding: 8px 12px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      color: #c3f2da;
-      margin: 12px 0 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: 0.2s;
-      border: 0.5px solid #4caf7a;
-    }
-
-    .copy-notice:hover {
-      background: #2b5e44;
-      transform: scale(0.98);
-    }
-
-    .close-modal-btn {
-      margin-top: 24px;
-      background: rgba(229, 57, 53, 0.8);
+    .close-modal {
+      background: #e53935;
+      margin-top: 20px;
+      padding: 8px 20px;
       border: none;
-      padding: 10px 24px;
       border-radius: 40px;
-      font-weight: 600;
       color: white;
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      width: fit-content;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .close-modal-btn:hover {
-      background: #e53935;
-      transform: scale(1.02);
-    }
-
-    /* Toast notification premium */
-    .toast-notify {
-      position: fixed;
-      bottom: 90px;
-      left: 50%;
-      transform: translateX(-50%) scale(0.9);
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(12px);
-      padding: 10px 20px;
-      border-radius: 50px;
-      color: #e4ffe9;
-      font-weight: 500;
-      z-index: 1100;
-      opacity: 0;
-      transition: opacity 0.2s, transform 0.2s;
-      pointer-events: none;
-      font-size: 0.85rem;
-      border-left: 3px solid #4caf50;
-      font-family: monospace;
-    }
-
-    .toast-notify.show {
-      opacity: 1;
-      transform: translateX(-50%) scale(1);
     }
 
     footer {
       text-align: center;
-      margin-top: 2rem;
+      padding: 1.5rem 0;
       font-size: 0.7rem;
-      color: #a2bbaf;
-      letter-spacing: 1px;
-      border-top: 0.5px solid rgba(76, 175, 122, 0.3);
-      padding-top: 1.2rem;
-      font-family: monospace;
+      opacity: 0.7;
+      border-top: 0.5px solid rgba(76,255,160,0.2);
+      margin-top: 1rem;
     }
-
-    @media (max-width: 500px) {
-      .premium-card {
-        padding: 1.5rem;
-      }
-      .button-grid {
-        gap: 0.8rem;
-      }
-      .premium-btn {
-        min-width: 120px;
-        font-size: 0.9rem;
-        padding: 0.8rem 0.5rem;
-      }
-      .modal-content {
-        font-size: 1.3rem;
-      }
+    @media (max-width: 680px) {
+      .container { padding: 1rem; }
+      .hero h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
+<div class="bg-glow"></div><div class="noise"></div><div class="orb-bg"></div>
 
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-
-  <div class="premium-card">
-    <div class="logo-wrapper">
-      <img src="https://files.catbox.moe/5awz68.jpg" alt="Zenix Logo" class="logo" onerror="this.src='https://placehold.co/200x200?text=ZENIX'">
+<div class="container">
+  <div class="header">
+    <div class="logo-area">
+      <img src="https://files.catbox.moe/5awz68.jpg" alt="Zenix" class="logo-img" onerror="this.src='https://placehold.co/80x80?text=ZX'">
+      <span class="brand-name">ZENIX BIZ</span>
     </div>
-    <div class="brand">
-      <h1>✦ ZENIX PAYMENT ✦</h1>
-      <div class="badge"><i class="fas fa-shield-alt"></i> VERIFIED GATEWAY</div>
-    </div>
-
-    <div class="button-grid">
-      <button class="premium-btn btn-dana" id="btn-dana">
-        <i class="fas fa-mobile-alt"></i> DANA
-      </button>
-      <button class="premium-btn btn-gopay" id="btn-gopay">
-        <i class="fab fa-google-pay"></i> GOPAY
-      </button>
-      <button class="premium-btn btn-ovo" id="btn-ovo">
-        <i class="fas fa-wallet"></i> OVO
-      </button>
-      <button class="premium-btn btn-qris" id="btn-qris">
-        <i class="fas fa-qrcode"></i> QRIS
-      </button>
-    </div>
-
-    <footer>
-      <i class="fas fa-lock"></i> 100% aman & instant • Powered by Zenix Official
-    </footer>
+    <div class="music-glass" id="musicToggle"><i class="fas fa-headphones"></i> <span id="musicStatus">Play Music</span></div>
   </div>
 
-  <!-- Music Toggle Premium -->
-  <div class="music-toggle" id="musicToggleBtn">
-    <i class="fas fa-music"></i>
+  <div class="hero">
+    <h1>⚡ Premium Business Hub ⚡</h1>
+    <p>Hosting • Script • Rekber • VPS Private • All Digital Solutions</p>
   </div>
 
-  <!-- MODAL PREMIUM -->
-  <div id="premiumModal" class="modal-premium">
-    <div class="modal-container">
-      <div id="modalDisplay" class="modal-content">
-        <!-- dynamic content: text or qr image -->
-      </div>
-      <div class="copy-notice" id="copyTriggerBtn" style="display: none;">
-        <i class="fas fa-copy"></i> Salin ke clipboard
-      </div>
-      <button class="close-modal-btn" id="closeModalBtn">
-        <i class="fas fa-times-circle"></i> Tutup
-      </button>
+  <!-- SERVICES PREMIUM -->
+  <div class="section-title"><i class="fas fa-crown"></i> Layanan Unggulan Bisnis</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+      <h3>All Hosting</h3>
+      <div class="service-desc">Shared, VPS Hosting, Reseller, Private Cloud. Unlimited Bandwidth + SSL.</div>
+      <div class="price-tag">Start from 150K/bln</div>
+      <button class="btn-order" data-service="All Hosting - mulai 150K, Cloud Panel + Support 24/7"><i class="fab fa-telegram"></i> Order Now</button>
+    </div>
+    <div class="service-card">
+      <div class="card-icon"><i class="fas fa-code"></i></div>
+      <h3>All Script</h3>
+      <div class="service-desc">Bot, Web App, AI Tools, Panel, AutoTrade, Nulled & Original License.</div>
+      <div class="price-tag">From 99K - Full Source</div>
+      <button class="btn-order" data-service="All Script - ribuan script premium siap pakai"><i class="fab fa-telegram"></i> Order Now</button>
+    </div>
+    <div class="service-card">
+      <div class="card-icon"><i class="fas fa-handshake"></i></div>
+      <h3>Jasa Rekber / Escrow</h3>
+      <div class="service-desc">Aman & terpercaya. Mediasi transaksi besar, fee rendah, dispute handling.</div>
+      <div class="price-tag">Fee 2% / transaksi</div>
+      <button class="btn-order" data-service="Jasa Rekber profesional + cepat"><i class="fab fa-telegram"></i> Order Now</button>
+    </div>
+    <div class="service-card">
+      <div class="card-icon"><i class="fas fa-server"></i></div>
+      <h3>VPS Private (HighSec)</h3>
+      <div class="service-desc">Offshore, Anonymous Payment, SSD NVMe, DDoS Protection, Root Access.</div>
+      <div class="price-tag">Start 250K/bln</div>
+      <button class="btn-order" data-service="VPS Private - konfigurasi high security, privasi total"><i class="fab fa-telegram"></i> Order Now</button>
+    </div>
+    <div class="service-card">
+      <div class="card-icon"><i class="fas fa-store"></i></div>
+      <h3>Jasa Lainnya (DLL)</h3>
+      <div class="service-desc">Install Panel, Maintenance, Setting Bot, Web Dev, API Integrations.</div>
+      <div class="price-tag">Custom Quote</div>
+      <button class="btn-order" data-service="Layanan custom: konsultasi gratis via Telegram"><i class="fab fa-telegram"></i> Order Now</button>
     </div>
   </div>
 
-  <div id="toastMsg" class="toast-notify">✓ Tersalin!</div>
+  <!-- PAYMENT GATEWAY -->
+  <div class="section-title"><i class="fas fa-credit-card"></i> Metode Pembayaran</div>
+  <div class="payment-buttons">
+    <button class="pay-btn" id="payDana"><i class="fas fa-mobile-alt"></i> DANA</button>
+    <button class="pay-btn" id="payGopay"><i class="fab fa-google-pay"></i> GOPAY</button>
+    <button class="pay-btn" id="payOvo"><i class="fas fa-wallet"></i> OVO</button>
+    <button class="pay-btn" id="payQris"><i class="fas fa-qrcode"></i> QRIS</button>
+  </div>
 
-  <audio id="bg-music" loop preload="auto">
-    <source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg">
-  </audio>
+  <!-- TELEGRAM OFFICIAL ACCOUNTS -->
+  <div class="telegram-official">
+    <div class="tele-header"><i class="fab fa-telegram-plane"></i> Official Telegram Network</div>
+    <div class="tele-row"><span><i class="fas fa-database"></i> Backup : @skyzenix</span><button class="copy-tele-btn" data-copy="skyzenix">Salin</button></div>
+    <div class="tele-row"><span><i class="fas fa-crown"></i> Utama : @MiaaBack</span><button class="copy-tele-btn" data-copy="MiaaBack">Salin</button></div>
+    <div class="tele-row"><span><i class="fas fa-bullhorn"></i> Promosi : @MI44BACK</span><button class="copy-tele-btn" data-copy="MI44BACK">Salin</button></div>
+    <div class="tele-row"><span><i class="fas fa-newspaper"></i> Channel Resmi : @chnewsky</span><button class="copy-tele-btn" data-copy="chnewsky">Salin</button></div>
+    <div class="tele-row"><span><i class="fas fa-users"></i> Channel Pub : @testimonzen</span><button class="copy-tele-btn" data-copy="testimonzen">Salin</button></div>
+    <div style="font-size:0.7rem; margin-top:12px; text-align:center;"><i class="fas fa-info-circle"></i> Klik salin untuk menghubungi atau join channel</div>
+  </div>
+  <footer>© 2025 ZENIX OFFICIAL — All rights reserved. Trusted business partner</footer>
+</div>
 
-  <script>
-    // ======================== PREMIUM LOGIC ========================
-    const modal = document.getElementById('premiumModal');
-    const modalContent = document.getElementById('modalDisplay');
-    const copyBtnDiv = document.getElementById('copyTriggerBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const toast = document.getElementById('toastMsg');
+<!-- MODAL GLOBAL -->
+<div id="globalModal" class="modal-premium">
+  <div class="modal-card">
+    <div id="modalMessage" style="font-size:1.3rem; margin:10px 0;"></div>
+    <div id="modalExtra"></div>
+    <button class="close-modal" id="closeModalBtn">Tutup</button>
+  </div>
+</div>
 
-    // Data untuk payment (karena gopay & ovo masih placeholder "g ada mek")
-    const paymentData = {
-      dana: "085608969326",
-      gopay: "g ada mek",
-      ovo: "g ada mek"
-    };
+<audio id="bgMusic" loop preload="auto"><source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg"></audio>
 
-    // QRIS url
-    const qrisImageUrl = "https://files.catbox.moe/qwbsk8.jpg";
+<script>
+  // DOM elements
+  const modal = document.getElementById('globalModal');
+  const modalMsg = document.getElementById('modalMessage');
+  const modalExtra = document.getElementById('modalExtra');
+  const closeModal = document.getElementById('closeModalBtn');
+  const music = document.getElementById('bgMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  const musicStatusSpan = document.getElementById('musicStatus');
 
-    let currentCopyText = "";   // menyimpan teks yang akan di-copy
-    let isQRISMode = false;      // flag apakah modal menampilkan QRIS
-
-    // Fungsi show modal dengan tipe
-    function showModal(contentHTML, copyableText = null, isQR = false) {
-      modalContent.innerHTML = contentHTML;
-      modal.classList.add('active');
-      isQRISMode = isQR;
-      
-      if (copyableText && !isQR) {
-        currentCopyText = copyableText;
-        copyBtnDiv.style.display = "inline-flex";
-      } else if (isQR) {
-        // QRIS: tidak menampilkan tombol copy teks (bisa optional tapi lebih rapih sembunyikan)
-        copyBtnDiv.style.display = "none";
-        currentCopyText = "";
-      } else {
-        copyBtnDiv.style.display = "none";
-        currentCopyText = "";
-      }
+  let musicPlaying = false;
+  function updateMusicUI() {
+    if (musicPlaying) {
+      musicStatusSpan.innerText = "Music On";
+      musicToggle.innerHTML = '<i class="fas fa-volume-up"></i> <span id="musicStatus">Music On</span>';
+    } else {
+      musicStatusSpan.innerText = "Play Music";
+      musicToggle.innerHTML = '<i class="fas fa-headphones"></i> <span id="musicStatus">Play Music</span>';
     }
-
-    // Fungsi close modal
-    function closeModal() {
-      modal.classList.remove('active');
-      // reset content
-      modalContent.innerHTML = "";
-      copyBtnDiv.style.display = "none";
-      isQRISMode = false;
+  }
+  function toggleMusicFunc() {
+    if (music.paused) {
+      music.play().then(() => { musicPlaying = true; updateMusicUI(); }).catch(() => { musicPlaying = true; updateMusicUI(); });
+    } else {
+      music.pause();
+      musicPlaying = false;
+      updateMusicUI();
     }
+  }
+  musicToggle.addEventListener('click', toggleMusicFunc);
+  window.addEventListener('load', () => { music.play().catch(e=>{}); });
 
-    // Fungsi copy ke clipboard dengan notifikasi premium
-    async function copyToClipboard(text) {
-      if (!text) return;
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast(`✓ ${text} tersalin ke clipboard`);
-      } catch (err) {
-        // fallback
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        showToast(`✓ Disalin: ${text}`);
-      }
-    }
+  function showModal(text, extraHtml = "") {
+    modalMsg.innerHTML = text;
+    modalExtra.innerHTML = extraHtml || "";
+    modal.style.display = "flex";
+  }
+  function closeModalFunc() { modal.style.display = "none"; modalMsg.innerHTML = ""; modalExtra.innerHTML = ""; }
+  closeModal.addEventListener('click', closeModalFunc);
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
 
-    function showToast(msg) {
-      toast.innerText = msg;
-      toast.classList.add('show');
+  // Payment details
+  const payments = { dana: "085608969326", gopay: "g ada mek", ovo: "g ada mek", qrisImg: "https://files.catbox.moe/qwbsk8.jpg" };
+  document.getElementById('payDana').onclick = () => { showModal(`💎 NOMOR DANA 💎<br><span style="font-size:2rem; font-weight:bold;">${payments.dana}</span>`, `<button id="copyNumberBtn" style="background:#2e7d5e; border:none; padding:8px 20px; border-radius:40px; margin-top:12px; cursor:pointer;">📋 Salin Nomor</button>`); attachCopyNumber(payments.dana); };
+  document.getElementById('payGopay').onclick = () => { showModal(`GOPAY sedang maintenance`, `<span style="opacity:0.7;">${payments.gopay}</span>`); };
+  document.getElementById('payOvo').onclick = () => { showModal(`OVO tidak tersedia sementara`, `<span>${payments.ovo}</span>`); };
+  document.getElementById('payQris').onclick = () => { showModal(`SCAN QRIS`, `<img src="${payments.qrisImg}" style="max-width:200px; border-radius:20px; margin-top:10px;" onerror="this.src='https://placehold.co/300x300?text=QRIS'"><br><span style="font-size:0.7rem;">Scan menggunakan aplikasi pembayaran</span>`); };
+
+  function attachCopyNumber(text) {
+    setTimeout(() => {
+      const copyBtn = document.getElementById('copyNumberBtn');
+      if(copyBtn) copyBtn.onclick = () => { navigator.clipboard.writeText(text); showToast("Nomor tersalin!"); closeModalFunc(); };
+    }, 50);
+  }
+  function showToast(msg) {
+    let toastDiv = document.createElement('div');
+    toastDiv.innerText = msg;
+    toastDiv.style.position = 'fixed'; toastDiv.style.bottom = '30px'; toastDiv.style.left = '50%'; toastDiv.style.transform = 'translateX(-50%)';
+    toastDiv.style.background = '#1f3b2e'; toastDiv.style.padding = '8px 20px'; toastDiv.style.borderRadius = '50px'; toastDiv.style.zIndex = '9999';
+    toastDiv.style.fontSize = '0.9rem'; toastDiv.style.backdropFilter = 'blur(8px)'; document.body.appendChild(toastDiv);
+    setTimeout(() => toastDiv.remove(), 2000);
+  }
+
+  // service order buttons (show contact info)
+  const orderBtns = document.querySelectorAll('.btn-order');
+  orderBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const serviceInfo = btn.getAttribute('data-service') || "Layanan premium";
+      showModal(`✅ Order Layanan: <strong>${serviceInfo}</strong><br><br>Silakan hubungi official Telegram kami:`, 
+        `<div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
+           <button id="copyUtama" style="background:#1f5f4c; border:none; padding:8px; border-radius:40px; cursor:pointer;">📋 Salin @MiaaBack (Utama)</button>
+           <button id="copyBackup" style="background:#1f5f4c; border:none; padding:8px; border-radius:40px; cursor:pointer;">📋 Salin @skyzenix (Backup)</button>
+         </div>`);
       setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2000);
-    }
-
-    // Event untuk tombol DANA (tampilkan nomor + copy)
-    document.getElementById('btn-dana').addEventListener('click', () => {
-      const danaNumber = paymentData.dana;
-      const displayHTML = `
-        <div style="display:flex; flex-direction:column; align-items:center;">
-          <i class="fas fa-mobile-alt" style="font-size:2.5rem; color:#4caf7a;"></i>
-          <div style="font-size: 2rem; font-weight: bold; letter-spacing: 2px; margin-top:12px;">${danaNumber}</div>
-          <div style="font-size:0.8rem; margin-top: 8px; color:#b9f5d4;">Nomor DANA Aktif</div>
-        </div>
-      `;
-      showModal(displayHTML, danaNumber, false);
+        const btnUtama = document.getElementById('copyUtama');
+        const btnBackup = document.getElementById('copyBackup');
+        if(btnUtama) btnUtama.onclick = () => { navigator.clipboard.writeText('@MiaaBack'); showToast('Username utama disalin'); closeModalFunc(); };
+        if(btnBackup) btnBackup.onclick = () => { navigator.clipboard.writeText('@skyzenix'); showToast('Username backup disalin'); closeModalFunc(); };
+      }, 10);
     });
+  });
 
-    // GOPAY (placeholder)
-    document.getElementById('btn-gopay').addEventListener('click', () => {
-      const gopayVal = paymentData.gopay;
-      const displayHTML = `
-        <div style="display:flex; flex-direction:column; align-items:center;">
-          <i class="fab fa-google-pay" style="font-size:2.5rem; color:#3c9eff;"></i>
-          <div style="font-size: 1.7rem; font-weight: bold; margin-top:12px;">${gopayVal}</div>
-          <div style="font-size:0.7rem; margin-top: 10px; background:#1f2c38; padding:4px 12px; border-radius:50px;">🚧 Sedang maintenance</div>
-        </div>
-      `;
-      showModal(displayHTML, gopayVal === "g ada mek" ? null : gopayVal, false);
+  // copy telegram
+  const copyTeleBtns = document.querySelectorAll('.copy-tele-btn');
+  copyTeleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const username = btn.getAttribute('data-copy');
+      const full = username.startsWith('@') ? username : `@${username}`;
+      navigator.clipboard.writeText(full);
+      showToast(`✅ ${full} disalin`);
+      const original = btn.innerText;
+      btn.innerText = 'Tersalin!';
+      setTimeout(() => btn.innerText = original, 1000);
     });
+  });
 
-    // OVO (placeholder)
-    document.getElementById('btn-ovo').addEventListener('click', () => {
-      const ovoVal = paymentData.ovo;
-      const displayHTML = `
-        <div style="display:flex; flex-direction:column; align-items:center;">
-          <i class="fas fa-wallet" style="font-size:2.5rem; color:#a06eff;"></i>
-          <div style="font-size: 1.7rem; font-weight: bold; margin-top:12px;">${ovoVal}</div>
-          <div style="font-size:0.7rem; margin-top: 10px; background:#1f2c38; padding:4px 12px; border-radius:50px;">⏳ Segera hadir</div>
-        </div>
-      `;
-      showModal(displayHTML, null, false);
-    });
-
-    // QRIS
-    document.getElementById('btn-qris').addEventListener('click', () => {
-      const displayHTML = `
-        <div style="display:flex; flex-direction:column; align-items:center;">
-          <i class="fas fa-qrcode" style="font-size:2rem; color:#e0b33b; margin-bottom:6px;"></i>
-          <img src="${qrisImageUrl}" alt="QRIS Payment" style="max-width: 220px; width:100%; border-radius: 20px;" onerror="this.src='https://placehold.co/300x300?text=QRIS+Code'">
-          <div style="font-size:0.75rem; margin-top: 12px;">Scan QRIS untuk pembayaran instant</div>
-        </div>
-      `;
-      showModal(displayHTML, null, true);
-    });
-
-    // Tombol copy di modal
-    copyBtnDiv.addEventListener('click', () => {
-      if (currentCopyText && !isQRISMode) {
-        copyToClipboard(currentCopyText);
-      } else if (!currentCopyText) {
-        showToast("❌ Tidak ada teks untuk disalin");
-      }
-    });
-
-    // Tutup modal via tombol close
-    closeModalBtn.addEventListener('click', closeModal);
-
-    // Tutup modal ketika klik backdrop (area gelap)
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    // ================ MUSIC PREMIUM ================
-    const music = document.getElementById('bg-music');
-    const musicBtn = document.getElementById('musicToggleBtn');
-    let musicPlaying = false;
-
-    function toggleMusic() {
-      if (music.paused) {
-        music.play().then(() => {
-          musicPlaying = true;
-          updateMusicIcon(true);
-        }).catch(err => {
-          console.log("Autoplay blocked, but user interacted");
-          // tetap ubah status setelah user klik
-          musicPlaying = true;
-          updateMusicIcon(true);
-        });
-      } else {
-        music.pause();
-        musicPlaying = false;
-        updateMusicIcon(false);
-      }
-    }
-
-    function updateMusicIcon(playing) {
-      const icon = musicBtn.querySelector('i');
-      if (playing) {
-        icon.className = 'fas fa-volume-up';
-      } else {
-        icon.className = 'fas fa-music';
-      }
-    }
-
-    musicBtn.addEventListener('click', toggleMusic);
-
-    // Coba autoplay dengan interaksi pertama kali (browser modern mencegah autoplay tanpa interaksi)
-    // Tapi kita coba jalankan saat load, namun biasanya gagal, kita set agar interaksi pertama kali user klik tombol atau halaman
-    // Agar pengalaman lebih baik: ketika user pertama kali klik tombol apapun atau modal terbuka bisa coba mainkan?
-    // Tapi tidak perlu memaksa, cukup beri tombol musik manual.
-    // Karena sudah ada tombol play/pause, kita juga bisa coba play saat load diam-diam, namun tidak masalah
-    window.addEventListener('load', () => {
-      // mencoba play (muted dulu?) tapi lebih aman tidak memaksa, biarkan user mengaktifkan manual
-      // Tapi sesuai original code, dia memanggil music.play().catch, kita tetap panggil agar jika diijinkan browser berjalan.
-      music.play().catch(e => console.log("Auto-music requires user interaction, click play button"));
-    });
-
-    // Efek tambahan: sentuhan premium: menambahkan efek ripple pada tombol (opsional)
-    const allBtns = document.querySelectorAll('.premium-btn');
-    allBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        let ripple = document.createElement('span');
-        ripple.classList.add('ripple-effect');
-        const rect = btn.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${e.clientX - rect.left - size/2}px`;
-        ripple.style.top = `${e.clientY - rect.top - size/2}px`;
-        ripple.style.position = 'absolute';
-        ripple.style.borderRadius = '50%';
-        ripple.style.background = 'rgba(255,255,255,0.3)';
-        ripple.style.transform = 'scale(0)';
-        ripple.style.transition = 'transform 0.4s ease-out, opacity 0.6s';
-        ripple.style.pointerEvents = 'none';
-        btn.style.position = 'relative';
-        btn.style.overflow = 'hidden';
-        btn.appendChild(ripple);
-        setTimeout(() => {
-          ripple.style.transform = 'scale(4)';
-          ripple.style.opacity = '0';
-        }, 10);
-        setTimeout(() => {
-          if(ripple && ripple.remove) ripple.remove();
-        }, 500);
-      });
-    });
-
-    // Tambahan: jika nomor dana di modal bisa langsung diklik copy juga melalui teks? 
-    // Sudah ada tombol copy terpisah, tapi kita tambahkan fitur double-click pada nomor di modal untuk copy
-    // Ini akan membuat pengalaman lebih premium
-    document.addEventListener('click', (e) => {
-      // Jika modal terbuka dan target adalah elemen yang berisi nomor (detect berdasarkan class atau selector)
-      if (modal.classList.contains('active') && !isQRISMode && currentCopyText) {
-        const modalTextDiv = modalContent.querySelector('div[style*="font-size: 2rem"]') || modalContent.querySelector('div[style*="font-size: 1.7rem"]');
-        if (modalTextDiv && (e.target === modalTextDiv || modalTextDiv.contains(e.target))) {
-          copyToClipboard(currentCopyText);
-        }
-      }
-    });
-
-    // Tambahkan tooltip modern? tidak perlu, sudah cukup.
-    // Validasi gambar QRIS jika gagal load, tetap menampilkan placeholder.
-    // Selesai, semua fungsi bawaan tetap bekerja.
-    console.log("Premium Payment Interface Ready — ZENIX");
-  </script>
+  // efek tambahan: tombol order juga langsung menawarkan kontak
+  // plus handle modal close by backdrop
+</script>
 </body>
 </html>
