@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>ZENIX DARK HACKER | PREMIUM BUSINESS SUITE</title>
-  <!-- Google Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>ZENIX | Full Animation Premium Business Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -15,57 +14,142 @@
     }
 
     body {
-      background: #0a0c10;
+      background: #03060b;
       font-family: 'Inter', 'Share Tech Mono', monospace;
-      color: #cfecf0;
+      color: #e0f2fe;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* MATRIX / HACKER BACKGROUND */
-    .matrix-bg {
+    /* CANVAS BACKGROUND ANIMATION */
+    #canvas-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 30% 10%, #0b1a1a, #030507);
       z-index: -2;
+      display: block;
     }
-    .matrix-rain {
+
+    /* MATRIX RAIN OVERLAY */
+    .matrix-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: repeating-linear-gradient(0deg, rgba(0,255,100,0.02) 0px, rgba(0,255,100,0.02) 2px, transparent 2px, transparent 8px);
+      background: repeating-linear-gradient(0deg, rgba(0, 255, 100, 0.02) 0px, rgba(0, 255, 100, 0.02) 2px, transparent 2px, transparent 10px);
       pointer-events: none;
       z-index: -1;
-      animation: matrixMove 20s linear infinite;
+      animation: matrixScroll 20s linear infinite;
     }
-    @keyframes matrixMove {
+    @keyframes matrixScroll {
       0% { background-position: 0 0; }
       100% { background-position: 0 100%; }
     }
+
+    /* GLITCH OVERLAY */
     .glitch-overlay {
       position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: repeating-linear-gradient(0deg, rgba(0,255,0,0.03) 0px, rgba(0,0,0,0.2) 1px, transparent 2px);
+      background: repeating-linear-gradient(0deg, rgba(0,255,0,0.02) 0px, rgba(0,0,0,0.1) 1px, transparent 2px);
       pointer-events: none;
       z-index: -1;
     }
 
-    /* main container */
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 1.2rem 1.8rem;
-      position: relative;
-      z-index: 10;
+    /* SPLASH SCREEN FULL ANIMATION */
+    .splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000000dd;
+      backdrop-filter: blur(20px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), visibility 1s;
+      font-family: 'Orbitron', monospace;
+    }
+    .splash-content {
+      text-align: center;
+      animation: floatGlow 1s ease-out;
+    }
+    @keyframes floatGlow {
+      0% { opacity: 0; transform: scale(0.9); filter: blur(4px); }
+      100% { opacity: 1; transform: scale(1); filter: blur(0); }
+    }
+    .splash-logo {
+      width: 130px;
+      border-radius: 35px;
+      box-shadow: 0 0 30px #2effa0;
+      animation: pulseLogo 1.2s infinite alternate;
+    }
+    @keyframes pulseLogo {
+      0% { box-shadow: 0 0 5px #2effa0; transform: scale(1);}
+      100% { box-shadow: 0 0 35px #6effb0; transform: scale(1.02);}
+    }
+    .typing-multi {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #2effa0;
+      margin: 20px auto;
+      font-family: 'Share Tech Mono';
+      height: 80px;
+    }
+    .splash-sub {
+      letter-spacing: 3px;
+      opacity: 0;
+      animation: fadeUp 0.8s forwards 1.5s;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .enter-btn {
+      margin-top: 40px;
+      background: transparent;
+      border: 2px solid #2effa0;
+      padding: 14px 40px;
+      font-weight: bold;
+      font-family: 'Orbitron';
+      color: #2effa0;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.8s forwards 2s;
+      font-size: 1.1rem;
+    }
+    .enter-btn:hover {
+      background: #2effa0;
+      color: black;
+      box-shadow: 0 0 25px #2effa0;
+      transform: scale(1.05);
     }
 
-    /* header cyber */
+    /* MAIN CONTENT */
+    .main-content {
+      opacity: 0;
+      transition: opacity 1s ease;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 1.8rem;
+      position: relative;
+      z-index: 5;
+    }
+    .main-content.visible {
+      opacity: 1;
+    }
+
+    /* HEADER ANIMATED */
     .cyber-header {
       display: flex;
       justify-content: space-between;
@@ -75,77 +159,55 @@
       background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(12px);
       border: 1px solid #2effa0;
-      border-radius: 40px;
+      border-radius: 60px;
       padding: 0.6rem 1.8rem;
       margin-bottom: 2rem;
-      box-shadow: 0 0 12px rgba(46,255,160,0.3);
+      animation: borderPulse 3s infinite;
     }
-    .logo-hack {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .logo-img {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      border: 1px solid #2effa0;
-      box-shadow: 0 0 8px #2effa0;
+    @keyframes borderPulse {
+      0% { border-color: #2effa066; box-shadow: 0 0 0px #2effa0; }
+      50% { border-color: #2effa0; box-shadow: 0 0 8px #2effa0; }
+      100% { border-color: #2effa066; box-shadow: 0 0 0px; }
     }
     .logo-text {
-      font-family: 'Orbitron', monospace;
+      font-family: 'Orbitron';
       font-weight: 800;
-      font-size: 1.7rem;
-      background: linear-gradient(135deg, #b3ffcf, #2effa0);
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #fff, #2effa0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: 2px;
     }
-    .music-panel {
+    .music-toggle {
       background: #000000aa;
       border-radius: 60px;
       padding: 8px 20px;
       border: 1px solid #2effa0;
       cursor: pointer;
       transition: 0.2s;
-      font-weight: 500;
-    }
-    .music-panel i {
-      margin-right: 8px;
-      color: #2effa0;
     }
 
-    /* hero hacker */
-    .hero-hack {
+    /* HERO GLITCH */
+    .hero {
       text-align: center;
-      margin: 2rem 0 2.5rem;
+      margin: 1.5rem 0 2rem;
     }
-    .glitch-text {
-      font-size: 3rem;
-      font-family: 'Orbitron', monospace;
-      font-weight: 900;
-      text-transform: uppercase;
+    .glitch-hero {
+      font-size: 2.8rem;
+      font-family: 'Orbitron';
+      font-weight: 800;
       color: #2effa0;
-      text-shadow: 0 0 5px #2effa0, 0 0 10px #0a6;
-      animation: flicker 3s infinite;
+      text-shadow: 0 0 5px #0f0;
+      animation: glitchText 2s infinite;
     }
-    @keyframes flicker {
-      0%, 100% { opacity: 1; text-shadow: 0 0 4px #2effa0; }
-      50% { opacity: 0.9; text-shadow: 0 0 12px #4cffb0; }
-    }
-    .tagline {
-      font-family: 'Share Tech Mono', monospace;
-      letter-spacing: 1px;
-      color: #8effbc;
-      border-left: 3px solid #2effa0;
-      display: inline-block;
-      padding-left: 15px;
-      margin-top: 10px;
+    @keyframes glitchText {
+      0%,100% { text-shadow: -2px 0 red, 2px 0 cyan; transform: skew(0deg);}
+      25% { text-shadow: 2px 0 red, -2px 0 cyan; transform: skew(1deg);}
+      50% { text-shadow: -1px 0 cyan, 1px 0 red; transform: skew(-1deg);}
     }
 
-    /* service cards premium hacker */
-    .section-badge {
+    /* SERVICE CARDS FULL ANIMATION */
+    .section-title {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -153,9 +215,8 @@
       font-weight: 700;
       font-family: 'Orbitron';
       margin: 2rem 0 1.2rem;
-      border-bottom: 2px solid #2effa0;
-      width: fit-content;
-      padding-bottom: 6px;
+      border-left: 5px solid #2effa0;
+      padding-left: 18px;
     }
     .service-grid {
       display: grid;
@@ -169,57 +230,40 @@
       border: 1px solid #2effa066;
       border-radius: 28px;
       padding: 1.6rem;
-      transition: 0.25s ease;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      animation: cardFloat 0.6s ease backwards;
+      animation-delay: calc(0.1s * var(--i, 1));
     }
     .hack-card:hover {
       border-color: #2effa0;
-      transform: translateY(-8px);
-      box-shadow: 0 0 20px rgba(46,255,160,0.3);
-      background: #0b1e1ad9;
+      transform: translateY(-12px) rotate(0.5deg);
+      box-shadow: 0 0 28px rgba(46,255,160,0.4);
+    }
+    @keyframes cardFloat {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .card-icon {
       font-size: 2.8rem;
       color: #2effa0;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      transition: 0.2s;
     }
-    .hack-card h3 {
-      font-size: 1.7rem;
-      font-weight: 700;
-      font-family: 'Orbitron';
-    }
-    .price {
-      font-family: monospace;
-      background: #0f2c22;
-      display: inline-block;
-      padding: 4px 14px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      margin: 12px 0;
-      font-weight: bold;
+    .hack-card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
     }
     .order-btn {
       width: 100%;
       background: linear-gradient(95deg, #1a3a2e, #0d261e);
       border: 1px solid #2effa0;
-      padding: 10px 0;
+      padding: 12px;
       border-radius: 60px;
-      font-weight: 700;
-      color: white;
+      font-weight: bold;
       cursor: pointer;
       transition: 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-family: 'Orbitron', monospace;
-    }
-    .order-btn:hover {
-      background: #2b8f65;
-      box-shadow: 0 0 10px #2effa0;
     }
 
-    /* payment gateway premium */
+    /* PAYMENT BUTTONS ANIMATION */
     .payment-area {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 2rem;
@@ -232,30 +276,31 @@
       flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
-      margin-top: 1rem;
     }
     .pay-card {
       background: #10181e;
       border-radius: 60px;
-      padding: 12px 26px;
+      padding: 12px 28px;
       display: flex;
       align-items: center;
       gap: 12px;
       font-weight: 600;
       border: 1px solid #2effa080;
       cursor: pointer;
-      transition: 0.2s;
-    }
-    .pay-card i {
-      font-size: 1.4rem;
+      transition: all 0.25s;
+      animation: popIn 0.4s ease backwards;
     }
     .pay-card:hover {
       background: #1e3d32;
-      transform: scale(0.97);
+      transform: scale(0.97) translateY(-3px);
       border-color: #2effa0;
     }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8);}
+      to { opacity: 1; transform: scale(1);}
+    }
 
-    /* telegram official section with dark hacker */
+    /* TELEGRAM SECTION */
     .tele-section {
       background: #05100ecc;
       border-radius: 2rem;
@@ -264,182 +309,131 @@
       border: 1px solid #2effa0;
       backdrop-filter: blur(8px);
     }
-    .tele-title {
-      font-family: 'Orbitron';
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .tele-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
     .tele-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #00000055;
-      padding: 8px 18px;
+      padding: 10px 20px;
       border-radius: 60px;
-      flex-wrap: wrap;
+      margin-bottom: 12px;
+      transition: 0.2s;
+    }
+    .tele-item:hover {
+      background: #1a3a2e;
+      transform: translateX(8px);
     }
     .copy-tele {
       background: #1e4b3e;
       border: none;
-      padding: 5px 16px;
+      padding: 6px 20px;
       border-radius: 30px;
-      color: white;
       cursor: pointer;
-      font-family: monospace;
+      transition: 0.2s;
     }
 
-    /* MODAL SUPER PREMIUM */
+    /* MODAL */
     .hacker-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(24px);
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(20px);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 2000;
+      animation: fadeInModal 0.3s;
     }
-    .modal-content-hack {
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal-card {
       background: #0a1217;
       border: 2px solid #2effa0;
-      border-radius: 40px;
+      border-radius: 36px;
       padding: 2rem;
-      max-width: 450px;
+      max-width: 400px;
       width: 90%;
       text-align: center;
-      box-shadow: 0 0 40px #2effa030;
+      animation: slideUp 0.3s;
     }
-    .modal-display {
-      font-size: 1.8rem;
-      font-weight: bold;
-      word-break: break-word;
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
-    .modal-copy-btn {
-      background: #1f5a48;
-      border: none;
-      padding: 8px 24px;
-      border-radius: 60px;
-      margin: 15px 0;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .close-modal-hack {
-      background: #e53935;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 40px;
-      color: white;
-      cursor: pointer;
-    }
-
-    .toast-hack {
+    .toast {
       position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      background: #000000dd;
-      border-left: 5px solid #2effa0;
-      padding: 10px 20px;
-      border-radius: 30px;
+      background: black;
+      border-left: 4px solid #2effa0;
+      padding: 10px 24px;
+      border-radius: 50px;
       z-index: 3000;
-      font-family: monospace;
-      transition: 0.2s;
       opacity: 0;
+      transition: 0.2s;
       pointer-events: none;
+      font-family: monospace;
     }
-
     footer {
       text-align: center;
-      margin-top: 2rem;
-      font-size: 0.7rem;
+      padding: 1rem;
       opacity: 0.6;
-      font-family: monospace;
-      border-top: 0.5px solid #2effa0;
-      padding-top: 1rem;
+      font-size: 0.7rem;
     }
-
-    @media (max-width: 650px) {
-      .container { padding: 1rem; }
-      .glitch-text { font-size: 1.8rem; }
-      .tele-item { flex-direction: column; gap: 8px; align-items: flex-start; }
+    @media (max-width: 680px) {
+      .glitch-hero { font-size: 1.8rem; }
+      .typing-multi { font-size: 1rem; height: 60px; }
     }
   </style>
 </head>
 <body>
-<div class="matrix-bg"></div>
-<div class="matrix-rain"></div>
+
+<canvas id="canvas-bg"></canvas>
+<div class="matrix-overlay"></div>
 <div class="glitch-overlay"></div>
 
-<div class="container">
+<!-- SPLASH ANIMATION FULL -->
+<div id="splashScreen" class="splash-screen">
+  <div class="splash-content">
+    <img src="https://files.catbox.moe/5awz68.jpg" class="splash-logo" alt="Zenix">
+    <div class="typing-multi" id="typingText"></div>
+    <div class="splash-sub">>> ENCRYPTED BUSINESS GATEWAY v2.0</div>
+    <button id="enterBtn" class="enter-btn"><i class="fas fa-unlock-alt"></i> ACCESS TERMINAL</button>
+  </div>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="mainContent" class="main-content">
   <div class="cyber-header">
-    <div class="logo-hack">
-      <img src="https://files.catbox.moe/5awz68.jpg" alt="Zenix" class="logo-img" onerror="this.src='https://placehold.co/80x80?text=ZX'">
-      <span class="logo-text">ZENIX::HACK</span>
+    <div class="logo-area" style="display:flex; align-items:center; gap:12px;">
+      <img src="https://files.catbox.moe/5awz68.jpg" style="width:45px; border-radius:12px;" alt="logo">
+      <span class="logo-text">ZENIX::BIZ</span>
     </div>
-    <div class="music-panel" id="musicToggleBtn">
-      <i class="fas fa-skull-crossbones"></i> <span id="musicStatusText">ACTIVATE AUDIO</span>
-    </div>
+    <div class="music-toggle" id="musicToggleBtn"><i class="fas fa-head-side-vr"></i> <span id="musicStatus">ACTIVATE</span></div>
   </div>
 
-  <div class="hero-hack">
-    <div class="glitch-text">>_ PREMIUM BUSINESS VAULT</div>
-    <div class="tagline"># Hosting • Script • Rekber • VPS Private • Underground Services</div>
+  <div class="hero">
+    <div class="glitch-hero">>_ FULL ANIMATION BUSINESS SUITE</div>
+    <p style="margin-top: 10px;">Hosting • All Script • Rekber • VPS Private • Custom Dev</p>
   </div>
 
-  <!-- Layanan bisnis premium -->
-  <div class="section-badge"><i class="fas fa-dragon"></i> DARK SERVICES</div>
+  <div class="section-title"><i class="fas fa-crown"></i> PREMIUM SERVICES</div>
   <div class="service-grid">
-    <div class="hack-card">
-      <div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-      <h3>ALL HOSTING</h3>
-      <div class="price">💎 mulai 150K/bln</div>
-      <div>Shared, Reseller, Cloud, Offshore, unlimited bandwidth + SSL wildcard</div>
-      <button class="order-btn" data-service="ALL HOSTING PREMIUM (unlimited resource + support 24/7)"><i class="fas fa-terminal"></i> ORDER NOW</button>
-    </div>
-    <div class="hack-card">
-      <div class="card-icon"><i class="fas fa-code"></i></div>
-      <h3>ALL SCRIPT</h3>
-      <div class="price">🔮 from 99K</div>
-      <div>Bot, AI tools, automation, panel, nulled / original license, web source</div>
-      <button class="order-btn" data-service="ALL SCRIPT COLLECTION (ribuan script premium)"><i class="fas fa-terminal"></i> ORDER NOW</button>
-    </div>
-    <div class="hack-card">
-      <div class="card-icon"><i class="fas fa-handshake"></i></div>
-      <h3>REKBER / ESCROW</h3>
-      <div class="price">⚡ fee 2% aman</div>
-      <div>Mediasi transaksi besar, dispute handling, terpercaya dan cepat</div>
-      <button class="order-btn" data-service="JASA REKBER PROFESIONAL + CEPAT"><i class="fas fa-terminal"></i> ORDER NOW</button>
-    </div>
-    <div class="hack-card">
-      <div class="card-icon"><i class="fas fa-server"></i></div>
-      <h3>VPS PRIVATE</h3>
-      <div class="price">🛡️ mulai 250K</div>
-      <div>Offshore, anonymous, DDOS protection, root access, NVMe</div>
-      <button class="order-btn" data-service="VPS PRIVATE HIGH SECURITY / ILLEGAL READY?"><i class="fas fa-terminal"></i> ORDER NOW</button>
-    </div>
-    <div class="hack-card">
-      <div class="card-icon"><i class="fas fa-cogs"></i></div>
-      <h3>JASA DLL (Custom)</h3>
-      <div class="price">🎯 Nego</div>
-      <div>Install panel, maintenance, web dev, API, bot telegram, hacker protection</div>
-      <button class="order-btn" data-service="LAYANAN CUSTOM (konsultasi gratis via Telegram)"><i class="fas fa-terminal"></i> ORDER NOW</button>
-    </div>
+    <div class="hack-card" style="--i:1"><div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>ALL HOSTING</h3><div class="price">Start 150K/bln</div><div>Cloud, Reseller, Offshore, Unlimited</div><button class="order-btn" data-service="ALL HOSTING PREMIUM + SUPPORT 24/7">ORDER →</button></div>
+    <div class="hack-card" style="--i:2"><div class="card-icon"><i class="fas fa-code"></i></div><h3>ALL SCRIPT</h3><div class="price">from 99K</div><div>Bot, AI, Panel, Full Source</div><button class="order-btn" data-service="ALL SCRIPT COLLECTION (PREMIUM)">ORDER →</button></div>
+    <div class="hack-card" style="--i:3"><div class="card-icon"><i class="fas fa-handshake"></i></div><h3>JASA REKBER</h3><div class="price">Fee 2% Aman</div><div>Mediasi + dispute handling</div><button class="order-btn" data-service="REKBER PROFESIONAL">ORDER →</button></div>
+    <div class="hack-card" style="--i:4"><div class="card-icon"><i class="fas fa-server"></i></div><h3>VPS PRIVATE</h3><div class="price">Start 250K/bln</div><div>Offshore, DDoS Protection</div><button class="order-btn" data-service="VPS PRIVATE HIGH SECURITY">ORDER →</button></div>
+    <div class="hack-card" style="--i:5"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>JASA DLL (Custom)</h3><div class="price">Negotiable</div><div>Install panel, web dev, API</div><button class="order-btn" data-service="LAYANAN CUSTOM (Konsultasi)">ORDER →</button></div>
   </div>
 
-  <!-- PAYMENT GATEWAY FULL LENGKAP -->
   <div class="payment-area">
-    <div class="section-badge" style="border-bottom-color:#ffb86b;"><i class="fas fa-coins"></i> PAYMENT GATEWAY</div>
+    <div class="section-title" style="border-left-color: #ffb86b;"><i class="fas fa-coins"></i> PAYMENT GATEWAY</div>
     <div class="payment-buttons">
       <div class="pay-card" id="payDana"><i class="fas fa-mobile-alt"></i> DANA</div>
       <div class="pay-card" id="payGopay"><i class="fab fa-google-pay"></i> GOPAY</div>
@@ -447,200 +441,230 @@
       <div class="pay-card" id="payQris"><i class="fas fa-qrcode"></i> QRIS</div>
       <div class="pay-card" id="paySaweria"><i class="fas fa-donate"></i> SAWERIA</div>
     </div>
-    <div style="font-size: 0.7rem; text-align: center; margin-top: 12px;">✦ semua metode instant & terverifikasi ✦</div>
   </div>
 
-  <!-- TELEGRAM OFFICIAL (update all accounts) -->
   <div class="tele-section">
-    <div class="tele-title"><i class="fab fa-telegram"></i> [ OFFICIAL TELEGRAM UNDERGROUND ]</div>
-    <div class="tele-list">
-      <div class="tele-item"><span><i class="fas fa-database"></i> Backup : @skyzenix</span><button class="copy-tele" data-copy="skyzenix">COPY</button></div>
-      <div class="tele-item"><span><i class="fas fa-crown"></i> Utama : @MiaaBack</span><button class="copy-tele" data-copy="MiaaBack">COPY</button></div>
-      <div class="tele-item"><span><i class="fas fa-bullhorn"></i> Promosi : @MI44BACK</span><button class="copy-tele" data-copy="MI44BACK">COPY</button></div>
-      <div class="tele-item"><span><i class="fas fa-newspaper"></i> Channel Resmi : @chnewsky</span><button class="copy-tele" data-copy="chnewsky">COPY</button></div>
-      <div class="tele-item"><span><i class="fas fa-users"></i> Channel Pub : @testimonzen</span><button class="copy-tele" data-copy="testimonzen">COPY</button></div>
-    </div>
-    <div style="margin-top: 12px; font-size: 0.7rem; text-align: center;"><i class="fas fa-lock"></i> hubungi via telegram untuk order & support 24/7</div>
+    <div class="section-title" style="border-left-color: #26A5E4;"><i class="fab fa-telegram"></i> OFFICIAL TELEGRAM</div>
+    <div class="tele-item"><span><i class="fas fa-database"></i> Backup : @skyzenix</span><button class="copy-tele" data-copy="skyzenix">SALIN</button></div>
+    <div class="tele-item"><span><i class="fas fa-crown"></i> Utama : @MiaaBack</span><button class="copy-tele" data-copy="MiaaBack">SALIN</button></div>
+    <div class="tele-item"><span><i class="fas fa-bullhorn"></i> Promosi : @MI44BACK</span><button class="copy-tele" data-copy="MI44BACK">SALIN</button></div>
+    <div class="tele-item"><span><i class="fas fa-newspaper"></i> Channel Resmi : @chnewsky</span><button class="copy-tele" data-copy="chnewsky">SALIN</button></div>
+    <div class="tele-item"><span><i class="fas fa-users"></i> Channel Pub : @testimonzen</span><button class="copy-tele" data-copy="testimonzen">SALIN</button></div>
   </div>
-  <footer>© ZENIX DARK HACKER SUITE — ALL PAYMENT PREMIUM • VERSI TERBARU 2025</footer>
+  <footer>© ZENIX CORP • FULL ANIMATION SUITE • 2025</footer>
 </div>
 
-<!-- MODAL PREMIUM -->
-<div id="hackerModal" class="hacker-modal">
-  <div class="modal-content-hack">
-    <div id="modalMainText" class="modal-display"></div>
-    <div id="modalExtraArea"></div>
-    <button id="modalCopyBtn" class="modal-copy-btn" style="display: none;"><i class="fas fa-copy"></i> Salin ke Clipboard</button>
-    <div><button id="modalCloseBtn" class="close-modal-hack"><i class="fas fa-times"></i> Tutup</button></div>
+<div id="globalModal" class="hacker-modal">
+  <div class="modal-card">
+    <div id="modalMessage" style="font-size:1.5rem;"></div>
+    <div id="modalExtra"></div>
+    <button id="modalCopyBtn" style="background:#1f5a48; border:none; padding:8px 20px; border-radius:40px; margin:12px 0; display:none;">📋 Salin</button>
+    <button id="closeModalBtn" style="background:#e53935; border:none; padding:8px 20px; border-radius:40px;">Tutup</button>
   </div>
 </div>
-<div id="toastMessage" class="toast-hack">✓ Tersalin!</div>
-
-<audio id="bgMusicHack" loop preload="auto">
-  <source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg">
-</audio>
+<div id="toastMsg" class="toast">✓ Tersalin</div>
+<audio id="bgMusic" loop preload="auto"><source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg"></audio>
 
 <script>
-  // DOM elements
-  const modal = document.getElementById('hackerModal');
-  const modalText = document.getElementById('modalMainText');
-  const modalExtra = document.getElementById('modalExtraArea');
-  const modalCopyBtn = document.getElementById('modalCopyBtn');
-  const modalClose = document.getElementById('modalCloseBtn');
-  const toastEl = document.getElementById('toastMessage');
-  const music = document.getElementById('bgMusicHack');
-  const musicToggle = document.getElementById('musicToggleBtn');
-  const musicStatusSpan = document.getElementById('musicStatusText');
+  // ========== CANVAS BACKGROUND ANIMASI PARTIKEL ==========
+  const canvas = document.getElementById('canvas-bg');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
 
-  let currentCopyValue = "";
-  let musicPlaying = false;
-
-  function showToast(msg) {
-    toastEl.innerText = msg;
-    toastEl.style.opacity = "1";
-    setTimeout(() => { toastEl.style.opacity = "0"; }, 2000);
+  function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
   }
 
-  function showModal(mainHtml, extraHtml = "", copyable = null) {
-    modalText.innerHTML = mainHtml;
-    modalExtra.innerHTML = extraHtml || "";
-    modal.style.display = "flex";
-    if (copyable && copyable !== "") {
-      currentCopyValue = copyable;
-      modalCopyBtn.style.display = "inline-block";
-    } else {
-      currentCopyValue = "";
-      modalCopyBtn.style.display = "none";
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 1.8 + 0.8;
+      this.speedY = Math.random() * 1.5 + 0.3;
+      this.opacity = Math.random() * 0.5 + 0.2;
+      this.char = String.fromCharCode(0x30A0 + Math.random() * 96);
+    }
+    update() {
+      this.y += this.speedY;
+      if (this.y > height) {
+        this.y = 0;
+        this.x = Math.random() * width;
+      }
+    }
+    draw() {
+      ctx.fillStyle = `rgba(46, 255, 160, ${this.opacity})`;
+      ctx.font = `${this.size * 12}px 'Share Tech Mono'`;
+      ctx.fillText(this.char, this.x, this.y);
     }
   }
 
-  function closeModalFunc() {
-    modal.style.display = "none";
-    modalText.innerHTML = "";
-    modalExtra.innerHTML = "";
-    currentCopyValue = "";
-    modalCopyBtn.style.display = "none";
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < 150; i++) {
+      particles.push(new Particle());
+    }
   }
 
-  modalClose.addEventListener('click', closeModalFunc);
-  modal.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
-  modalCopyBtn.addEventListener('click', () => {
-    if(currentCopyValue) {
-      navigator.clipboard.writeText(currentCopyValue);
-      showToast(`✓ ${currentCopyValue} tersalin`);
-    } else showToast("Tidak ada teks untuk disalin");
+  function animateBg() {
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = '#03060b';
+    ctx.fillRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animateBg);
+  }
+
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    initParticles();
   });
+  resizeCanvas();
+  initParticles();
+  animateBg();
 
-  // PAYMENT DETAILS (full update)
-  const paymentData = {
-    dana: "085608969326",
-    gopay: "Close",
-    ovo: "Close",
-    qrisImg: "https://files.catbox.moe/qwbsk8.jpg",
-    saweria: "https://sociabuzz.com/alex1/tribe"
-  };
-
-  document.getElementById('payDana').onclick = () => {
-    showModal(`💎 DANA PREMIUM`, `<div style="font-size: 2rem; font-weight: bold; margin: 15px 0;">${paymentData.dana}</div>`, paymentData.dana);
-  };
-  document.getElementById('payGopay').onclick = () => {
-    showModal(`✨ GOPAY RESMI`, `<div style="font-size: 1.8rem; font-weight: bold;">${paymentData.gopay}</div><div style="font-size:0.7rem;">scan atau kirim ke nomor ini</div>`, paymentData.gopay);
-  };
-  document.getElementById('payOvo').onclick = () => {
-    showModal(`🟢 OVO PAY`, `<div style="font-size: 1.8rem;">${paymentData.ovo}</div>`, paymentData.ovo);
-  };
-  document.getElementById('payQris').onclick = () => {
-    showModal(`📱 SCAN QRIS`, `<img src="${paymentData.qrisImg}" style="max-width:200px; border-radius:20px; margin:10px auto; display:block;" onerror="this.src='https://placehold.co/300x300?text=QRIS+CODE'"><div>Scan pakai aplikasi pembayaran</div>`, null);
-  };
-  document.getElementById('paySaweria').onclick = () => {
-    showModal(`💖 SAWERIA DONASI`, `<div style="margin:10px;">${paymentData.saweria}</div><div style="font-size:0.8rem;">klik salin untuk buka link</div>`, paymentData.saweria);
-  };
-
-  // ORDER BUTTONS (service order -> kontak telegram)
-  const orderBtns = document.querySelectorAll('.order-btn');
-  orderBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const service = btn.getAttribute('data-service') || "Layanan Premium";
-      showModal(`⚡ ORDER: ${service}`, 
-        `<div style="margin-top:16px; display:flex; flex-direction:column; gap:10px;">
-           <button id="contactUtama" style="background:#1b5e4a; border:none; padding:10px; border-radius:40px; color:white; cursor:pointer;"><i class="fab fa-telegram"></i> Hubungi @MiaaBack (Utama)</button>
-           <button id="contactBackup" style="background:#1b5e4a; border:none; padding:10px; border-radius:40px; color:white; cursor:pointer;"><i class="fab fa-telegram"></i> Hubungi @skyzenix (Backup)</button>
-         </div>`, null);
+  // ========== TYPING ANIMATION MULTI BARIS SPLASH ==========
+  const typingDiv = document.getElementById('typingText');
+  const texts = [">_ LOADING SECURE NODE", ">_ CONNECT TO ZENIX HUB", ">_ READY FOR BUSINESS"];
+  let index = 0;
+  let charIndex = 0;
+  let currentText = "";
+  function typeEffect() {
+    if (index >= texts.length) {
+      typingDiv.innerHTML = ">_ WELCOME TO ZENIX CORP";
+      return;
+    }
+    if (charIndex < texts[index].length) {
+      currentText += texts[index].charAt(charIndex);
+      typingDiv.innerHTML = currentText;
+      charIndex++;
+      setTimeout(typeEffect, 80);
+    } else {
       setTimeout(() => {
-        const btnUtama = document.getElementById('contactUtama');
-        const btnBackup = document.getElementById('contactBackup');
-        if(btnUtama) btnUtama.onclick = () => { navigator.clipboard.writeText('@MiaaBack'); showToast('Username @MiaaBack tersalin! buka telegram'); closeModalFunc(); };
-        if(btnBackup) btnBackup.onclick = () => { navigator.clipboard.writeText('@skyzenix'); showToast('Username @skyzenix disalin'); closeModalFunc(); };
-      }, 10);
-    });
-  });
+        index++;
+        charIndex = 0;
+        currentText = "";
+        if (index < texts.length) typeEffect();
+        else typingDiv.innerHTML = ">_ WELCOME TO ZENIX CORP";
+      }, 600);
+    }
+  }
+  typeEffect();
 
-  // COPY TELEGRAM BUTTONS
-  const teleCopyBtns = document.querySelectorAll('.copy-tele');
-  teleCopyBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      let username = btn.getAttribute('data-copy');
-      let full = username.startsWith('@') ? username : `@${username}`;
-      navigator.clipboard.writeText(full);
-      showToast(`✅ ${full} disalin ke clipboard`);
-      const original = btn.innerText;
-      btn.innerText = "✔️ copied";
-      setTimeout(() => btn.innerText = original, 1200);
-    });
-  });
+  // SPLASH CLOSE
+  const splash = document.getElementById('splashScreen');
+  const main = document.getElementById('mainContent');
+  const enterBtn = document.getElementById('enterBtn');
+  function showMain() {
+    splash.style.opacity = '0';
+    splash.style.visibility = 'hidden';
+    setTimeout(() => {
+      splash.style.display = 'none';
+      main.classList.add('visible');
+    }, 1000);
+  }
+  enterBtn.addEventListener('click', showMain);
 
-  // MUSIC SYSTEM WITH PREMIUM FEEL
+  // MUSIC
+  const music = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicToggleBtn');
+  const musicStatusSpan = document.getElementById('musicStatus');
+  let musicPlaying = false;
   function updateMusicUI() {
     if(musicPlaying) {
-      musicStatusSpan.innerText = "AUDIO ACTIVE";
-      musicToggle.innerHTML = '<i class="fas fa-head-side-vr"></i> <span id="musicStatusText">AUDIO ACTIVE</span>';
+      musicStatusSpan.innerText = "ON";
+      musicBtn.innerHTML = '<i class="fas fa-volume-up"></i> <span id="musicStatus">ON</span>';
     } else {
-      musicStatusSpan.innerText = "ACTIVATE AUDIO";
-      musicToggle.innerHTML = '<i class="fas fa-skull-crossbones"></i> <span id="musicStatusText">ACTIVATE AUDIO</span>';
+      musicStatusSpan.innerText = "ACTIVATE";
+      musicBtn.innerHTML = '<i class="fas fa-head-side-vr"></i> <span id="musicStatus">ACTIVATE</span>';
     }
   }
-
   function toggleMusic() {
-    if (music.paused) {
-      music.play().then(() => {
-        musicPlaying = true;
-        updateMusicUI();
-      }).catch(() => {
-        musicPlaying = true;
-        updateMusicUI();
-      });
+    if(music.paused) {
+      music.play().then(() => { musicPlaying = true; updateMusicUI(); }).catch(() => { musicPlaying = true; updateMusicUI(); });
     } else {
       music.pause();
       musicPlaying = false;
       updateMusicUI();
     }
   }
-  musicToggle.addEventListener('click', toggleMusic);
-  window.addEventListener('load', () => {
-    music.play().catch(e => console.log("auto-block"));
-    // efek hacker console
-    console.log("%cZENIX HACKER MODE ACTIVE", "color: #2effa0; font-size: 16px");
+  musicBtn.addEventListener('click', toggleMusic);
+  window.addEventListener('load', () => { music.play().catch(e=>{}); });
+
+  // MODAL SYSTEM
+  const modal = document.getElementById('globalModal');
+  const modalMsg = document.getElementById('modalMessage');
+  const modalExtra = document.getElementById('modalExtra');
+  const modalCopyBtn = document.getElementById('modalCopyBtn');
+  const closeModal = document.getElementById('closeModalBtn');
+  let currentCopy = "";
+
+  function showModal(text, extra = "", copyText = null) {
+    modalMsg.innerHTML = text;
+    modalExtra.innerHTML = extra;
+    modal.style.display = "flex";
+    if(copyText) {
+      currentCopy = copyText;
+      modalCopyBtn.style.display = "inline-block";
+    } else {
+      currentCopy = "";
+      modalCopyBtn.style.display = "none";
+    }
+  }
+  function closeModalFunc() { modal.style.display = "none"; modalMsg.innerHTML = ""; modalExtra.innerHTML = ""; }
+  closeModal.addEventListener('click', closeModalFunc);
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
+  modalCopyBtn.addEventListener('click', () => {
+    if(currentCopy) { navigator.clipboard.writeText(currentCopy); showToast(`✓ ${currentCopy} disalin`); }
+    else showToast("Tidak ada teks");
+  });
+  function showToast(msg) {
+    const toast = document.getElementById('toastMsg');
+    toast.innerText = msg;
+    toast.style.opacity = "1";
+    setTimeout(() => toast.style.opacity = "0", 2000);
+  }
+
+  // PAYMENT DATA
+  const pay = { dana:"085608969326", gopay:"close", ovo:"close", qrisImg:"https://files.catbox.moe/qwbsk8.jpg", saweria:"https://sociabuzz.com/alex1/tribe" };
+  document.getElementById('payDana').onclick = () => showModal(`💎 DANA`, `<div style="font-size:2rem;">${pay.dana}</div>`, pay.dana);
+  document.getElementById('payGopay').onclick = () => showModal(`✨ GOPAY`, `<div style="font-size:1.8rem;">${pay.gopay}</div>`, pay.gopay);
+  document.getElementById('payOvo').onclick = () => showModal(`🟢 OVO`, `<div style="font-size:1.8rem;">${pay.ovo}</div>`, pay.ovo);
+  document.getElementById('payQris').onclick = () => showModal(`📱 QRIS`, `<img src="${pay.qrisImg}" style="max-width:200px; border-radius:20px; margin-top:10px;"><div>Scan via OVO/DANA/GOPAY</div>`, null);
+  document.getElementById('paySaweria').onclick = () => showModal(`💖 SAWERIA`, `<div>${pay.saweria}</div>`, pay.saweria);
+
+  // ORDER BUTTONS (kontak telegram)
+  const orderBtns = document.querySelectorAll('.order-btn');
+  orderBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const service = btn.getAttribute('data-service');
+      showModal(`⚡ ORDER: ${service}`, `<div style="margin-top:16px; display:flex; flex-direction:column; gap:12px;">
+        <button id="hubUtama" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi @MiaaBack</button>
+        <button id="hubBackup" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi @skyzenix</button>
+      </div>`, null);
+      setTimeout(() => {
+        const u = document.getElementById('hubUtama');
+        const b = document.getElementById('hubBackup');
+        if(u) u.onclick = () => { navigator.clipboard.writeText('@MiaaBack'); showToast('@MiaaBack disalin'); closeModalFunc(); };
+        if(b) b.onclick = () => { navigator.clipboard.writeText('@skyzenix'); showToast('@skyzenix disalin'); closeModalFunc(); };
+      }, 10);
+    });
   });
 
-  // tambahan efek hacker glitch pada tombol
-  const allButtons = document.querySelectorAll('.pay-card, .order-btn, .copy-tele');
-  allButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      let ripple = document.createElement('span');
-      ripple.style.position = 'absolute';
-      ripple.style.borderRadius = '50%';
-      ripple.style.background = '#2effa066';
-      ripple.style.width = '60px';
-      ripple.style.height = '60px';
-      ripple.style.transform = 'scale(0)';
-      ripple.style.transition = 'transform 0.4s';
-      ripple.style.left = `${e.clientX - btn.getBoundingClientRect().left - 30}px`;
-      ripple.style.top = `${e.clientY - btn.getBoundingClientRect().top - 30}px`;
-      btn.style.position = 'relative';
-      btn.style.overflow = 'hidden';
-      btn.appendChild(ripple);
-      setTimeout(() => { ripple.style.transform = 'scale(4)'; ripple.style.opacity = '0'; }, 10);
-      setTimeout(() => ripple.remove(), 400);
+  // COPY TELEGRAM
+  document.querySelectorAll('.copy-tele').forEach(btn => {
+    btn.addEventListener('click', () => {
+      let username = btn.getAttribute('data-copy');
+      let full = username.startsWith('@') ? username : `@${username}`;
+      navigator.clipboard.writeText(full);
+      showToast(`✅ ${full} disalin`);
+      btn.innerText = "✔️ Copied";
+      setTimeout(() => btn.innerText = "SALIN", 1000);
     });
   });
 </script>
