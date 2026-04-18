@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>ZENIX PAYMENT | Premium Gateway + Terms</title>
+  <title>ZENIX PAYMENT | Ultimate Premium Gateway</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -14,7 +14,7 @@
     }
 
     body {
-      background: #050a12;
+      background: #03060b;
       font-family: 'Inter', 'Space Grotesk', sans-serif;
       color: #eef5ff;
       overflow-x: hidden;
@@ -24,159 +24,191 @@
       justify-content: center;
     }
 
-    /* Background Dinamis Premium */
-    .bg-aura {
+    /* === PREMIUM DYNAMIC BACKGROUND === */
+    canvas#particleCanvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 30% 10%, #0a1f2a, #010101);
       z-index: -2;
+      display: block;
     }
-    .grid-pattern {
+    .gradient-orb {
+      position: fixed;
+      width: 80vw;
+      height: 80vw;
+      background: radial-gradient(circle, rgba(46,255,200,0.08), transparent 70%);
+      bottom: -30vh;
+      right: -20vw;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .grid-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(46, 255, 200, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(46, 255, 200, 0.04) 1px, transparent 1px);
-      background-size: 45px 45px;
+        linear-gradient(rgba(46, 255, 200, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46, 255, 200, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
       pointer-events: none;
       z-index: -1;
     }
-    .glow-spot {
-      position: fixed;
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(0,255,180,0.08), transparent);
-      bottom: -20vh;
-      right: -10vw;
-      border-radius: 50%;
-      filter: blur(80px);
-      z-index: -1;
-    }
 
-    /* SPLASH SCREEN */
+    /* === SPLASH SCREEN ULTRA PREMIUM === */
     .splash {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #03060cee;
-      backdrop-filter: blur(32px);
+      background: rgba(3, 6, 11, 0.92);
+      backdrop-filter: blur(28px);
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+      transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1), visibility 0s linear 1s;
+      font-family: 'Space Grotesk', monospace;
+    }
+    .splash.hide {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+    }
+    .splash-card {
+      text-align: center;
+      background: rgba(10, 25, 35, 0.5);
+      backdrop-filter: blur(20px);
+      border-radius: 3rem;
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(46, 255, 200, 0.4);
+      box-shadow: 0 0 50px rgba(46,255,200,0.15);
+      animation: floatIn 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      max-width: 380px;
+      width: 90%;
+    }
+    @keyframes floatIn {
+      0% { opacity: 0; transform: scale(0.92) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
     }
     .splash-logo {
-      width: 120px;
+      width: 110px;
       border-radius: 28px;
-      box-shadow: 0 0 30px #2effc0;
-      animation: pulseGlow 1.2s infinite alternate;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 0 20px #2effc0;
+      animation: pulseGlow 1.5s infinite alternate;
     }
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 5px #2effc0; transform: scale(1);}
-      100% { box-shadow: 0 0 40px #6effd0; transform: scale(1.02);}
+      100% { box-shadow: 0 0 35px #6effd0; transform: scale(1.02);}
     }
     .splash-title {
       font-size: 2rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #fff, #2effc0);
+      background: linear-gradient(135deg, #ffffff, #a0ffd0, #2effc0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      margin-top: 20px;
+      margin-bottom: 0.5rem;
     }
     .splash-sub {
-      letter-spacing: 2px;
-      margin: 8px 0;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #b0ffdd;
+      margin-bottom: 1.8rem;
     }
     .enter-btn {
-      margin-top: 35px;
-      background: transparent;
-      border: 2px solid #2effc0;
-      padding: 12px 40px;
+      background: linear-gradient(95deg, #1a3a2e, #0d261e);
+      border: 1.5px solid #2effc0;
+      padding: 14px 32px;
       border-radius: 60px;
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.25s;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
     .enter-btn:hover {
       background: #2effc0;
       color: #03060c;
       box-shadow: 0 0 20px #2effc0;
+      transform: scale(1.02);
+    }
+    .splash-footer {
+      margin-top: 1.5rem;
+      font-size: 0.65rem;
+      opacity: 0.6;
     }
 
-    /* MAIN CARD PAYMENT */
+    /* === MAIN PAYMENT CARD (PREMIUM) === */
     .payment-container {
       max-width: 600px;
       width: 100%;
       margin: 2rem auto;
       padding: 1.5rem;
       opacity: 0;
-      transition: opacity 0.8s ease;
+      transition: opacity 0.9s ease;
     }
     .payment-container.visible {
       opacity: 1;
     }
-
     .glass-card {
-      background: rgba(10, 20, 28, 0.55);
-      backdrop-filter: blur(16px);
+      background: rgba(8, 18, 25, 0.65);
+      backdrop-filter: blur(18px);
       border-radius: 3rem;
-      border: 1px solid rgba(46, 255, 200, 0.35);
+      border: 1px solid rgba(46, 255, 200, 0.4);
       padding: 2rem 1.8rem;
-      box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+      box-shadow: 0 30px 50px rgba(0,0,0,0.4);
+      transition: 0.2s;
     }
-
-    /* Header */
     .header-payment {
       text-align: center;
       margin-bottom: 2rem;
     }
     .logo-payment {
       width: 80px;
-      border-radius: 20px;
+      border-radius: 22px;
       margin-bottom: 1rem;
-      box-shadow: 0 0 15px #2effc0;
+      box-shadow: 0 0 18px #2effc0;
     }
     .header-payment h1 {
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #fff, #a0ffd0);
+      background: linear-gradient(135deg, #fff, #9effd0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
     }
     .badge-premium {
-      display: inline-block;
       background: rgba(46, 255, 200, 0.15);
       border-radius: 60px;
       padding: 0.3rem 1rem;
       font-size: 0.7rem;
       font-weight: 600;
+      display: inline-block;
       margin-top: 8px;
       border: 0.5px solid rgba(46,255,200,0.5);
     }
 
-    /* Tombol Payment (DANA, QRIS, SAWERIA) */
+    /* Payment Buttons */
     .payment-methods {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
       margin: 2rem 0;
     }
     .pay-button {
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(46, 255, 200, 0.4);
       border-radius: 80px;
@@ -185,13 +217,13 @@
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: all 0.25s;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
     .pay-button:hover {
-      transform: translateX(8px);
+      transform: translateX(10px);
       border-color: #2effc0;
       background: #1a2f2a;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
     }
     .pay-left {
       display: flex;
@@ -211,11 +243,8 @@
       font-size: 1.2rem;
       transition: 0.2s;
     }
-    .pay-button:hover .pay-arrow {
-      transform: translateX(5px);
-    }
 
-    /* Info tambahan */
+    /* Info secure */
     .info-secure {
       text-align: center;
       margin-top: 1.5rem;
@@ -227,7 +256,7 @@
       flex-wrap: wrap;
     }
 
-    /* Owner & Copyright & Terms Link */
+    /* Owner & Terms */
     .owner-footer {
       margin-top: 2rem;
       text-align: center;
@@ -271,8 +300,8 @@
       opacity: 0.6;
     }
 
-    /* Modal Premium untuk Payment */
-    .modal-premium {
+    /* Modals */
+    .modal-premium, .modal-terms {
       position: fixed;
       top: 0;
       left: 0;
@@ -285,7 +314,7 @@
       justify-content: center;
       z-index: 2000;
     }
-    .modal-content {
+    .modal-content, .terms-content {
       background: #0f1a21;
       border: 2px solid #2effc0;
       border-radius: 2rem;
@@ -294,6 +323,12 @@
       width: 90%;
       text-align: center;
       animation: modalPop 0.3s ease;
+    }
+    .terms-content {
+      max-width: 550px;
+      max-height: 80vh;
+      overflow-y: auto;
+      text-align: left;
     }
     @keyframes modalPop {
       from { opacity: 0; transform: scale(0.9);}
@@ -311,7 +346,7 @@
       border-radius: 20px;
       margin: 10px auto;
     }
-    .copy-btn-modal {
+    .copy-btn-modal, .close-modal, .close-terms {
       background: #1f5a48;
       border: none;
       padding: 10px 24px;
@@ -320,46 +355,12 @@
       cursor: pointer;
       margin: 10px 0;
     }
-    .close-modal {
+    .close-modal, .close-terms {
       background: #e53935;
-      border: none;
-      padding: 8px 24px;
-      border-radius: 60px;
-      cursor: pointer;
-      color: white;
-    }
-
-    /* Modal Terms & Conditions (Banyak Syarat) */
-    .modal-terms {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.96);
-      backdrop-filter: blur(24px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2100;
-    }
-    .terms-content {
-      background: #0f1a21;
-      border: 2px solid #2effc0;
-      border-radius: 2rem;
-      padding: 2rem;
-      max-width: 550px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      text-align: left;
-      animation: modalPop 0.3s ease;
     }
     .terms-content h3 {
       color: #2effc0;
       margin-bottom: 1rem;
-      font-size: 1.4rem;
-      text-align: center;
     }
     .terms-content h4 {
       margin-top: 1rem;
@@ -368,21 +369,9 @@
     .terms-content p, .terms-content li {
       font-size: 0.8rem;
       line-height: 1.5;
-      margin-bottom: 0.5rem;
     }
     .terms-content ul {
       padding-left: 1.5rem;
-      margin: 0.5rem 0;
-    }
-    .close-terms {
-      display: block;
-      margin: 1.5rem auto 0;
-      background: #e53935;
-      border: none;
-      padding: 8px 24px;
-      border-radius: 60px;
-      cursor: pointer;
-      color: white;
     }
 
     /* Toast */
@@ -402,7 +391,7 @@
       font-weight: 500;
     }
 
-    /* Music Floating */
+    /* Music floating */
     .music-floating {
       position: fixed;
       bottom: 20px;
@@ -420,24 +409,27 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 550px) {
       .glass-card { padding: 1.5rem; }
       .pay-left span { font-size: 1rem; }
-      .modal-value { font-size: 1.4rem; }
+      .splash-card { padding: 1.8rem; }
     }
   </style>
 </head>
 <body>
-<div class="bg-aura"></div>
-<div class="grid-pattern"></div>
-<div class="glow-spot"></div>
+<canvas id="particleCanvas"></canvas>
+<div class="gradient-orb"></div>
+<div class="grid-overlay"></div>
 
-<!-- SPLASH SCREEN WELCOME -->
+<!-- SPLASH SCREEN ULTRA PREMIUM -->
 <div id="splashScreen" class="splash">
-  <img src="https://files.catbox.moe/5awz68.jpg" class="splash-logo" alt="Zenix">
-  <div class="splash-title">ZENIX PAYMENT</div>
-  <div class="splash-sub">Premium Gateway • Fast & Secure</div>
-  <button id="enterAppBtn" class="enter-btn"><i class="fas fa-bolt"></i> MASUK</button>
+  <div class="splash-card">
+    <img src="https://files.catbox.moe/5awz68.jpg" class="splash-logo" alt="Zenix">
+    <div class="splash-title">ZENIX PAYMENT</div>
+    <div class="splash-sub">Secure • Instant • Premium Gateway</div>
+    <button id="enterAppBtn" class="enter-btn"><i class="fas fa-fingerprint"></i> ACCESS DASHBOARD</button>
+    <div class="splash-footer"><i class="fas fa-shield-alt"></i> 256-bit encrypted</div>
+  </div>
 </div>
 
 <!-- MAIN PAYMENT CARD -->
@@ -445,22 +437,19 @@
   <div class="glass-card">
     <div class="header-payment">
       <img src="https://files.catbox.moe/5awz68.jpg" class="logo-payment" alt="Zenix">
-      <h1>✦ PAYMENT GATEWAY ✦</h1>
-      <div class="badge-premium"><i class="fas fa-shield-alt"></i> VERIFIED • INSTANT</div>
+      <h1>✦ PREMIUM GATEWAY ✦</h1>
+      <div class="badge-premium"><i class="fas fa-check-circle"></i> VERIFIED MERCHANT</div>
     </div>
 
     <div class="payment-methods">
-      <!-- DANA -->
       <div class="pay-button" data-method="dana">
         <div class="pay-left"><i class="fas fa-mobile-alt"></i><span>DANA</span></div>
         <div class="pay-arrow"><i class="fas fa-chevron-right"></i></div>
       </div>
-      <!-- QRIS -->
       <div class="pay-button" data-method="qris">
         <div class="pay-left"><i class="fas fa-qrcode"></i><span>QRIS</span></div>
         <div class="pay-arrow"><i class="fas fa-chevron-right"></i></div>
       </div>
-      <!-- SAWERIA -->
       <div class="pay-button" data-method="saweria">
         <div class="pay-left"><i class="fas fa-donate"></i><span>SAWERIA</span></div>
         <div class="pay-arrow"><i class="fas fa-chevron-right"></i></div>
@@ -470,10 +459,9 @@
     <div class="info-secure">
       <span><i class="fas fa-lock"></i> 100% Aman</span>
       <span><i class="fas fa-clock"></i> 24/7 Support</span>
-      <span><i class="fas fa-undo-alt"></i> Instant Transfer</span>
+      <span><i class="fas fa-bolt"></i> Real-time</span>
     </div>
 
-    <!-- Owner & Copyright & Terms -->
     <div class="owner-footer">
       <div class="owner-buttons">
         <div class="owner-chip" data-owner="MiaaBack"><i class="fab fa-telegram"></i> Owner: MiaaBack</div>
@@ -481,14 +469,12 @@
         <div class="owner-chip" data-owner="MI44BACK"><i class="fas fa-bullhorn"></i> Marketing: MI44BACK</div>
       </div>
       <div class="terms-link" id="showTermsBtn"><i class="fas fa-file-contract"></i> Syarat & Ketentuan Lengkap</div>
-      <div class="copyright">
-        <i class="far fa-copyright"></i> 2025 ZENIX CORPORATION — All Rights Reserved
-      </div>
+      <div class="copyright"><i class="far fa-copyright"></i> 2025 ZENIX CORPORATION — All Rights Reserved</div>
     </div>
   </div>
 </div>
 
-<!-- MUSIC FLOATING BUTTON -->
+<!-- MUSIC BUTTON -->
 <div id="musicFloating" class="music-floating">
   <i class="fas fa-headphones"></i> <span id="musicStatusText">ACTIVATE</span>
 </div>
@@ -503,67 +489,97 @@
   </div>
 </div>
 
-<!-- MODAL SYARAT & KETENTUAN (BANYAK) -->
+<!-- MODAL TERMS (banyak syarat) -->
 <div id="termsModal" class="modal-terms">
   <div class="terms-content">
     <h3><i class="fas fa-file-alt"></i> SYARAT & KETENTUAN</h3>
     <p>Dengan menggunakan layanan ZENIX PAYMENT, Anda menyetujui seluruh ketentuan berikut:</p>
-    
     <h4>1. Ketentuan Umum</h4>
-    <p>1.1 Layanan ini hanya untuk transaksi yang sah dan legal sesuai hukum yang berlaku di Indonesia.<br>
-    1.2 Pengguna wajib berusia minimal 18 tahun atau memiliki izin dari orang tua/wali.<br>
-    1.3 ZENIX berhak menolak transaksi yang mencurigakan atau melanggar hukum.</p>
-    
+    <p>1.1 Layanan hanya untuk transaksi legal sesuai hukum Indonesia.<br>1.2 Pengguna wajib berusia minimal 18 tahun.<br>1.3 ZENIX berhak menolak transaksi mencurigakan.</p>
     <h4>2. Metode Pembayaran</h4>
-    <p>2.1 Kami menyediakan pembayaran melalui DANA, QRIS, dan SAWERIA.<br>
-    2.2 Nomor/QR yang ditampilkan adalah resmi milik ZENIX CORPORATION.<br>
-    2.3 Transfer harus sesuai dengan jumlah tagihan, kelebihan pembayaran akan menjadi donasi.</p>
-    
+    <p>2.1 Metode resmi: DANA, QRIS, SAWERIA.<br>2.2 Nomor/QR milik ZENIX CORPORATION.<br>2.3 Transfer sesuai tagihan, kelebihan jadi donasi.</p>
     <h4>3. Konfirmasi & Pengiriman</h4>
-    <p>3.1 Setelah transfer, wajib konfirmasi ke official Telegram (Owner/Co-Owner).<br>
-    3.2 Bukti transfer harus jelas (tanggal, nominal, ID transaksi).<br>
-    3.3 Layanan digital akan dikirim maksimal 1x24 jam setelah konfirmasi valid.</p>
-    
+    <p>3.1 Wajib konfirmasi ke official Telegram (Owner/Co-Owner).<br>3.2 Bukti transfer harus jelas.<br>3.3 Layanan digital dikirim maksimal 1x24 jam.</p>
     <h4>4. Refund & Pengembalian Dana</h4>
-    <p>4.1 Tidak ada refund untuk produk digital yang sudah dikirim.<br>
-    4.2 Refund hanya diberikan jika layanan tidak sesuai deskripsi dan belum digunakan.<br>
-    4.3 Klaim refund harus dilakukan dalam 3 hari setelah pembayaran.</p>
-    
+    <p>4.1 Tidak ada refund untuk produk digital yang sudah dikirim.<br>4.2 Refund hanya jika layanan tidak sesuai deskripsi.<br>4.3 Klaim refund maksimal 3 hari setelah pembayaran.</p>
     <h4>5. Tanggung Jawab Pengguna</h4>
-    <p>5.1 Pengguna bertanggung jawab penuh atas keamanan akun dan data pribadi.<br>
-    5.2 Dilarang melakukan chargeback atau tindakan penipuan.<br>
-    5.3 Pelanggaran akan dikenakan sanksi blacklist dan dilaporkan ke pihak berwajib.</p>
-    
+    <p>5.1 Pengguna bertanggung jawab atas keamanan akun.<br>5.2 Dilarang chargeback atau penipuan.<br>5.3 Pelanggaran akan di-blacklist dan dilaporkan.</p>
     <h4>6. Privasi & Keamanan</h4>
-    <p>6.1 Data pribadi tidak akan dibagikan ke pihak ketiga tanpa izin.<br>
-    6.2 Semua transaksi dienkripsi dan diproses secara aman.<br>
-    6.3 Kami tidak bertanggung jawab atas kebocoran data akibat kesalahan pengguna.</p>
-    
+    <p>6.1 Data pribadi tidak dibagikan ke pihak ketiga.<br>6.2 Transaksi dienkripsi.<br>6.3 Tidak bertanggung jawab atas kebocoran data akibat kesalahan pengguna.</p>
     <h4>7. Perubahan Ketentuan</h4>
-    <p>7.1 ZENIX berhak mengubah syarat & ketentuan sewaktu-waktu tanpa pemberitahuan.<br>
-    7.2 Perubahan berlaku segera setelah dipublikasikan di halaman ini.</p>
-    
+    <p>7.1 ZENIX berhak mengubah syarat & ketentuan sewaktu-waktu.<br>7.2 Perubahan berlaku setelah dipublikasikan.</p>
     <h4>8. Layanan Pelanggan</h4>
-    <p>8.1 Support resmi melalui Telegram: @MiaaBack (Owner) atau @skyzenix (Co-Owner).<br>
-    8.2 Waktu respons: 08.00 - 22.00 WIB (hari kerja).</p>
-    
+    <p>8.1 Support resmi: @MiaaBack atau @skyzenix (Telegram).<br>8.2 Waktu respons: 08.00 - 22.00 WIB.</p>
     <h4>9. Ketentuan Tambahan</h4>
-    <p>9.1 Dilarang menggunakan layanan untuk transaksi ilegal, judi, narkoba, atau terorisme.<br>
-    9.2 Setiap penyalahgunaan akan diproses secara hukum.<br>
-    9.3 Dengan melakukan pembayaran, Anda dianggap telah membaca dan menyetujui semua syarat di atas.</p>
-    
+    <p>9.1 Dilarang untuk transaksi ilegal, judi, narkoba.<br>9.2 Setiap penyalahgunaan diproses hukum.<br>9.3 Dengan melakukan pembayaran, Anda menyetujui semua syarat di atas.</p>
     <button id="closeTermsBtn" class="close-terms"><i class="fas fa-check"></i> Saya Mengerti & Tutup</button>
   </div>
 </div>
 
 <div id="toastMsg" class="toast-notif">✓ Tersalin</div>
-
 <audio id="bgAudio" loop preload="auto">
   <source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  // ======================= DATA PAYMENT (Tanpa GOPAY & OVO) =======================
+  // === PARTICLE BACKGROUND (CANVAS) ===
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+
+  function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 2 + 1;
+      this.speedY = Math.random() * 1 + 0.3;
+      this.char = String.fromCharCode(0x30A0 + Math.random() * 96);
+      this.opacity = Math.random() * 0.4 + 0.1;
+    }
+    update() {
+      this.y += this.speedY;
+      if (this.y > height) {
+        this.y = 0;
+        this.x = Math.random() * width;
+      }
+    }
+    draw() {
+      ctx.fillStyle = `rgba(46, 255, 200, ${this.opacity})`;
+      ctx.font = `${this.size * 10}px 'Space Grotesk'`;
+      ctx.fillText(this.char, this.x, this.y);
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < 100; i++) particles.push(new Particle());
+  }
+
+  function animateBg() {
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = '#03060b';
+    ctx.fillRect(0, 0, width, height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animateBg);
+  }
+
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    initParticles();
+  });
+  resizeCanvas();
+  initParticles();
+  animateBg();
+
+  // === PAYMENT DATA ===
   const paymentData = {
     dana: "085608969326",
     qrisImg: "https://files.catbox.moe/qwbsk8.jpg",
@@ -586,7 +602,6 @@
 
   let currentCopyValue = "";
 
-  // Helper Functions
   function showToastMessage(msg) {
     toast.innerText = msg;
     toast.style.opacity = "1";
@@ -596,9 +611,7 @@
   function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
       showToastMessage(`✓ ${text} tersalin`);
-    }).catch(() => {
-      showToastMessage("Gagal menyalin");
-    });
+    }).catch(() => showToastMessage("Gagal menyalin"));
   }
 
   function closeModal() {
@@ -608,86 +621,63 @@
     currentCopyValue = "";
   }
 
-  // Show Modal untuk Payment
   function showPaymentModal(method) {
     if (method === 'qris') {
       modalTitle.innerHTML = '<i class="fas fa-qrcode"></i> QRIS Payment';
-      modalBody.innerHTML = `
-        <img src="${paymentData.qrisImg}" class="modal-qris-img" alt="QRIS" onerror="this.src='https://placehold.co/300x300?text=QRIS'">
-        <div style="margin-top: 10px; font-size:0.8rem;">Scan menggunakan OVO / DANA / GOPAY</div>
-      `;
+      modalBody.innerHTML = `<img src="${paymentData.qrisImg}" class="modal-qris-img" alt="QRIS" onerror="this.src='https://placehold.co/300x300?text=QRIS'"><div style="margin-top:10px;">Scan menggunakan OVO / DANA / GOPAY</div>`;
       modalCopyBtn.style.display = "none";
-    } 
-    else if (method === 'saweria') {
+    } else if (method === 'saweria') {
       modalTitle.innerHTML = '<i class="fas fa-donate"></i> SAWERIA';
-      modalBody.innerHTML = `<div class="modal-value">${paymentData.saweria}</div><div style="font-size:0.7rem;">Klik salin untuk buka link</div>`;
+      modalBody.innerHTML = `<div class="modal-value">${paymentData.saweria}</div><div>Klik salin untuk buka link</div>`;
       currentCopyValue = paymentData.saweria;
       modalCopyBtn.style.display = "inline-block";
-    }
-    else if (method === 'dana') {
-      let nomor = paymentData.dana;
-      modalTitle.innerHTML = `<i class="fas fa-credit-card"></i> DANA OFFICIAL`;
-      modalBody.innerHTML = `<div class="modal-value">${nomor}</div><div style="font-size:0.7rem;">Transfer ke nomor ini, lalu konfirmasi</div>`;
-      currentCopyValue = nomor;
+    } else if (method === 'dana') {
+      modalTitle.innerHTML = '<i class="fas fa-credit-card"></i> DANA OFFICIAL';
+      modalBody.innerHTML = `<div class="modal-value">${paymentData.dana}</div><div>Transfer ke nomor ini, lalu konfirmasi</div>`;
+      currentCopyValue = paymentData.dana;
       modalCopyBtn.style.display = "inline-block";
     }
     modal.style.display = "flex";
   }
 
-  // Event untuk tombol payment
   document.querySelectorAll('.pay-button').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', () => {
       const method = btn.getAttribute('data-method');
-      if (method && paymentData[method] !== undefined || method === 'qris') {
-        showPaymentModal(method);
-      } else {
-        showToastMessage("Metode tidak tersedia");
-      }
+      if (paymentData[method] || method === 'qris') showPaymentModal(method);
+      else showToastMessage("Metode tidak tersedia");
     });
   });
 
-  // Copy button in modal
   modalCopyBtn.addEventListener('click', () => {
-    if (currentCopyValue) {
-      copyToClipboard(currentCopyValue);
-    } else {
-      showToastMessage("Tidak ada yang disalin");
-    }
+    if (currentCopyValue) copyToClipboard(currentCopyValue);
+    else showToastMessage("Tidak ada yang disalin");
   });
-
   modalClose.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-  // Terms Modal handlers
-  function openTermsModal() {
-    termsModal.style.display = "flex";
-  }
-  function closeTermsModal() {
-    termsModal.style.display = "none";
-  }
-  showTermsBtn.addEventListener('click', openTermsModal);
-  closeTermsBtn.addEventListener('click', closeTermsModal);
-  termsModal.addEventListener('click', (e) => { if(e.target === termsModal) closeTermsModal(); });
+  // Terms modal
+  function openTerms() { termsModal.style.display = "flex"; }
+  function closeTerms() { termsModal.style.display = "none"; }
+  showTermsBtn.addEventListener('click', openTerms);
+  closeTermsBtn.addEventListener('click', closeTerms);
+  termsModal.addEventListener('click', (e) => { if (e.target === termsModal) closeTerms(); });
 
-  // OWNER CHIP (salin username telegram)
+  // Owner chips
   document.querySelectorAll('.owner-chip').forEach(chip => {
     chip.addEventListener('click', () => {
-      const ownerName = chip.getAttribute('data-owner');
-      if(ownerName) {
-        copyToClipboard(`@${ownerName}`);
-        showToastMessage(`Username @${ownerName} disalin, hubungi via Telegram`);
-      }
+      const owner = chip.getAttribute('data-owner');
+      copyToClipboard(`@${owner}`);
+      showToastMessage(`Username @${owner} disalin, hubungi via Telegram`);
     });
   });
 
-  // =============== MUSIC SYSTEM ===============
+  // MUSIC
   const audio = document.getElementById('bgAudio');
   const musicBtn = document.getElementById('musicFloating');
   const musicStatusSpan = document.getElementById('musicStatusText');
   let isMusicPlaying = false;
-
   function updateMusicUI() {
-    if(isMusicPlaying) {
+    if (isMusicPlaying) {
       musicStatusSpan.innerText = "ON";
       musicBtn.innerHTML = '<i class="fas fa-volume-up"></i> <span id="musicStatusText">ON</span>';
     } else {
@@ -695,38 +685,27 @@
       musicBtn.innerHTML = '<i class="fas fa-headphones"></i> <span id="musicStatusText">ACTIVATE</span>';
     }
   }
-
   function toggleMusic() {
-    if(audio.paused) {
-      audio.play().then(() => {
-        isMusicPlaying = true;
-        updateMusicUI();
-      }).catch(() => {
-        isMusicPlaying = true;
-        updateMusicUI();
-      });
+    if (audio.paused) {
+      audio.play().then(() => { isMusicPlaying = true; updateMusicUI(); }).catch(() => { isMusicPlaying = true; updateMusicUI(); });
     } else {
       audio.pause();
       isMusicPlaying = false;
       updateMusicUI();
     }
   }
-
   musicBtn.addEventListener('click', toggleMusic);
-  window.addEventListener('load', () => {
-    audio.play().catch(e => console.log("Autoplay blocked, user can click music button"));
-  });
+  window.addEventListener('load', () => audio.play().catch(e => console.log("autoplay")));
 
-  // =============== SPLASH SCREEN ===============
+  // SPLASH HIDE
   function hideSplash() {
-    splash.style.opacity = '0';
+    splash.classList.add('hide');
     setTimeout(() => {
       splash.style.display = 'none';
       paymentApp.classList.add('visible');
     }, 800);
   }
   enterBtn.addEventListener('click', hideSplash);
-
   paymentApp.classList.remove('visible');
 </script>
 </body>
