@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>ZENIX | Full Animation Premium Business Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>ZENIX CORP | Premium Enterprise Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -16,12 +16,11 @@
     body {
       background: #03060b;
       font-family: 'Inter', 'Share Tech Mono', monospace;
-      color: #e0f2fe;
+      color: #eef5ff;
       overflow-x: hidden;
-      position: relative;
     }
 
-    /* CANVAS BACKGROUND ANIMATION */
+    /* ========== CANVAS BACKGROUND (MATRIX STYLE) ========== */
     #canvas-bg {
       position: fixed;
       top: 0;
@@ -32,36 +31,18 @@
       display: block;
     }
 
-    /* MATRIX RAIN OVERLAY */
-    .matrix-overlay {
+    .gradient-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: repeating-linear-gradient(0deg, rgba(0, 255, 100, 0.02) 0px, rgba(0, 255, 100, 0.02) 2px, transparent 2px, transparent 10px);
-      pointer-events: none;
-      z-index: -1;
-      animation: matrixScroll 20s linear infinite;
-    }
-    @keyframes matrixScroll {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 100%; }
-    }
-
-    /* GLITCH OVERLAY */
-    .glitch-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(0deg, rgba(0,255,0,0.02) 0px, rgba(0,0,0,0.1) 1px, transparent 2px);
+      background: radial-gradient(circle at 70% 20%, rgba(0,255,150,0.05), transparent 70%);
       pointer-events: none;
       z-index: -1;
     }
 
-    /* SPLASH SCREEN FULL ANIMATION */
+    /* ========== SPLASH SCREEN ========== */
     .splash-screen {
       position: fixed;
       top: 0;
@@ -69,22 +50,14 @@
       width: 100%;
       height: 100%;
       background: #000000dd;
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px);
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), visibility 1s;
+      transition: opacity 1s ease, visibility 1s;
       font-family: 'Orbitron', monospace;
-    }
-    .splash-content {
-      text-align: center;
-      animation: floatGlow 1s ease-out;
-    }
-    @keyframes floatGlow {
-      0% { opacity: 0; transform: scale(0.9); filter: blur(4px); }
-      100% { opacity: 1; transform: scale(1); filter: blur(0); }
     }
     .splash-logo {
       width: 130px;
@@ -96,52 +69,40 @@
       0% { box-shadow: 0 0 5px #2effa0; transform: scale(1);}
       100% { box-shadow: 0 0 35px #6effb0; transform: scale(1.02);}
     }
-    .typing-multi {
+    .typing-welcome {
       font-size: 1.8rem;
       font-weight: 800;
       color: #2effa0;
       margin: 20px auto;
       font-family: 'Share Tech Mono';
-      height: 80px;
-    }
-    .splash-sub {
-      letter-spacing: 3px;
-      opacity: 0;
-      animation: fadeUp 0.8s forwards 1.5s;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      height: 70px;
     }
     .enter-btn {
-      margin-top: 40px;
+      margin-top: 35px;
       background: transparent;
       border: 2px solid #2effa0;
-      padding: 14px 40px;
+      padding: 14px 42px;
       font-weight: bold;
       font-family: 'Orbitron';
       color: #2effa0;
       border-radius: 60px;
       cursor: pointer;
       transition: 0.3s;
-      opacity: 0;
-      animation: fadeUp 0.8s forwards 2s;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     .enter-btn:hover {
       background: #2effa0;
       color: black;
       box-shadow: 0 0 25px #2effa0;
-      transform: scale(1.05);
     }
 
-    /* MAIN CONTENT */
+    /* ========== MAIN CONTENT ========== */
     .main-content {
       opacity: 0;
       transition: opacity 1s ease;
       max-width: 1400px;
       margin: 0 auto;
-      padding: 1rem 1.8rem;
+      padding: 1rem 2rem 2rem;
       position: relative;
       z-index: 5;
     }
@@ -149,30 +110,35 @@
       opacity: 1;
     }
 
-    /* HEADER ANIMATED */
+    /* Header premium */
     .cyber-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(12px);
-      border: 1px solid #2effa0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(46, 255, 160, 0.5);
       border-radius: 60px;
-      padding: 0.6rem 1.8rem;
+      padding: 0.7rem 2rem;
       margin-bottom: 2rem;
-      animation: borderPulse 3s infinite;
+      box-shadow: 0 0 12px rgba(46,255,160,0.2);
     }
-    @keyframes borderPulse {
-      0% { border-color: #2effa066; box-shadow: 0 0 0px #2effa0; }
-      50% { border-color: #2effa0; box-shadow: 0 0 8px #2effa0; }
-      100% { border-color: #2effa066; box-shadow: 0 0 0px; }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-img {
+      width: 48px;
+      border-radius: 16px;
+      border: 1px solid #2effa0;
     }
     .logo-text {
       font-family: 'Orbitron';
       font-weight: 800;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       background: linear-gradient(135deg, #fff, #2effa0);
       background-clip: text;
       -webkit-background-clip: text;
@@ -181,19 +147,19 @@
     .music-toggle {
       background: #000000aa;
       border-radius: 60px;
-      padding: 8px 20px;
+      padding: 8px 22px;
       border: 1px solid #2effa0;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    /* HERO GLITCH */
+    /* Hero */
     .hero {
       text-align: center;
-      margin: 1.5rem 0 2rem;
+      margin: 1rem 0 2rem;
     }
     .glitch-hero {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-family: 'Orbitron';
       font-weight: 800;
       color: #2effa0;
@@ -201,12 +167,11 @@
       animation: glitchText 2s infinite;
     }
     @keyframes glitchText {
-      0%,100% { text-shadow: -2px 0 red, 2px 0 cyan; transform: skew(0deg);}
-      25% { text-shadow: 2px 0 red, -2px 0 cyan; transform: skew(1deg);}
-      50% { text-shadow: -1px 0 cyan, 1px 0 red; transform: skew(-1deg);}
+      0%,100% { text-shadow: -2px 0 red, 2px 0 cyan; }
+      50% { text-shadow: 2px 0 red, -2px 0 cyan; }
     }
 
-    /* SERVICE CARDS FULL ANIMATION */
+    /* Service Grid */
     .section-title {
       display: flex;
       align-items: center;
@@ -216,7 +181,7 @@
       font-family: 'Orbitron';
       margin: 2rem 0 1.2rem;
       border-left: 5px solid #2effa0;
-      padding-left: 18px;
+      padding-left: 20px;
     }
     .service-grid {
       display: grid;
@@ -227,30 +192,28 @@
     .hack-card {
       background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(12px);
-      border: 1px solid #2effa066;
-      border-radius: 28px;
+      border: 1px solid rgba(46, 255, 160, 0.4);
+      border-radius: 32px;
       padding: 1.6rem;
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      animation: cardFloat 0.6s ease backwards;
-      animation-delay: calc(0.1s * var(--i, 1));
+      transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
     .hack-card:hover {
       border-color: #2effa0;
-      transform: translateY(-12px) rotate(0.5deg);
-      box-shadow: 0 0 28px rgba(46,255,160,0.4);
-    }
-    @keyframes cardFloat {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+      transform: translateY(-8px);
+      box-shadow: 0 0 28px rgba(46,255,160,0.3);
     }
     .card-icon {
       font-size: 2.8rem;
       color: #2effa0;
       margin-bottom: 1rem;
-      transition: 0.2s;
     }
-    .hack-card:hover .card-icon {
-      transform: scale(1.1) rotate(5deg);
+    .price {
+      background: #0f2c22;
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      margin: 12px 0;
     }
     .order-btn {
       width: 100%;
@@ -258,12 +221,12 @@
       border: 1px solid #2effa0;
       padding: 12px;
       border-radius: 60px;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    /* PAYMENT BUTTONS ANIMATION */
+    /* Payment Area */
     .payment-area {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 2rem;
@@ -287,27 +250,71 @@
       font-weight: 600;
       border: 1px solid #2effa080;
       cursor: pointer;
-      transition: all 0.25s;
-      animation: popIn 0.4s ease backwards;
+      transition: 0.2s;
     }
     .pay-card:hover {
       background: #1e3d32;
-      transform: scale(0.97) translateY(-3px);
-      border-color: #2effa0;
-    }
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.8);}
-      to { opacity: 1; transform: scale(1);}
+      transform: scale(0.97);
     }
 
-    /* TELEGRAM SECTION */
+    /* Owner & Team Section (BARU) */
+    .owner-section {
+      background: rgba(0, 15, 20, 0.7);
+      border-radius: 2rem;
+      padding: 1.8rem;
+      margin: 2rem 0;
+      border: 1px solid #2effa0;
+      backdrop-filter: blur(12px);
+    }
+    .owner-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem;
+      margin-top: 1.2rem;
+    }
+    .owner-card {
+      background: #0b171f;
+      border-radius: 28px;
+      padding: 1.5rem;
+      text-align: center;
+      min-width: 200px;
+      flex: 1;
+      border: 1px solid #2effa070;
+      transition: 0.2s;
+    }
+    .owner-card i {
+      font-size: 2.8rem;
+      color: #2effa0;
+      margin-bottom: 0.8rem;
+    }
+    .owner-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      font-family: 'Orbitron';
+    }
+    .owner-role {
+      font-size: 0.7rem;
+      opacity: 0.8;
+      margin: 5px 0;
+    }
+    .contact-owner-btn {
+      background: #1f4b3a;
+      border: none;
+      padding: 6px 18px;
+      border-radius: 60px;
+      margin-top: 12px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    /* Telegram Section */
     .tele-section {
       background: #05100ecc;
       border-radius: 2rem;
       padding: 1.5rem;
-      margin: 2rem 0;
+      margin: 1rem 0;
       border: 1px solid #2effa0;
-      backdrop-filter: blur(8px);
     }
     .tele-item {
       display: flex;
@@ -316,61 +323,58 @@
       background: #00000055;
       padding: 10px 20px;
       border-radius: 60px;
-      margin-bottom: 12px;
-      transition: 0.2s;
-    }
-    .tele-item:hover {
-      background: #1a3a2e;
-      transform: translateX(8px);
+      margin-bottom: 10px;
     }
     .copy-tele {
       background: #1e4b3e;
       border: none;
-      padding: 6px 20px;
+      padding: 6px 18px;
       border-radius: 30px;
       cursor: pointer;
-      transition: 0.2s;
     }
 
-    /* MODAL */
+    /* Footer dengan Copyright dan Owner */
+    .premium-footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border-top: 1px solid #2effa060;
+      font-family: monospace;
+      font-size: 0.8rem;
+    }
+    .copyright {
+      letter-spacing: 1px;
+    }
+
+    /* Modal */
     .hacker-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.95);
+      background: rgba(0,0,0,0.96);
       backdrop-filter: blur(20px);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 2000;
-      animation: fadeInModal 0.3s;
-    }
-    @keyframes fadeInModal {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
     .modal-card {
       background: #0a1217;
       border: 2px solid #2effa0;
       border-radius: 36px;
       padding: 2rem;
-      max-width: 400px;
+      max-width: 420px;
       width: 90%;
       text-align: center;
-      animation: slideUp 0.3s;
-    }
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
     }
     .toast {
       position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      background: black;
+      background: #000000cc;
       border-left: 4px solid #2effa0;
       padding: 10px 24px;
       border-radius: 50px;
@@ -378,62 +382,56 @@
       opacity: 0;
       transition: 0.2s;
       pointer-events: none;
-      font-family: monospace;
     }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      opacity: 0.6;
-      font-size: 0.7rem;
-    }
+
     @media (max-width: 680px) {
-      .glitch-hero { font-size: 1.8rem; }
-      .typing-multi { font-size: 1rem; height: 60px; }
+      .glitch-hero { font-size: 1.6rem; }
+      .typing-welcome { font-size: 1rem; height: 50px; }
+      .owner-grid { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-
 <canvas id="canvas-bg"></canvas>
-<div class="matrix-overlay"></div>
-<div class="glitch-overlay"></div>
+<div class="gradient-overlay"></div>
 
-<!-- SPLASH ANIMATION FULL -->
+<!-- SPLASH SCREEN -->
 <div id="splashScreen" class="splash-screen">
   <div class="splash-content">
     <img src="https://files.catbox.moe/5awz68.jpg" class="splash-logo" alt="Zenix">
-    <div class="typing-multi" id="typingText"></div>
-    <div class="splash-sub">>> ENCRYPTED BUSINESS GATEWAY v2.0</div>
-    <button id="enterBtn" class="enter-btn"><i class="fas fa-unlock-alt"></i> ACCESS TERMINAL</button>
+    <div class="typing-welcome" id="typingSplash"></div>
+    <button id="enterBtn" class="enter-btn"><i class="fas fa-bolt"></i> ENTER CORPORATE</button>
   </div>
 </div>
 
 <!-- MAIN WEBSITE -->
 <div id="mainContent" class="main-content">
   <div class="cyber-header">
-    <div class="logo-area" style="display:flex; align-items:center; gap:12px;">
-      <img src="https://files.catbox.moe/5awz68.jpg" style="width:45px; border-radius:12px;" alt="logo">
-      <span class="logo-text">ZENIX::BIZ</span>
+    <div class="logo-area">
+      <img src="https://files.catbox.moe/5awz68.jpg" class="logo-img" alt="logo">
+      <span class="logo-text">ZENIX::CORP</span>
     </div>
     <div class="music-toggle" id="musicToggleBtn"><i class="fas fa-head-side-vr"></i> <span id="musicStatus">ACTIVATE</span></div>
   </div>
 
   <div class="hero">
-    <div class="glitch-hero">>_ FULL ANIMATION BUSINESS SUITE</div>
-    <p style="margin-top: 10px;">Hosting • All Script • Rekber • VPS Private • Custom Dev</p>
+    <div class="glitch-hero">>_ PREMIUM BUSINESS ECOSYSTEM</div>
+    <p>Hosting • Script • Rekber • VPS • Custom Enterprise Solutions</p>
   </div>
 
-  <div class="section-title"><i class="fas fa-crown"></i> PREMIUM SERVICES</div>
+  <!-- Layanan -->
+  <div class="section-title"><i class="fas fa-crown"></i> LAYANAN KORPORASI</div>
   <div class="service-grid">
-    <div class="hack-card" style="--i:1"><div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>ALL HOSTING</h3><div class="price">Start 150K/bln</div><div>Cloud, Reseller, Offshore, Unlimited</div><button class="order-btn" data-service="ALL HOSTING PREMIUM + SUPPORT 24/7">ORDER →</button></div>
-    <div class="hack-card" style="--i:2"><div class="card-icon"><i class="fas fa-code"></i></div><h3>ALL SCRIPT</h3><div class="price">from 99K</div><div>Bot, AI, Panel, Full Source</div><button class="order-btn" data-service="ALL SCRIPT COLLECTION (PREMIUM)">ORDER →</button></div>
-    <div class="hack-card" style="--i:3"><div class="card-icon"><i class="fas fa-handshake"></i></div><h3>JASA REKBER</h3><div class="price">Fee 2% Aman</div><div>Mediasi + dispute handling</div><button class="order-btn" data-service="REKBER PROFESIONAL">ORDER →</button></div>
-    <div class="hack-card" style="--i:4"><div class="card-icon"><i class="fas fa-server"></i></div><h3>VPS PRIVATE</h3><div class="price">Start 250K/bln</div><div>Offshore, DDoS Protection</div><button class="order-btn" data-service="VPS PRIVATE HIGH SECURITY">ORDER →</button></div>
-    <div class="hack-card" style="--i:5"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>JASA DLL (Custom)</h3><div class="price">Negotiable</div><div>Install panel, web dev, API</div><button class="order-btn" data-service="LAYANAN CUSTOM (Konsultasi)">ORDER →</button></div>
+    <div class="hack-card"><div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>ALL HOSTING</h3><div class="price">Mulai 150K/bln</div><div>Cloud, Reseller, Offshore, Unlimited Bandwidth</div><button class="order-btn" data-service="ALL HOSTING PREMIUM">ORDER →</button></div>
+    <div class="hack-card"><div class="card-icon"><i class="fas fa-code"></i></div><h3>ALL SCRIPT</h3><div class="price">from 99K</div><div>Bot, AI Tools, Panel, Full Source</div><button class="order-btn" data-service="ALL SCRIPT COLLECTION">ORDER →</button></div>
+    <div class="hack-card"><div class="card-icon"><i class="fas fa-handshake"></i></div><h3>REKBER / ESCROW</h3><div class="price">Fee 2%</div><div>Mediasi transaksi, dispute handling</div><button class="order-btn" data-service="JASA REKBER PROFESIONAL">ORDER →</button></div>
+    <div class="hack-card"><div class="card-icon"><i class="fas fa-server"></i></div><h3>VPS PRIVATE</h3><div class="price">Start 250K/bln</div><div>Offshore, Anti-DDoS, Anonymous</div><button class="order-btn" data-service="VPS PRIVATE HIGH SECURITY">ORDER →</button></div>
+    <div class="hack-card"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>JASA CUSTOM (DLL)</h3><div class="price">Nego</div><div>Install Panel, Web Dev, API, Maintenance</div><button class="order-btn" data-service="LAYANAN CUSTOM (KONSULTASI)">ORDER →</button></div>
   </div>
 
+  <!-- PAYMENT GATEWAY FULL -->
   <div class="payment-area">
-    <div class="section-title" style="border-left-color: #ffb86b;"><i class="fas fa-coins"></i> PAYMENT GATEWAY</div>
+    <div class="section-title" style="border-left-color: #ffb86b;"><i class="fas fa-coins"></i> METODE PEMBAYARAN</div>
     <div class="payment-buttons">
       <div class="pay-card" id="payDana"><i class="fas fa-mobile-alt"></i> DANA</div>
       <div class="pay-card" id="payGopay"><i class="fab fa-google-pay"></i> GOPAY</div>
@@ -443,6 +441,35 @@
     </div>
   </div>
 
+  <!-- DAFTAR OWNER & PEMILIK (BUTTON DAN INFO LENGKAP) -->
+  <div class="owner-section">
+    <div class="section-title" style="border-left-color: #ffaa44;"><i class="fas fa-users"></i> OWNER & MANAGEMENT</div>
+    <div class="owner-grid">
+      <div class="owner-card">
+        <i class="fas fa-crown"></i>
+        <div class="owner-name">MiaaBack</div>
+        <div class="owner-role">CEO & Founder</div>
+        <button class="contact-owner-btn" data-contact="MiaaBack">Hubungi CEO</button>
+      </div>
+      <div class="owner-card">
+        <i class="fas fa-user-secret"></i>
+        <div class="owner-name">skyzenix</div>
+        <div class="owner-role">Co-Founder / CTO</div>
+        <button class="contact-owner-btn" data-contact="skyzenix">Hubungi CTO</button>
+      </div>
+      <div class="owner-card">
+        <i class="fas fa-bullhorn"></i>
+        <div class="owner-name">MI44BACK</div>
+        <div class="owner-role">Head of Marketing</div>
+        <button class="contact-owner-btn" data-contact="MI44BACK">Hubungi Marketing</button>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 18px; font-size:0.8rem;">
+      <i class="fas fa-shield-alt"></i> Official Owner terverifikasi | Semua transaksi aman
+    </div>
+  </div>
+
+  <!-- TELEGRAM OFFICIAL -->
   <div class="tele-section">
     <div class="section-title" style="border-left-color: #26A5E4;"><i class="fab fa-telegram"></i> OFFICIAL TELEGRAM</div>
     <div class="tele-item"><span><i class="fas fa-database"></i> Backup : @skyzenix</span><button class="copy-tele" data-copy="skyzenix">SALIN</button></div>
@@ -451,9 +478,17 @@
     <div class="tele-item"><span><i class="fas fa-newspaper"></i> Channel Resmi : @chnewsky</span><button class="copy-tele" data-copy="chnewsky">SALIN</button></div>
     <div class="tele-item"><span><i class="fas fa-users"></i> Channel Pub : @testimonzen</span><button class="copy-tele" data-copy="testimonzen">SALIN</button></div>
   </div>
-  <footer>© ZENIX CORP • FULL ANIMATION SUITE • 2025</footer>
+
+  <!-- FOOTER DENGAN COPYRIGHT & PEMILIK -->
+  <div class="premium-footer">
+    <div class="copyright">
+      <i class="far fa-copyright"></i> 2025 ZENIX CORPORATION — All rights reserved.<br>
+      Official Owner: <strong>MiaaBack</strong> | Co-Owner: <strong>skyzenix</strong> | License: PREMIUM BUSINESS SUITE
+    </div>
+  </div>
 </div>
 
+<!-- MODAL -->
 <div id="globalModal" class="hacker-modal">
   <div class="modal-card">
     <div id="modalMessage" style="font-size:1.5rem;"></div>
@@ -466,7 +501,7 @@
 <audio id="bgMusic" loop preload="auto"><source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg"></audio>
 
 <script>
-  // ========== CANVAS BACKGROUND ANIMASI PARTIKEL ==========
+  // ========== CANVAS MATRIX ANIMATION ==========
   const canvas = document.getElementById('canvas-bg');
   const ctx = canvas.getContext('2d');
   let width, height;
@@ -478,22 +513,18 @@
     canvas.width = width;
     canvas.height = height;
   }
-
   class Particle {
     constructor() {
       this.x = Math.random() * width;
       this.y = Math.random() * height;
-      this.size = Math.random() * 1.8 + 0.8;
-      this.speedY = Math.random() * 1.5 + 0.3;
-      this.opacity = Math.random() * 0.5 + 0.2;
+      this.size = Math.random() * 1.6 + 0.6;
+      this.speedY = Math.random() * 1.2 + 0.4;
       this.char = String.fromCharCode(0x30A0 + Math.random() * 96);
+      this.opacity = Math.random() * 0.5 + 0.2;
     }
     update() {
       this.y += this.speedY;
-      if (this.y > height) {
-        this.y = 0;
-        this.x = Math.random() * width;
-      }
+      if (this.y > height) { this.y = 0; this.x = Math.random() * width; }
     }
     draw() {
       ctx.fillStyle = `rgba(46, 255, 160, ${this.opacity})`;
@@ -501,86 +532,64 @@
       ctx.fillText(this.char, this.x, this.y);
     }
   }
-
   function initParticles() {
     particles = [];
-    for (let i = 0; i < 150; i++) {
-      particles.push(new Particle());
-    }
+    for (let i = 0; i < 130; i++) particles.push(new Particle());
   }
-
   function animateBg() {
     ctx.clearRect(0, 0, width, height);
     ctx.fillStyle = '#03060b';
     ctx.fillRect(0, 0, width, height);
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
+    particles.forEach(p => { p.update(); p.draw(); });
     requestAnimationFrame(animateBg);
   }
-
-  window.addEventListener('resize', () => {
-    resizeCanvas();
-    initParticles();
-  });
+  window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
   resizeCanvas();
   initParticles();
   animateBg();
 
-  // ========== TYPING ANIMATION MULTI BARIS SPLASH ==========
-  const typingDiv = document.getElementById('typingText');
-  const texts = [">_ LOADING SECURE NODE", ">_ CONNECT TO ZENIX HUB", ">_ READY FOR BUSINESS"];
-  let index = 0;
-  let charIndex = 0;
-  let currentText = "";
-  function typeEffect() {
-    if (index >= texts.length) {
-      typingDiv.innerHTML = ">_ WELCOME TO ZENIX CORP";
-      return;
-    }
-    if (charIndex < texts[index].length) {
-      currentText += texts[index].charAt(charIndex);
-      typingDiv.innerHTML = currentText;
-      charIndex++;
-      setTimeout(typeEffect, 80);
+  // ========== SPLASH TYPING ==========
+  const splashTyping = document.getElementById('typingSplash');
+  const texts = [">_ INIT CORPORATE NODE", ">_ LOADING SECURE API", ">_ WELCOME TO ZENIX CORP"];
+  let idx = 0, ch = 0, cur = "";
+  function typeSplash() {
+    if (idx >= texts.length) { splashTyping.innerHTML = ">_ READY FOR BUSINESS"; return; }
+    if (ch < texts[idx].length) {
+      cur += texts[idx].charAt(ch);
+      splashTyping.innerHTML = cur;
+      ch++;
+      setTimeout(typeSplash, 70);
     } else {
-      setTimeout(() => {
-        index++;
-        charIndex = 0;
-        currentText = "";
-        if (index < texts.length) typeEffect();
-        else typingDiv.innerHTML = ">_ WELCOME TO ZENIX CORP";
-      }, 600);
+      setTimeout(() => { idx++; ch = 0; cur = ""; typeSplash(); }, 500);
     }
   }
-  typeEffect();
+  typeSplash();
 
-  // SPLASH CLOSE
-  const splash = document.getElementById('splashScreen');
-  const main = document.getElementById('mainContent');
+  // SPLASH HIDE
+  const splashScreen = document.getElementById('splashScreen');
+  const mainDiv = document.getElementById('mainContent');
   const enterBtn = document.getElementById('enterBtn');
-  function showMain() {
-    splash.style.opacity = '0';
-    splash.style.visibility = 'hidden';
+  function hideSplash() {
+    splashScreen.style.opacity = '0';
+    splashScreen.style.visibility = 'hidden';
     setTimeout(() => {
-      splash.style.display = 'none';
-      main.classList.add('visible');
+      splashScreen.style.display = 'none';
+      mainDiv.classList.add('visible');
     }, 1000);
   }
-  enterBtn.addEventListener('click', showMain);
+  enterBtn.addEventListener('click', hideSplash);
 
   // MUSIC
   const music = document.getElementById('bgMusic');
   const musicBtn = document.getElementById('musicToggleBtn');
-  const musicStatusSpan = document.getElementById('musicStatus');
+  const musicSpan = document.getElementById('musicStatus');
   let musicPlaying = false;
   function updateMusicUI() {
     if(musicPlaying) {
-      musicStatusSpan.innerText = "ON";
+      musicSpan.innerText = "ON";
       musicBtn.innerHTML = '<i class="fas fa-volume-up"></i> <span id="musicStatus">ON</span>';
     } else {
-      musicStatusSpan.innerText = "ACTIVATE";
+      musicSpan.innerText = "ACTIVATE";
       musicBtn.innerHTML = '<i class="fas fa-head-side-vr"></i> <span id="musicStatus">ACTIVATE</span>';
     }
   }
@@ -603,7 +612,6 @@
   const modalCopyBtn = document.getElementById('modalCopyBtn');
   const closeModal = document.getElementById('closeModalBtn');
   let currentCopy = "";
-
   function showModal(text, extra = "", copyText = null) {
     modalMsg.innerHTML = text;
     modalExtra.innerHTML = extra;
@@ -611,12 +619,9 @@
     if(copyText) {
       currentCopy = copyText;
       modalCopyBtn.style.display = "inline-block";
-    } else {
-      currentCopy = "";
-      modalCopyBtn.style.display = "none";
-    }
+    } else { currentCopy = ""; modalCopyBtn.style.display = "none"; }
   }
-  function closeModalFunc() { modal.style.display = "none"; modalMsg.innerHTML = ""; modalExtra.innerHTML = ""; }
+  function closeModalFunc() { modal.style.display = "none"; }
   closeModal.addEventListener('click', closeModalFunc);
   modal.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
   modalCopyBtn.addEventListener('click', () => {
@@ -631,27 +636,27 @@
   }
 
   // PAYMENT DATA
-  const pay = { dana:"085608969326", gopay:"close", ovo:"close", qrisImg:"https://files.catbox.moe/qwbsk8.jpg", saweria:"https://sociabuzz.com/alex1/tribe" };
-  document.getElementById('payDana').onclick = () => showModal(`💎 DANA`, `<div style="font-size:2rem;">${pay.dana}</div>`, pay.dana);
-  document.getElementById('payGopay').onclick = () => showModal(`✨ GOPAY`, `<div style="font-size:1.8rem;">${pay.gopay}</div>`, pay.gopay);
-  document.getElementById('payOvo').onclick = () => showModal(`🟢 OVO`, `<div style="font-size:1.8rem;">${pay.ovo}</div>`, pay.ovo);
-  document.getElementById('payQris').onclick = () => showModal(`📱 QRIS`, `<img src="${pay.qrisImg}" style="max-width:200px; border-radius:20px; margin-top:10px;"><div>Scan via OVO/DANA/GOPAY</div>`, null);
-  document.getElementById('paySaweria').onclick = () => showModal(`💖 SAWERIA`, `<div>${pay.saweria}</div>`, pay.saweria);
+  const payData = { dana:"085608969326", gopay:"Close", ovo:"Close", qrisImg:"https://files.catbox.moe/qwbsk8.jpg", saweria:"https://sociabuzz.com/alex1/tribe" };
+  document.getElementById('payDana').onclick = () => showModal(`💎 DANA`, `<div style="font-size:2rem;">${payData.dana}</div>`, payData.dana);
+  document.getElementById('payGopay').onclick = () => showModal(`✨ GOPAY`, `<div style="font-size:1.8rem;">${payData.gopay}</div>`, payData.gopay);
+  document.getElementById('payOvo').onclick = () => showModal(`🟢 OVO`, `<div style="font-size:1.8rem;">${payData.ovo}</div>`, payData.ovo);
+  document.getElementById('payQris').onclick = () => showModal(`📱 QRIS`, `<img src="${payData.qrisImg}" style="max-width:200px; border-radius:20px; margin-top:10px;"><div>Scan pakai OVO/DANA/GOPAY</div>`, null);
+  document.getElementById('paySaweria').onclick = () => showModal(`💖 SAWERIA`, `<div>${payData.saweria}</div>`, payData.saweria);
 
-  // ORDER BUTTONS (kontak telegram)
+  // ORDER BUTTONS -> kontak owner
   const orderBtns = document.querySelectorAll('.order-btn');
   orderBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const service = btn.getAttribute('data-service');
-      showModal(`⚡ ORDER: ${service}`, `<div style="margin-top:16px; display:flex; flex-direction:column; gap:12px;">
-        <button id="hubUtama" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi @MiaaBack</button>
-        <button id="hubBackup" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi @skyzenix</button>
+      showModal(`⚡ ORDER: ${service}`, `<div style="margin:16px 0; display:flex; flex-direction:column; gap:12px;">
+        <button id="hubOwner" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi Owner (MiaaBack)</button>
+        <button id="hubCo" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi Co-Owner (skyzenix)</button>
       </div>`, null);
       setTimeout(() => {
-        const u = document.getElementById('hubUtama');
-        const b = document.getElementById('hubBackup');
-        if(u) u.onclick = () => { navigator.clipboard.writeText('@MiaaBack'); showToast('@MiaaBack disalin'); closeModalFunc(); };
-        if(b) b.onclick = () => { navigator.clipboard.writeText('@skyzenix'); showToast('@skyzenix disalin'); closeModalFunc(); };
+        const ownerBtn = document.getElementById('hubOwner');
+        const coBtn = document.getElementById('hubCo');
+        if(ownerBtn) ownerBtn.onclick = () => { navigator.clipboard.writeText('@MiaaBack'); showToast('@MiaaBack disalin, hubungi via Telegram'); closeModalFunc(); };
+        if(coBtn) coBtn.onclick = () => { navigator.clipboard.writeText('@skyzenix'); showToast('@skyzenix disalin'); closeModalFunc(); };
       }, 10);
     });
   });
@@ -659,12 +664,22 @@
   // COPY TELEGRAM
   document.querySelectorAll('.copy-tele').forEach(btn => {
     btn.addEventListener('click', () => {
-      let username = btn.getAttribute('data-copy');
-      let full = username.startsWith('@') ? username : `@${username}`;
+      let uname = btn.getAttribute('data-copy');
+      let full = uname.startsWith('@') ? uname : `@${uname}`;
       navigator.clipboard.writeText(full);
       showToast(`✅ ${full} disalin`);
       btn.innerText = "✔️ Copied";
       setTimeout(() => btn.innerText = "SALIN", 1000);
+    });
+  });
+
+  // OWNER CONTACT BUTTONS (daftar owner)
+  document.querySelectorAll('.contact-owner-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      let contactId = btn.getAttribute('data-contact');
+      let username = `@${contactId}`;
+      navigator.clipboard.writeText(username);
+      showToast(`📋 Username ${username} disalin, hubungi sekarang`);
     });
   });
 </script>
