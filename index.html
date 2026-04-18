@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>ZENIX CORP | Premium Enterprise Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <title>ZENIX PREMIUM | Enterprise Digital Marketplace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -14,236 +14,246 @@
     }
 
     body {
-      background: #03060b;
-      font-family: 'Inter', 'Share Tech Mono', monospace;
+      background: #0a0c12;
+      font-family: 'Inter', 'Space Grotesk', sans-serif;
       color: #eef5ff;
       overflow-x: hidden;
     }
 
-    /* ========== CANVAS BACKGROUND (MATRIX STYLE) ========== */
-    #canvas-bg {
+    /* background premium */
+    .bg-gradient {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      background: radial-gradient(circle at 20% 30%, #0f2128, #020408);
       z-index: -2;
-      display: block;
     }
-
-    .gradient-overlay {
+    .grid-pattern {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 70% 20%, rgba(0,255,150,0.05), transparent 70%);
+      background-image: linear-gradient(rgba(46, 255, 160, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(46, 255, 160, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
       pointer-events: none;
       z-index: -1;
     }
 
-    /* ========== SPLASH SCREEN ========== */
-    .splash-screen {
+    /* splash screen */
+    .splash {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #000000dd;
-      backdrop-filter: blur(24px);
+      background: #03060be6;
+      backdrop-filter: blur(20px);
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      transition: opacity 1s ease, visibility 1s;
-      font-family: 'Orbitron', monospace;
+      transition: opacity 0.8s ease;
     }
     .splash-logo {
-      width: 130px;
-      border-radius: 35px;
+      width: 120px;
+      border-radius: 28px;
       box-shadow: 0 0 30px #2effa0;
-      animation: pulseLogo 1.2s infinite alternate;
+      animation: pulse 1s infinite alternate;
     }
-    @keyframes pulseLogo {
+    @keyframes pulse {
       0% { box-shadow: 0 0 5px #2effa0; transform: scale(1);}
-      100% { box-shadow: 0 0 35px #6effb0; transform: scale(1.02);}
+      100% { box-shadow: 0 0 30px #6effb0; transform: scale(1.02);}
     }
-    .typing-welcome {
-      font-size: 1.8rem;
-      font-weight: 800;
+    .splash-text {
+      font-family: 'Space Grotesk';
+      font-size: 1.6rem;
+      margin-top: 20px;
       color: #2effa0;
-      margin: 20px auto;
-      font-family: 'Share Tech Mono';
-      height: 70px;
     }
     .enter-btn {
-      margin-top: 35px;
+      margin-top: 30px;
       background: transparent;
       border: 2px solid #2effa0;
-      padding: 14px 42px;
-      font-weight: bold;
-      font-family: 'Orbitron';
-      color: #2effa0;
-      border-radius: 60px;
+      padding: 12px 40px;
+      border-radius: 50px;
+      font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
-      font-size: 1rem;
-    }
-    .enter-btn:hover {
-      background: #2effa0;
-      color: black;
-      box-shadow: 0 0 25px #2effa0;
     }
 
-    /* ========== MAIN CONTENT ========== */
-    .main-content {
-      opacity: 0;
-      transition: opacity 1s ease;
+    /* main container */
+    .main-container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 1rem 2rem 2rem;
-      position: relative;
-      z-index: 5;
+      padding: 1.5rem 2rem;
+      opacity: 0;
+      transition: opacity 0.8s;
     }
-    .main-content.visible {
+    .main-container.visible {
       opacity: 1;
     }
 
-    /* Header premium */
-    .cyber-header {
+    /* header */
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(46, 255, 160, 0.5);
-      border-radius: 60px;
+      background: rgba(10, 20, 28, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 80px;
       padding: 0.7rem 2rem;
+      border: 1px solid rgba(46, 255, 160, 0.3);
       margin-bottom: 2rem;
-      box-shadow: 0 0 12px rgba(46,255,160,0.2);
     }
-    .logo-area {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
-    .logo-img {
-      width: 48px;
-      border-radius: 16px;
-      border: 1px solid #2effa0;
+    .logo img {
+      width: 45px;
+      border-radius: 12px;
     }
-    .logo-text {
-      font-family: 'Orbitron';
+    .logo span {
+      font-size: 1.6rem;
       font-weight: 800;
-      font-size: 1.7rem;
       background: linear-gradient(135deg, #fff, #2effa0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
     }
-    .music-toggle {
+    .music-btn {
       background: #000000aa;
-      border-radius: 60px;
+      border-radius: 40px;
       padding: 8px 22px;
       border: 1px solid #2effa0;
       cursor: pointer;
-      transition: 0.2s;
     }
 
-    /* Hero */
+    /* hero */
     .hero {
       text-align: center;
       margin: 1rem 0 2rem;
     }
-    .glitch-hero {
-      font-size: 2.5rem;
-      font-family: 'Orbitron';
+    .hero h1 {
+      font-size: 3rem;
       font-weight: 800;
-      color: #2effa0;
-      text-shadow: 0 0 5px #0f0;
-      animation: glitchText 2s infinite;
-    }
-    @keyframes glitchText {
-      0%,100% { text-shadow: -2px 0 red, 2px 0 cyan; }
-      50% { text-shadow: 2px 0 red, -2px 0 cyan; }
+      background: linear-gradient(135deg, #fff, #a0ffd0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    /* Service Grid */
-    .section-title {
+    /* category buttons (VPS, Script, Hosting, Rekber, DLL) */
+    .category-bar {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.6rem;
-      font-weight: 700;
-      font-family: 'Orbitron';
-      margin: 2rem 0 1.2rem;
-      border-left: 5px solid #2effa0;
-      padding-left: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 1.5rem;
     }
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      margin-bottom: 2rem;
-    }
-    .hack-card {
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(12px);
+    .cat-btn {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
       border: 1px solid rgba(46, 255, 160, 0.4);
-      border-radius: 32px;
-      padding: 1.6rem;
-      transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border-radius: 60px;
+      padding: 12px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1rem;
     }
-    .hack-card:hover {
+    .cat-btn i {
+      margin-right: 8px;
+      color: #2effa0;
+    }
+    .cat-btn.active, .cat-btn:hover {
+      background: #1e3d32;
       border-color: #2effa0;
-      transform: translateY(-8px);
-      box-shadow: 0 0 28px rgba(46,255,160,0.3);
+      transform: translateY(-3px);
     }
-    .card-icon {
-      font-size: 2.8rem;
+
+    /* product grid (dinamis) */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+    .product-card {
+      background: rgba(12, 22, 30, 0.75);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 1.5rem;
+      border: 1px solid rgba(46, 255, 160, 0.3);
+      transition: 0.25s;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: #2effa0;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+    }
+    .product-icon {
+      font-size: 2.5rem;
       color: #2effa0;
       margin-bottom: 1rem;
     }
-    .price {
-      background: #0f2c22;
-      display: inline-block;
-      padding: 4px 16px;
-      border-radius: 40px;
-      font-size: 0.75rem;
+    .product-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .product-desc {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin: 8px 0;
+    }
+    .product-price {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #2effa0;
       margin: 12px 0;
     }
-    .order-btn {
+    .order-product {
       width: 100%;
-      background: linear-gradient(95deg, #1a3a2e, #0d261e);
-      border: 1px solid #2effa0;
-      padding: 12px;
+      background: linear-gradient(95deg, #1f4638, #0f2a20);
+      border: none;
+      padding: 10px;
       border-radius: 60px;
-      font-weight: 700;
+      font-weight: 600;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    /* Payment Area */
-    .payment-area {
-      background: rgba(0, 0, 0, 0.5);
+    /* payment section premium */
+    .payment-section {
+      background: rgba(0, 20, 25, 0.6);
       border-radius: 2rem;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border: 1px dashed #2effa0;
+      padding: 1.8rem;
+      margin: 2rem 0;
+      border: 1px solid #2effa060;
     }
-    .payment-buttons {
+    .payment-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+    .payment-methods {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
     }
-    .pay-card {
-      background: #10181e;
-      border-radius: 60px;
-      padding: 12px 28px;
+    .payment-item {
+      background: #0e1a1f;
+      border-radius: 50px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -252,123 +262,42 @@
       cursor: pointer;
       transition: 0.2s;
     }
-    .pay-card:hover {
-      background: #1e3d32;
+    .payment-item:hover {
+      background: #1b4538;
       transform: scale(0.97);
     }
 
-    /* Owner & Team Section (BARU) */
-    .owner-section {
-      background: rgba(0, 15, 20, 0.7);
+    /* owner & copyright */
+    .owner-area {
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 2rem;
-      padding: 1.8rem;
-      margin: 2rem 0;
-      border: 1px solid #2effa0;
-      backdrop-filter: blur(12px);
-    }
-    .owner-grid {
+      padding: 1.5rem;
+      margin: 1.5rem 0;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.8rem;
-      margin-top: 1.2rem;
-    }
-    .owner-card {
-      background: #0b171f;
-      border-radius: 28px;
-      padding: 1.5rem;
-      text-align: center;
-      min-width: 200px;
-      flex: 1;
-      border: 1px solid #2effa070;
-      transition: 0.2s;
-    }
-    .owner-card i {
-      font-size: 2.8rem;
-      color: #2effa0;
-      margin-bottom: 0.8rem;
-    }
-    .owner-name {
-      font-size: 1.3rem;
-      font-weight: 700;
-      font-family: 'Orbitron';
-    }
-    .owner-role {
-      font-size: 0.7rem;
-      opacity: 0.8;
-      margin: 5px 0;
-    }
-    .contact-owner-btn {
-      background: #1f4b3a;
-      border: none;
-      padding: 6px 18px;
-      border-radius: 60px;
-      margin-top: 12px;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    /* Telegram Section */
-    .tele-section {
-      background: #05100ecc;
-      border-radius: 2rem;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border: 1px solid #2effa0;
-    }
-    .tele-item {
-      display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #00000055;
-      padding: 10px 20px;
-      border-radius: 60px;
-      margin-bottom: 10px;
+      gap: 1rem;
     }
-    .copy-tele {
-      background: #1e4b3e;
+    .owner-badge {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .owner-btn {
+      background: #1a3a2e;
       border: none;
-      padding: 6px 18px;
-      border-radius: 30px;
+      padding: 8px 20px;
+      border-radius: 40px;
       cursor: pointer;
     }
-
-    /* Footer dengan Copyright dan Owner */
-    .premium-footer {
+    footer {
       text-align: center;
-      margin-top: 2.5rem;
       padding: 1.5rem;
-      border-top: 1px solid #2effa060;
-      font-family: monospace;
-      font-size: 0.8rem;
-    }
-    .copyright {
-      letter-spacing: 1px;
+      border-top: 1px solid #2effa030;
+      margin-top: 1rem;
     }
 
-    /* Modal */
-    .hacker-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.96);
-      backdrop-filter: blur(20px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-    }
-    .modal-card {
-      background: #0a1217;
-      border: 2px solid #2effa0;
-      border-radius: 36px;
-      padding: 2rem;
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
-    }
     .toast {
       position: fixed;
       bottom: 30px;
@@ -378,310 +307,302 @@
       border-left: 4px solid #2effa0;
       padding: 10px 24px;
       border-radius: 50px;
-      z-index: 3000;
+      z-index: 2000;
       opacity: 0;
       transition: 0.2s;
-      pointer-events: none;
     }
-
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      backdrop-filter: blur(20px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+    .modal-card {
+      background: #0d171f;
+      border: 2px solid #2effa0;
+      border-radius: 32px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
     @media (max-width: 680px) {
-      .glitch-hero { font-size: 1.6rem; }
-      .typing-welcome { font-size: 1rem; height: 50px; }
-      .owner-grid { flex-direction: column; }
+      .hero h1 { font-size: 1.8rem; }
+      .main-container { padding: 1rem; }
     }
   </style>
 </head>
 <body>
-<canvas id="canvas-bg"></canvas>
-<div class="gradient-overlay"></div>
+<div class="bg-gradient"></div>
+<div class="grid-pattern"></div>
 
-<!-- SPLASH SCREEN -->
-<div id="splashScreen" class="splash-screen">
-  <div class="splash-content">
-    <img src="https://files.catbox.moe/5awz68.jpg" class="splash-logo" alt="Zenix">
-    <div class="typing-welcome" id="typingSplash"></div>
-    <button id="enterBtn" class="enter-btn"><i class="fas fa-bolt"></i> ENTER CORPORATE</button>
-  </div>
+<!-- SPLASH -->
+<div id="splash" class="splash">
+  <img src="https://files.catbox.moe/5awz68.jpg" class="splash-logo" alt="Zenix">
+  <div class="splash-text">ZENIX PREMIUM MARKETPLACE</div>
+  <button id="enterSplash" class="enter-btn">ENTER <i class="fas fa-arrow-right"></i></button>
 </div>
 
-<!-- MAIN WEBSITE -->
-<div id="mainContent" class="main-content">
-  <div class="cyber-header">
-    <div class="logo-area">
-      <img src="https://files.catbox.moe/5awz68.jpg" class="logo-img" alt="logo">
-      <span class="logo-text">ZENIX::CORP</span>
+<!-- MAIN -->
+<div id="mainApp" class="main-container">
+  <div class="header">
+    <div class="logo">
+      <img src="https://files.catbox.moe/5awz68.jpg" alt="logo">
+      <span>ZENIX CORP</span>
     </div>
-    <div class="music-toggle" id="musicToggleBtn"><i class="fas fa-head-side-vr"></i> <span id="musicStatus">ACTIVATE</span></div>
+    <div class="music-btn" id="musicToggle"><i class="fas fa-headphones"></i> <span id="musicStatus">ACTIVATE</span></div>
   </div>
 
   <div class="hero">
-    <div class="glitch-hero">>_ PREMIUM BUSINESS ECOSYSTEM</div>
-    <p>Hosting • Script • Rekber • VPS • Custom Enterprise Solutions</p>
+    <h1>Premium Digital Marketplace</h1>
+    <p>VPS | Script | Hosting | Rekber | Custom Solutions</p>
   </div>
 
-  <!-- Layanan -->
-  <div class="section-title"><i class="fas fa-crown"></i> LAYANAN KORPORASI</div>
-  <div class="service-grid">
-    <div class="hack-card"><div class="card-icon"><i class="fas fa-cloud-upload-alt"></i></div><h3>ALL HOSTING</h3><div class="price">Mulai 150K/bln</div><div>Cloud, Reseller, Offshore, Unlimited Bandwidth</div><button class="order-btn" data-service="ALL HOSTING PREMIUM">ORDER →</button></div>
-    <div class="hack-card"><div class="card-icon"><i class="fas fa-code"></i></div><h3>ALL SCRIPT</h3><div class="price">from 99K</div><div>Bot, AI Tools, Panel, Full Source</div><button class="order-btn" data-service="ALL SCRIPT COLLECTION">ORDER →</button></div>
-    <div class="hack-card"><div class="card-icon"><i class="fas fa-handshake"></i></div><h3>REKBER / ESCROW</h3><div class="price">Fee 2%</div><div>Mediasi transaksi, dispute handling</div><button class="order-btn" data-service="JASA REKBER PROFESIONAL">ORDER →</button></div>
-    <div class="hack-card"><div class="card-icon"><i class="fas fa-server"></i></div><h3>VPS PRIVATE</h3><div class="price">Start 250K/bln</div><div>Offshore, Anti-DDoS, Anonymous</div><button class="order-btn" data-service="VPS PRIVATE HIGH SECURITY">ORDER →</button></div>
-    <div class="hack-card"><div class="card-icon"><i class="fas fa-cogs"></i></div><h3>JASA CUSTOM (DLL)</h3><div class="price">Nego</div><div>Install Panel, Web Dev, API, Maintenance</div><button class="order-btn" data-service="LAYANAN CUSTOM (KONSULTASI)">ORDER →</button></div>
+  <!-- Category Buttons -->
+  <div class="category-bar">
+    <button class="cat-btn active" data-cat="vps"><i class="fas fa-server"></i> VPS</button>
+    <button class="cat-btn" data-cat="script"><i class="fas fa-code"></i> All Script</button>
+    <button class="cat-btn" data-cat="hosting"><i class="fas fa-cloud-upload-alt"></i> Hosting</button>
+    <button class="cat-btn" data-cat="rekber"><i class="fas fa-handshake"></i> Rekber</button>
+    <button class="cat-btn" data-cat="dll"><i class="fas fa-cogs"></i> Layanan Lain</button>
   </div>
 
-  <!-- PAYMENT GATEWAY FULL -->
-  <div class="payment-area">
-    <div class="section-title" style="border-left-color: #ffb86b;"><i class="fas fa-coins"></i> METODE PEMBAYARAN</div>
-    <div class="payment-buttons">
-      <div class="pay-card" id="payDana"><i class="fas fa-mobile-alt"></i> DANA</div>
-      <div class="pay-card" id="payGopay"><i class="fab fa-google-pay"></i> GOPAY</div>
-      <div class="pay-card" id="payOvo"><i class="fas fa-wallet"></i> OVO</div>
-      <div class="pay-card" id="payQris"><i class="fas fa-qrcode"></i> QRIS</div>
-      <div class="pay-card" id="paySaweria"><i class="fas fa-donate"></i> SAWERIA</div>
+  <!-- Dynamic Products Grid -->
+  <div id="productsContainer" class="products-grid"></div>
+
+  <!-- Payment Section Premium -->
+  <div class="payment-section">
+    <div class="payment-title"><i class="fas fa-credit-card"></i> Metode Pembayaran Resmi</div>
+    <div class="payment-methods">
+      <div class="payment-item" data-pay="dana"><i class="fas fa-mobile-alt"></i> DANA</div>
+      <div class="payment-item" data-pay="gopay"><i class="fab fa-google-pay"></i> GOPAY</div>
+      <div class="payment-item" data-pay="ovo"><i class="fas fa-wallet"></i> OVO</div>
+      <div class="payment-item" data-pay="qris"><i class="fas fa-qrcode"></i> QRIS</div>
+      <div class="payment-item" data-pay="saweria"><i class="fas fa-donate"></i> SAWERIA</div>
     </div>
   </div>
 
-  <!-- DAFTAR OWNER & PEMILIK (BUTTON DAN INFO LENGKAP) -->
-  <div class="owner-section">
-    <div class="section-title" style="border-left-color: #ffaa44;"><i class="fas fa-users"></i> OWNER & MANAGEMENT</div>
-    <div class="owner-grid">
-      <div class="owner-card">
-        <i class="fas fa-crown"></i>
-        <div class="owner-name">MiaaBack</div>
-        <div class="owner-role">CEO & Founder</div>
-        <button class="contact-owner-btn" data-contact="MiaaBack">Hubungi CEO</button>
-      </div>
-      <div class="owner-card">
-        <i class="fas fa-user-secret"></i>
-        <div class="owner-name">skyzenix</div>
-        <div class="owner-role">Co-Founder / CTO</div>
-        <button class="contact-owner-btn" data-contact="skyzenix">Hubungi CTO</button>
-      </div>
-      <div class="owner-card">
-        <i class="fas fa-bullhorn"></i>
-        <div class="owner-name">MI44BACK</div>
-        <div class="owner-role">Head of Marketing</div>
-        <button class="contact-owner-btn" data-contact="MI44BACK">Hubungi Marketing</button>
-      </div>
+  <!-- Owner & Copyright -->
+  <div class="owner-area">
+    <div class="owner-badge">
+      <button class="owner-btn" data-owner="MiaaBack"><i class="fas fa-crown"></i> Owner: MiaaBack</button>
+      <button class="owner-btn" data-owner="skyzenix"><i class="fas fa-user-tie"></i> Co-Owner: skyzenix</button>
+      <button class="owner-btn" data-owner="MI44BACK"><i class="fas fa-bullhorn"></i> Marketing: MI44BACK</button>
     </div>
-    <div style="text-align: center; margin-top: 18px; font-size:0.8rem;">
-      <i class="fas fa-shield-alt"></i> Official Owner terverifikasi | Semua transaksi aman
-    </div>
+    <div><i class="far fa-copyright"></i> 2025 ZENIX CORPORATION - All Rights Reserved</div>
   </div>
-
-  <!-- TELEGRAM OFFICIAL -->
-  <div class="tele-section">
-    <div class="section-title" style="border-left-color: #26A5E4;"><i class="fab fa-telegram"></i> OFFICIAL TELEGRAM</div>
-    <div class="tele-item"><span><i class="fas fa-database"></i> Backup : @skyzenix</span><button class="copy-tele" data-copy="skyzenix">SALIN</button></div>
-    <div class="tele-item"><span><i class="fas fa-crown"></i> Utama : @MiaaBack</span><button class="copy-tele" data-copy="MiaaBack">SALIN</button></div>
-    <div class="tele-item"><span><i class="fas fa-bullhorn"></i> Promosi : @MI44BACK</span><button class="copy-tele" data-copy="MI44BACK">SALIN</button></div>
-    <div class="tele-item"><span><i class="fas fa-newspaper"></i> Channel Resmi : @chnewsky</span><button class="copy-tele" data-copy="chnewsky">SALIN</button></div>
-    <div class="tele-item"><span><i class="fas fa-users"></i> Channel Pub : @testimonzen</span><button class="copy-tele" data-copy="testimonzen">SALIN</button></div>
-  </div>
-
-  <!-- FOOTER DENGAN COPYRIGHT & PEMILIK -->
-  <div class="premium-footer">
-    <div class="copyright">
-      <i class="far fa-copyright"></i> 2025 ZENIX CORPORATION — All rights reserved.<br>
-      Official Owner: <strong>MiaaBack</strong> | Co-Owner: <strong>skyzenix</strong> | License: PREMIUM BUSINESS SUITE
-    </div>
-  </div>
+  <footer>Official Telegram: @MiaaBack | @skyzenix | @chnewsky</footer>
 </div>
 
 <!-- MODAL -->
-<div id="globalModal" class="hacker-modal">
+<div id="modalGlobal" class="modal">
   <div class="modal-card">
-    <div id="modalMessage" style="font-size:1.5rem;"></div>
+    <div id="modalText" style="font-size:1.3rem;"></div>
     <div id="modalExtra"></div>
     <button id="modalCopyBtn" style="background:#1f5a48; border:none; padding:8px 20px; border-radius:40px; margin:12px 0; display:none;">📋 Salin</button>
-    <button id="closeModalBtn" style="background:#e53935; border:none; padding:8px 20px; border-radius:40px;">Tutup</button>
+    <button id="closeModal" style="background:#e53935; border:none; padding:8px 20px; border-radius:40px;">Tutup</button>
   </div>
 </div>
 <div id="toastMsg" class="toast">✓ Tersalin</div>
-<audio id="bgMusic" loop preload="auto"><source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg"></audio>
+<audio id="bgAudio" loop preload="auto"><source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg"></audio>
 
 <script>
-  // ========== CANVAS MATRIX ANIMATION ==========
-  const canvas = document.getElementById('canvas-bg');
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  let particles = [];
+  // ==================== DATA PRODUK LENGKAP ====================
+  const productsData = {
+    vps: [
+      { name: "VPS Starter", desc: "1 vCPU, 2GB RAM, 50GB SSD", price: "Rp 50.000/bln", icon: "fas fa-microchip" },
+      { name: "VPS Business", desc: "2 vCPU, 4GB RAM, 100GB SSD + DDoS", price: "Rp 70.000/bln", icon: "fas fa-server" },
+      { name: "VPS Pro", desc: "4 vCPU, 8GB RAM, 200GB NVMe", price: "Rp 90.000/bln", icon: "fas fa-database" },
+      { name: "VPS Offshore", desc: "Anonymous, Offshore location", price: "Rp 150.000/bln", icon: "fas fa-globe" }
+    ],
+    script: [
+      { name: "Bot Telegram Premium", desc: "Auto reply, group manager, AI", price: "Rp 10.000", icon: "fab fa-telegram" },
+      { name: "Panel Hosting + Theme", desc: "WHMCS like, auto install", price: "Rp 10.000", icon: "fas fa-panel" },
+      { name: "AI Tools Script", desc: "ChatGPT clone, image generator", price: "Rp 3.000", icon: "fas fa-robot" },
+      { name: "E-commerce Fullstack", desc: "Laravel + React, ready use", price: "Rp 15.000", icon: "fas fa-store" }
+    ],
+    hosting: [
+      { name: "Shared Hosting", desc: "10GB, 1 domain, SSL", price: "Rp 15.000/thn", icon: "fas fa-cloud" },
+      { name: "Reseller Hosting", desc: "Unlimited accounts, WHM", price: "Rp 100.000/bln", icon: "fas fa-chart-line" },
+      { name: "Cloud Hosting", desc: "High availability, 99.9% uptime", price: "Rp 50.000/bln", icon: "fas fa-cloud-upload-alt" }
+    ],
+    rekber: [
+      { name: "Rekber Standar", desc: "Mediasi transaksi, aman", price: "Fee 2%", icon: "fas fa-handshake" },
+      { name: "Rekber Premium", desc: "Prioritas + dispute handling", price: "Fee 1.5%", icon: "fas fa-shield-alt" }
+    ],
+    dll: [
+      { name: "Install Panel / Script", desc: "Full setup + konfigurasi", price: "Rp 5.000", icon: "fas fa-tools" },
+      { name: "Maintenance Server", desc: "Bulanan support 24/7", price: "Rp 20.000/bln", icon: "fas fa-wrench" },
+      { name: "Custom API Development", desc: "REST API sesuai kebutuhan", price: "Nego", icon: "fas fa-code-branch" }
+    ]
+  };
 
-  function resizeCanvas() {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-  }
-  class Particle {
-    constructor() {
-      this.x = Math.random() * width;
-      this.y = Math.random() * height;
-      this.size = Math.random() * 1.6 + 0.6;
-      this.speedY = Math.random() * 1.2 + 0.4;
-      this.char = String.fromCharCode(0x30A0 + Math.random() * 96);
-      this.opacity = Math.random() * 0.5 + 0.2;
-    }
-    update() {
-      this.y += this.speedY;
-      if (this.y > height) { this.y = 0; this.x = Math.random() * width; }
-    }
-    draw() {
-      ctx.fillStyle = `rgba(46, 255, 160, ${this.opacity})`;
-      ctx.font = `${this.size * 12}px 'Share Tech Mono'`;
-      ctx.fillText(this.char, this.x, this.y);
-    }
-  }
-  function initParticles() {
-    particles = [];
-    for (let i = 0; i < 130; i++) particles.push(new Particle());
-  }
-  function animateBg() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = '#03060b';
-    ctx.fillRect(0, 0, width, height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    requestAnimationFrame(animateBg);
-  }
-  window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
-  resizeCanvas();
-  initParticles();
-  animateBg();
+  let currentCategory = "vps";
 
-  // ========== SPLASH TYPING ==========
-  const splashTyping = document.getElementById('typingSplash');
-  const texts = [">_ INIT CORPORATE NODE", ">_ LOADING SECURE API", ">_ WELCOME TO ZENIX CORP"];
-  let idx = 0, ch = 0, cur = "";
-  function typeSplash() {
-    if (idx >= texts.length) { splashTyping.innerHTML = ">_ READY FOR BUSINESS"; return; }
-    if (ch < texts[idx].length) {
-      cur += texts[idx].charAt(ch);
-      splashTyping.innerHTML = cur;
-      ch++;
-      setTimeout(typeSplash, 70);
-    } else {
-      setTimeout(() => { idx++; ch = 0; cur = ""; typeSplash(); }, 500);
-    }
+  function renderProducts(category) {
+    const container = document.getElementById("productsContainer");
+    const products = productsData[category];
+    if (!products) return;
+    container.innerHTML = "";
+    products.forEach(prod => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <div class="product-icon"><i class="${prod.icon}"></i></div>
+        <div class="product-title">${prod.name}</div>
+        <div class="product-desc">${prod.desc}</div>
+        <div class="product-price">${prod.price}</div>
+        <button class="order-product" data-name="${prod.name}" data-price="${prod.price}">ORDER NOW <i class="fas fa-arrow-right"></i></button>
+      `;
+      container.appendChild(card);
+    });
+    // attach event ke tombol order
+    document.querySelectorAll(".order-product").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const name = btn.getAttribute("data-name");
+        const price = btn.getAttribute("data-price");
+        showOrderModal(name, price);
+      });
+    });
   }
-  typeSplash();
 
-  // SPLASH HIDE
-  const splashScreen = document.getElementById('splashScreen');
-  const mainDiv = document.getElementById('mainContent');
-  const enterBtn = document.getElementById('enterBtn');
-  function hideSplash() {
-    splashScreen.style.opacity = '0';
-    splashScreen.style.visibility = 'hidden';
-    setTimeout(() => {
-      splashScreen.style.display = 'none';
-      mainDiv.classList.add('visible');
-    }, 1000);
-  }
-  enterBtn.addEventListener('click', hideSplash);
-
-  // MUSIC
-  const music = document.getElementById('bgMusic');
-  const musicBtn = document.getElementById('musicToggleBtn');
-  const musicSpan = document.getElementById('musicStatus');
-  let musicPlaying = false;
-  function updateMusicUI() {
-    if(musicPlaying) {
-      musicSpan.innerText = "ON";
-      musicBtn.innerHTML = '<i class="fas fa-volume-up"></i> <span id="musicStatus">ON</span>';
-    } else {
-      musicSpan.innerText = "ACTIVATE";
-      musicBtn.innerHTML = '<i class="fas fa-head-side-vr"></i> <span id="musicStatus">ACTIVATE</span>';
-    }
-  }
-  function toggleMusic() {
-    if(music.paused) {
-      music.play().then(() => { musicPlaying = true; updateMusicUI(); }).catch(() => { musicPlaying = true; updateMusicUI(); });
-    } else {
-      music.pause();
-      musicPlaying = false;
-      updateMusicUI();
-    }
-  }
-  musicBtn.addEventListener('click', toggleMusic);
-  window.addEventListener('load', () => { music.play().catch(e=>{}); });
-
-  // MODAL SYSTEM
-  const modal = document.getElementById('globalModal');
-  const modalMsg = document.getElementById('modalMessage');
-  const modalExtra = document.getElementById('modalExtra');
-  const modalCopyBtn = document.getElementById('modalCopyBtn');
-  const closeModal = document.getElementById('closeModalBtn');
-  let currentCopy = "";
-  function showModal(text, extra = "", copyText = null) {
-    modalMsg.innerHTML = text;
-    modalExtra.innerHTML = extra;
+  function showOrderModal(productName, productPrice) {
+    modalText.innerHTML = `🛒 ORDER: ${productName}<br><span style="font-size:1rem;">${productPrice}</span>`;
+    modalExtra.innerHTML = `<div style="margin:15px 0; display:flex; flex-direction:column; gap:10px;">
+      <button id="contactOwnerModal" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi Owner (MiaaBack)</button>
+      <button id="contactCoModal" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi Co-Owner (skyzenix)</button>
+    </div>`;
     modal.style.display = "flex";
-    if(copyText) {
-      currentCopy = copyText;
-      modalCopyBtn.style.display = "inline-block";
-    } else { currentCopy = ""; modalCopyBtn.style.display = "none"; }
+    modalCopyBtn.style.display = "none";
+    setTimeout(() => {
+      const ownerBtn = document.getElementById("contactOwnerModal");
+      const coBtn = document.getElementById("contactCoModal");
+      if(ownerBtn) ownerBtn.onclick = () => { copyToClipboard("@MiaaBack"); showToast("Username Owner disalin"); closeModal(); };
+      if(coBtn) coBtn.onclick = () => { copyToClipboard("@skyzenix"); showToast("Co-Owner disalin"); closeModal(); };
+    }, 10);
   }
-  function closeModalFunc() { modal.style.display = "none"; }
-  closeModal.addEventListener('click', closeModalFunc);
-  modal.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
-  modalCopyBtn.addEventListener('click', () => {
-    if(currentCopy) { navigator.clipboard.writeText(currentCopy); showToast(`✓ ${currentCopy} disalin`); }
-    else showToast("Tidak ada teks");
+
+  // PAYMENT DETAILS
+  const paymentDetails = {
+    dana: "085608969326",
+    gopay: "Close",
+    ovo: "Close",
+    qrisImg: "https://files.catbox.moe/qwbsk8.jpg",
+    saweria: "https://sociabuzz.com/alex1/tribe"
+  };
+
+  function showPaymentModal(method) {
+    if(method === "qris") {
+      modalText.innerHTML = `💳 QRIS Payment`;
+      modalExtra.innerHTML = `<img src="${paymentDetails.qrisImg}" style="max-width:200px; border-radius:20px; margin:10px auto;"><div>Scan menggunakan aplikasi OVO/DANA/GOPAY</div>`;
+      modalCopyBtn.style.display = "none";
+    } else {
+      let value = paymentDetails[method];
+      modalText.innerHTML = `💎 ${method.toUpperCase()}`;
+      modalExtra.innerHTML = `<div style="font-size:2rem; font-weight:bold;">${value}</div><div style="font-size:0.7rem;">Nomor resmi, transfer sesuai total</div>`;
+      modalCopyBtn.style.display = "inline-block";
+      currentCopyValue = value;
+    }
+    modal.style.display = "flex";
+  }
+
+  // Global modal & copy
+  const modal = document.getElementById("modalGlobal");
+  const modalText = document.getElementById("modalText");
+  const modalExtra = document.getElementById("modalExtra");
+  const modalCopyBtn = document.getElementById("modalCopyBtn");
+  const closeModalBtn = document.getElementById("closeModal");
+  let currentCopyValue = "";
+
+  function closeModal() { modal.style.display = "none"; modalExtra.innerHTML = ""; }
+  closeModalBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+  modalCopyBtn.addEventListener("click", () => {
+    if(currentCopyValue) {
+      copyToClipboard(currentCopyValue);
+      showToast(`✓ ${currentCopyValue} disalin`);
+    }
   });
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text);
+  }
   function showToast(msg) {
-    const toast = document.getElementById('toastMsg');
+    const toast = document.getElementById("toastMsg");
     toast.innerText = msg;
     toast.style.opacity = "1";
     setTimeout(() => toast.style.opacity = "0", 2000);
   }
 
-  // PAYMENT DATA
-  const payData = { dana:"085608969326", gopay:"Close", ovo:"Close", qrisImg:"https://files.catbox.moe/qwbsk8.jpg", saweria:"https://sociabuzz.com/alex1/tribe" };
-  document.getElementById('payDana').onclick = () => showModal(`💎 DANA`, `<div style="font-size:2rem;">${payData.dana}</div>`, payData.dana);
-  document.getElementById('payGopay').onclick = () => showModal(`✨ GOPAY`, `<div style="font-size:1.8rem;">${payData.gopay}</div>`, payData.gopay);
-  document.getElementById('payOvo').onclick = () => showModal(`🟢 OVO`, `<div style="font-size:1.8rem;">${payData.ovo}</div>`, payData.ovo);
-  document.getElementById('payQris').onclick = () => showModal(`📱 QRIS`, `<img src="${payData.qrisImg}" style="max-width:200px; border-radius:20px; margin-top:10px;"><div>Scan pakai OVO/DANA/GOPAY</div>`, null);
-  document.getElementById('paySaweria').onclick = () => showModal(`💖 SAWERIA`, `<div>${payData.saweria}</div>`, payData.saweria);
-
-  // ORDER BUTTONS -> kontak owner
-  const orderBtns = document.querySelectorAll('.order-btn');
-  orderBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const service = btn.getAttribute('data-service');
-      showModal(`⚡ ORDER: ${service}`, `<div style="margin:16px 0; display:flex; flex-direction:column; gap:12px;">
-        <button id="hubOwner" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi Owner (MiaaBack)</button>
-        <button id="hubCo" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi Co-Owner (skyzenix)</button>
-      </div>`, null);
-      setTimeout(() => {
-        const ownerBtn = document.getElementById('hubOwner');
-        const coBtn = document.getElementById('hubCo');
-        if(ownerBtn) ownerBtn.onclick = () => { navigator.clipboard.writeText('@MiaaBack'); showToast('@MiaaBack disalin, hubungi via Telegram'); closeModalFunc(); };
-        if(coBtn) coBtn.onclick = () => { navigator.clipboard.writeText('@skyzenix'); showToast('@skyzenix disalin'); closeModalFunc(); };
-      }, 10);
+  // event kategori
+  document.querySelectorAll(".cat-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentCategory = btn.getAttribute("data-cat");
+      renderProducts(currentCategory);
     });
   });
 
-  // COPY TELEGRAM
-  document.querySelectorAll('.copy-tele').forEach(btn => {
-    btn.addEventListener('click', () => {
-      let uname = btn.getAttribute('data-copy');
-      let full = uname.startsWith('@') ? uname : `@${uname}`;
-      navigator.clipboard.writeText(full);
-      showToast(`✅ ${full} disalin`);
-      btn.innerText = "✔️ Copied";
-      setTimeout(() => btn.innerText = "SALIN", 1000);
+  // payment click
+  document.querySelectorAll(".payment-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const method = item.getAttribute("data-pay");
+      showPaymentModal(method);
     });
   });
 
-  // OWNER CONTACT BUTTONS (daftar owner)
-  document.querySelectorAll('.contact-owner-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      let contactId = btn.getAttribute('data-contact');
-      let username = `@${contactId}`;
-      navigator.clipboard.writeText(username);
-      showToast(`📋 Username ${username} disalin, hubungi sekarang`);
+  // owner buttons
+  document.querySelectorAll(".owner-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const ownerName = btn.getAttribute("data-owner");
+      copyToClipboard(`@${ownerName}`);
+      showToast(`Username @${ownerName} disalin, hubungi via Telegram`);
     });
   });
+
+  // MUSIC
+  const audio = document.getElementById("bgAudio");
+  const musicBtn = document.getElementById("musicToggle");
+  const musicStatusSpan = document.getElementById("musicStatus");
+  let isPlaying = false;
+  function toggleMusic() {
+    if(audio.paused) {
+      audio.play().then(() => { isPlaying = true; musicStatusSpan.innerText = "ON"; musicBtn.innerHTML = '<i class="fas fa-volume-up"></i> <span id="musicStatus">ON</span>'; }).catch(() => { isPlaying = true; musicStatusSpan.innerText = "ON"; });
+    } else {
+      audio.pause();
+      isPlaying = false;
+      musicStatusSpan.innerText = "ACTIVATE";
+      musicBtn.innerHTML = '<i class="fas fa-headphones"></i> <span id="musicStatus">ACTIVATE</span>';
+    }
+  }
+  musicBtn.addEventListener("click", toggleMusic);
+  window.addEventListener("load", () => { audio.play().catch(e=>{}); });
+
+  // SPLASH SCREEN
+  const splashDiv = document.getElementById("splash");
+  const mainApp = document.getElementById("mainApp");
+  const enterSplash = document.getElementById("enterSplash");
+  enterSplash.addEventListener("click", () => {
+    splashDiv.style.opacity = "0";
+    setTimeout(() => {
+      splashDiv.style.display = "none";
+      mainApp.classList.add("visible");
+    }, 800);
+  });
+
+  // render default
+  renderProducts("vps");
+
+  // tambahan copy telegram (optional)
+  // juga tombol order dari product sudah dihandle
 </script>
 </body>
 </html>
