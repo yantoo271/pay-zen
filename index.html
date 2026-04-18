@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>ZENIX PREMIUM | Enterprise Digital Marketplace</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>ZENIX PREMIUM | Enterprise Digital Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -14,261 +14,313 @@
     }
 
     body {
-      background: #0a0c12;
-      font-family: 'Inter', 'Space Grotesk', sans-serif;
+      background: #070b12;
+      font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
       color: #eef5ff;
       overflow-x: hidden;
     }
 
-    /* background premium */
-    .bg-gradient {
+    /* Dynamic Animated Background */
+    .bg-orb {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 30%, #0f2128, #020408);
       z-index: -2;
+      background: radial-gradient(circle at 20% 30%, #0b2a2a, #010101);
     }
-    .grid-pattern {
+    .grid-lines {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(rgba(46, 255, 160, 0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(46, 255, 160, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(rgba(46, 255, 160, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46, 255, 160, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
       pointer-events: none;
       z-index: -1;
     }
+    .glow-spot {
+      position: fixed;
+      width: 70vw;
+      height: 70vw;
+      background: radial-gradient(circle, rgba(46,255,160,0.08), transparent);
+      bottom: -30vh;
+      right: -20vw;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+    }
 
-    /* splash screen */
+    /* Splash Screen Premium */
     .splash {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #03060be6;
-      backdrop-filter: blur(20px);
+      background: #03060cee;
+      backdrop-filter: blur(32px);
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      transition: opacity 0.8s ease;
+      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1);
     }
     .splash-logo {
-      width: 120px;
-      border-radius: 28px;
+      width: 130px;
+      border-radius: 32px;
       box-shadow: 0 0 30px #2effa0;
-      animation: pulse 1s infinite alternate;
+      animation: pulseGlow 1.2s infinite alternate;
     }
-    @keyframes pulse {
+    @keyframes pulseGlow {
       0% { box-shadow: 0 0 5px #2effa0; transform: scale(1);}
-      100% { box-shadow: 0 0 30px #6effb0; transform: scale(1.02);}
+      100% { box-shadow: 0 0 35px #6effb0; transform: scale(1.02);}
     }
-    .splash-text {
-      font-family: 'Space Grotesk';
-      font-size: 1.6rem;
-      margin-top: 20px;
-      color: #2effa0;
-    }
-    .enter-btn {
-      margin-top: 30px;
-      background: transparent;
-      border: 2px solid #2effa0;
-      padding: 12px 40px;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    /* main container */
-    .main-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem;
-      opacity: 0;
-      transition: opacity 0.8s;
-    }
-    .main-container.visible {
-      opacity: 1;
-    }
-
-    /* header */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      background: rgba(10, 20, 28, 0.7);
-      backdrop-filter: blur(12px);
-      border-radius: 80px;
-      padding: 0.7rem 2rem;
-      border: 1px solid rgba(46, 255, 160, 0.3);
-      margin-bottom: 2rem;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo img {
-      width: 45px;
-      border-radius: 12px;
-    }
-    .logo span {
-      font-size: 1.6rem;
+    .splash-title {
+      font-size: 2rem;
       font-weight: 800;
       background: linear-gradient(135deg, #fff, #2effa0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+      margin-top: 20px;
     }
-    .music-btn {
-      background: #000000aa;
-      border-radius: 40px;
-      padding: 8px 22px;
-      border: 1px solid #2effa0;
+    .splash-sub {
+      letter-spacing: 2px;
+      margin: 10px 0;
+    }
+    .enter-premium {
+      margin-top: 35px;
+      background: transparent;
+      border: 2px solid #2effa0;
+      padding: 14px 44px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
       cursor: pointer;
+      transition: 0.3s;
+    }
+    .enter-premium:hover {
+      background: #2effa0;
+      color: #03060c;
+      box-shadow: 0 0 20px #2effa0;
     }
 
-    /* hero */
-    .hero {
-      text-align: center;
-      margin: 1rem 0 2rem;
+    /* Main Container */
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      opacity: 0;
+      transition: opacity 0.8s ease;
     }
-    .hero h1 {
-      font-size: 3rem;
+    .main-container.visible {
+      opacity: 1;
+    }
+
+    /* Header Premium */
+    .glass-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: rgba(10, 20, 28, 0.6);
+      backdrop-filter: blur(16px);
+      border-radius: 100px;
+      padding: 0.6rem 2rem;
+      border: 1px solid rgba(46, 255, 160, 0.3);
+      margin-bottom: 2rem;
+    }
+    .logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-brand img {
+      width: 48px;
+      border-radius: 16px;
+    }
+    .logo-brand span {
+      font-size: 1.7rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #fff, #a0ffd0);
+      background: linear-gradient(135deg, #fff, #7effc0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .music-control {
+      background: #000000aa;
+      border-radius: 50px;
+      padding: 8px 24px;
+      border: 1px solid #2effa0;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    /* Hero */
+    .hero-center {
+      text-align: center;
+      margin: 1rem 0 2.5rem;
+    }
+    .hero-center h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #ffffff, #a0ffd0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
     }
 
-    /* category buttons (VPS, Script, Hosting, Rekber, DLL) */
-    .category-bar {
+    /* Category Buttons - Detail & Anti Ampas */
+    .category-flex {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      margin: 2rem 0 1.5rem;
+      gap: 1.2rem;
+      margin: 2rem 0 1.8rem;
     }
-    .cat-btn {
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(8px);
+    .cat-premium {
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
       border: 1px solid rgba(46, 255, 160, 0.4);
       border-radius: 60px;
       padding: 12px 28px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
+      font-weight: 700;
       font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .cat-btn i {
-      margin-right: 8px;
+    .cat-premium i {
+      font-size: 1.2rem;
       color: #2effa0;
     }
-    .cat-btn.active, .cat-btn:hover {
-      background: #1e3d32;
+    .cat-premium.active, .cat-premium:hover {
+      background: #1a3f33;
       border-color: #2effa0;
       transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
     }
 
-    /* product grid (dinamis) */
+    /* Products Grid - Detil Banget */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 2rem;
       margin: 2rem 0;
     }
-    .product-card {
-      background: rgba(12, 22, 30, 0.75);
+    .product-card-premium {
+      background: rgba(12, 22, 32, 0.7);
       backdrop-filter: blur(12px);
-      border-radius: 28px;
-      padding: 1.5rem;
-      border: 1px solid rgba(46, 255, 160, 0.3);
-      transition: 0.25s;
+      border-radius: 32px;
+      padding: 1.8rem;
+      border: 1px solid rgba(46, 255, 160, 0.25);
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .product-card:hover {
-      transform: translateY(-6px);
+    .product-card-premium:hover {
+      transform: translateY(-8px);
       border-color: #2effa0;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
     }
-    .product-icon {
-      font-size: 2.5rem;
+    .product-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: #2effa020;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+    .product-icon-lg {
+      font-size: 2.8rem;
       color: #2effa0;
       margin-bottom: 1rem;
     }
-    .product-title {
-      font-size: 1.5rem;
+    .product-title-lg {
+      font-size: 1.6rem;
       font-weight: 700;
     }
-    .product-desc {
+    .product-spec {
       font-size: 0.85rem;
       opacity: 0.8;
       margin: 8px 0;
+      line-height: 1.4;
     }
-    .product-price {
-      font-size: 1.4rem;
+    .product-price-premium {
+      font-size: 1.7rem;
       font-weight: 800;
       color: #2effa0;
-      margin: 12px 0;
+      margin: 15px 0;
     }
-    .order-product {
+    .order-now-btn {
       width: 100%;
-      background: linear-gradient(95deg, #1f4638, #0f2a20);
-      border: none;
-      padding: 10px;
+      background: linear-gradient(95deg, #1f4a3a, #0e2c20);
+      border: 1px solid #2effa0;
+      padding: 12px;
       border-radius: 60px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       transition: 0.2s;
     }
+    .order-now-btn:hover {
+      background: #2effa0;
+      color: #03060c;
+    }
 
-    /* payment section premium */
-    .payment-section {
-      background: rgba(0, 20, 25, 0.6);
+    /* Payment Section SUPER DETAIL */
+    .payment-wrapper {
+      background: rgba(0, 20, 25, 0.65);
       border-radius: 2rem;
-      padding: 1.8rem;
+      padding: 2rem;
       margin: 2rem 0;
-      border: 1px solid #2effa060;
+      border: 1px solid rgba(46, 255, 160, 0.5);
     }
-    .payment-title {
-      font-size: 1.5rem;
+    .payment-header {
+      font-size: 1.7rem;
       font-weight: 700;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .payment-methods {
+    .payment-methods-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
     }
-    .payment-item {
-      background: #0e1a1f;
-      border-radius: 50px;
-      padding: 12px 24px;
+    .pay-btn-premium {
+      background: #101e24;
+      border-radius: 60px;
+      padding: 14px 32px;
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 600;
+      font-weight: 700;
       border: 1px solid #2effa080;
       cursor: pointer;
       transition: 0.2s;
     }
-    .payment-item:hover {
-      background: #1b4538;
-      transform: scale(0.97);
+    .pay-btn-premium:hover {
+      background: #1d4638;
+      transform: scale(0.98);
+      border-color: #2effa0;
     }
 
-    /* owner & copyright */
-    .owner-area {
+    /* Owner & Copyright Detail */
+    .owner-copyright {
       background: rgba(0, 0, 0, 0.5);
       border-radius: 2rem;
       padding: 1.5rem;
@@ -279,218 +331,236 @@
       align-items: center;
       gap: 1rem;
     }
-    .owner-badge {
+    .owner-buttons {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
     }
-    .owner-btn {
-      background: #1a3a2e;
+    .owner-btn-detail {
+      background: #1a352b;
       border: none;
-      padding: 8px 20px;
-      border-radius: 40px;
+      padding: 8px 22px;
+      border-radius: 60px;
       cursor: pointer;
-    }
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      border-top: 1px solid #2effa030;
-      margin-top: 1rem;
-    }
-
-    .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #000000cc;
-      border-left: 4px solid #2effa0;
-      padding: 10px 24px;
-      border-radius: 50px;
-      z-index: 2000;
-      opacity: 0;
+      font-weight: 600;
       transition: 0.2s;
     }
-    .modal {
+    .owner-btn-detail:hover {
+      background: #2effa0;
+      color: #000;
+    }
+    .copyright-text {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.2rem;
+      border-top: 1px solid #2effa030;
+    }
+
+    /* Modal Premium */
+    .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.95);
-      backdrop-filter: blur(20px);
+      background: rgba(0, 0, 0, 0.96);
+      backdrop-filter: blur(24px);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 3000;
     }
-    .modal-card {
-      background: #0d171f;
+    .modal-box {
+      background: #0f1a21;
       border: 2px solid #2effa0;
-      border-radius: 32px;
+      border-radius: 40px;
       padding: 2rem;
-      max-width: 400px;
+      max-width: 450px;
       width: 90%;
       text-align: center;
     }
+    .toast-msg {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000000dd;
+      border-left: 5px solid #2effa0;
+      padding: 10px 24px;
+      border-radius: 50px;
+      z-index: 3500;
+      opacity: 0;
+      transition: 0.2s;
+      pointer-events: none;
+    }
+
     @media (max-width: 680px) {
-      .hero h1 { font-size: 1.8rem; }
+      .hero-center h1 { font-size: 1.8rem; }
       .main-container { padding: 1rem; }
+      .owner-copyright { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
-<div class="bg-gradient"></div>
-<div class="grid-pattern"></div>
+<div class="bg-orb"></div>
+<div class="grid-lines"></div>
+<div class="glow-spot"></div>
 
-<!-- SPLASH -->
-<div id="splash" class="splash">
+<!-- SPLASH SCREEN FULL ANIMATION -->
+<div id="splashScreen" class="splash">
   <img src="https://files.catbox.moe/5awz68.jpg" class="splash-logo" alt="Zenix">
-  <div class="splash-text">ZENIX PREMIUM MARKETPLACE</div>
-  <button id="enterSplash" class="enter-btn">ENTER <i class="fas fa-arrow-right"></i></button>
+  <div class="splash-title">ZENIX PREMIUM SUITE</div>
+  <div class="splash-sub">Enterprise Digital Solutions</div>
+  <button id="enterBtn" class="enter-premium"><i class="fas fa-unlock-alt"></i> ACCESS VAULT</button>
 </div>
 
-<!-- MAIN -->
-<div id="mainApp" class="main-container">
-  <div class="header">
-    <div class="logo">
-      <img src="https://files.catbox.moe/5awz68.jpg" alt="logo">
+<!-- MAIN WEBSITE -->
+<div id="mainContent" class="main-container">
+  <div class="glass-header">
+    <div class="logo-brand">
+      <img src="https://files.catbox.moe/5awz68.jpg" alt="Zenix">
       <span>ZENIX CORP</span>
     </div>
-    <div class="music-btn" id="musicToggle"><i class="fas fa-headphones"></i> <span id="musicStatus">ACTIVATE</span></div>
+    <div class="music-control" id="musicToggle"><i class="fas fa-headphones"></i> <span id="musicStatus">ACTIVATE</span></div>
   </div>
 
-  <div class="hero">
+  <div class="hero-center">
     <h1>Premium Digital Marketplace</h1>
-    <p>VPS | Script | Hosting | Rekber | Custom Solutions</p>
+    <p style="margin-top: 8px;">High-End VPS | Scripts | Hosting | Rekber | Custom Solutions</p>
   </div>
 
-  <!-- Category Buttons -->
-  <div class="category-bar">
-    <button class="cat-btn active" data-cat="vps"><i class="fas fa-server"></i> VPS</button>
-    <button class="cat-btn" data-cat="script"><i class="fas fa-code"></i> All Script</button>
-    <button class="cat-btn" data-cat="hosting"><i class="fas fa-cloud-upload-alt"></i> Hosting</button>
-    <button class="cat-btn" data-cat="rekber"><i class="fas fa-handshake"></i> Rekber</button>
-    <button class="cat-btn" data-cat="dll"><i class="fas fa-cogs"></i> Layanan Lain</button>
+  <!-- CATEGORY BUTTONS DETAIL -->
+  <div class="category-flex">
+    <button class="cat-premium active" data-cat="vps"><i class="fas fa-server"></i> VPS PREMIUM</button>
+    <button class="cat-premium" data-cat="script"><i class="fas fa-code"></i> ALL SCRIPT</button>
+    <button class="cat-premium" data-cat="hosting"><i class="fas fa-cloud-upload-alt"></i> HOSTING</button>
+    <button class="cat-premium" data-cat="rekber"><i class="fas fa-handshake"></i> REKBER</button>
+    <button class="cat-premium" data-cat="dll"><i class="fas fa-cogs"></i> LAYANAN DLL</button>
   </div>
 
-  <!-- Dynamic Products Grid -->
-  <div id="productsContainer" class="products-grid"></div>
+  <!-- PRODUCTS DYNAMIC GRID -->
+  <div id="productsGrid" class="products-grid"></div>
 
-  <!-- Payment Section Premium -->
-  <div class="payment-section">
-    <div class="payment-title"><i class="fas fa-credit-card"></i> Metode Pembayaran Resmi</div>
-    <div class="payment-methods">
-      <div class="payment-item" data-pay="dana"><i class="fas fa-mobile-alt"></i> DANA</div>
-      <div class="payment-item" data-pay="gopay"><i class="fab fa-google-pay"></i> GOPAY</div>
-      <div class="payment-item" data-pay="ovo"><i class="fas fa-wallet"></i> OVO</div>
-      <div class="payment-item" data-pay="qris"><i class="fas fa-qrcode"></i> QRIS</div>
-      <div class="payment-item" data-pay="saweria"><i class="fas fa-donate"></i> SAWERIA</div>
+  <!-- PAYMENT SECTION PREMIUM -->
+  <div class="payment-wrapper">
+    <div class="payment-header"><i class="fas fa-credit-card"></i> METODE PEMBAYARAN RESMI</div>
+    <div class="payment-methods-grid">
+      <div class="pay-btn-premium" data-pay="dana"><i class="fas fa-mobile-alt"></i> DANA</div>
+      <div class="pay-btn-premium" data-pay="gopay"><i class="fab fa-google-pay"></i> GOPAY</div>
+      <div class="pay-btn-premium" data-pay="ovo"><i class="fas fa-wallet"></i> OVO</div>
+      <div class="pay-btn-premium" data-pay="qris"><i class="fas fa-qrcode"></i> QRIS</div>
+      <div class="pay-btn-premium" data-pay="saweria"><i class="fas fa-donate"></i> SAWERIA</div>
     </div>
   </div>
 
-  <!-- Owner & Copyright -->
-  <div class="owner-area">
-    <div class="owner-badge">
-      <button class="owner-btn" data-owner="MiaaBack"><i class="fas fa-crown"></i> Owner: MiaaBack</button>
-      <button class="owner-btn" data-owner="skyzenix"><i class="fas fa-user-tie"></i> Co-Owner: skyzenix</button>
-      <button class="owner-btn" data-owner="MI44BACK"><i class="fas fa-bullhorn"></i> Marketing: MI44BACK</button>
+  <!-- OWNER DAN COPYRIGHT DETAIL -->
+  <div class="owner-copyright">
+    <div class="owner-buttons">
+      <button class="owner-btn-detail" data-owner="MiaaBack"><i class="fas fa-crown"></i> Owner: MiaaBack</button>
+      <button class="owner-btn-detail" data-owner="skyzenix"><i class="fas fa-user-tie"></i> Co-Owner: skyzenix</button>
+      <button class="owner-btn-detail" data-owner="MI44BACK"><i class="fas fa-bullhorn"></i> Marketing: MI44BACK</button>
     </div>
-    <div><i class="far fa-copyright"></i> 2025 ZENIX CORPORATION - All Rights Reserved</div>
+    <div class="copyright-text"><i class="far fa-copyright"></i> 2025 ZENIX CORPORATION — All Rights Reserved. Licensed Enterprise</div>
   </div>
-  <footer>Official Telegram: @MiaaBack | @skyzenix | @chnewsky</footer>
+  <footer>Official Telegram: @MiaaBack | @skyzenix | Channel: @chnewsky</footer>
 </div>
 
 <!-- MODAL -->
-<div id="modalGlobal" class="modal">
-  <div class="modal-card">
-    <div id="modalText" style="font-size:1.3rem;"></div>
-    <div id="modalExtra"></div>
-    <button id="modalCopyBtn" style="background:#1f5a48; border:none; padding:8px 20px; border-radius:40px; margin:12px 0; display:none;">📋 Salin</button>
-    <button id="closeModal" style="background:#e53935; border:none; padding:8px 20px; border-radius:40px;">Tutup</button>
+<div id="premiumModal" class="modal-overlay">
+  <div class="modal-box">
+    <div id="modalTitle" style="font-size:1.5rem; font-weight:700;"></div>
+    <div id="modalDetail" style="margin: 16px 0;"></div>
+    <button id="modalCopyBtn" style="background:#1f5a48; border:none; padding:8px 20px; border-radius:40px; margin:8px 0; display:none;">📋 Salin ke Clipboard</button>
+    <button id="modalCloseBtn" style="background:#e53935; border:none; padding:8px 24px; border-radius:40px; margin-top:12px;">Tutup</button>
   </div>
 </div>
-<div id="toastMsg" class="toast">✓ Tersalin</div>
+<div id="toastMessage" class="toast-msg">✓ Tersalin</div>
+
 <audio id="bgAudio" loop preload="auto"><source src="https://files.catbox.moe/emfblf.mp3" type="audio/mpeg"></audio>
 
 <script>
-  // ==================== DATA PRODUK LENGKAP ====================
-  const productsData = {
+  // ==================== DATABASE PRODUK LENGKAP (ANTI AMPAS) ====================
+  const productsDB = {
     vps: [
-      { name: "VPS Starter", desc: "1 vCPU, 2GB RAM, 50GB SSD", price: "Rp 50.000/bln", icon: "fas fa-microchip" },
-      { name: "VPS Business", desc: "2 vCPU, 4GB RAM, 100GB SSD + DDoS", price: "Rp 70.000/bln", icon: "fas fa-server" },
-      { name: "VPS Pro", desc: "4 vCPU, 8GB RAM, 200GB NVMe", price: "Rp 90.000/bln", icon: "fas fa-database" },
-      { name: "VPS Offshore", desc: "Anonymous, Offshore location", price: "Rp 150.000/bln", icon: "fas fa-globe" }
+      { name: "VPS SSD-1", specs: "1 vCore, 2GB RAM, 50GB NVMe, 1TB Bandwidth", price: "Rp 150.000/bln", icon: "fas fa-microchip", badge: "POPULAR" },
+      { name: "VPS Business", specs: "2 vCore, 4GB RAM, 100GB NVMe, DDoS Protection", price: "Rp 320.000/bln", icon: "fas fa-server", badge: "RECOMMENDED" },
+      { name: "VPS Pro Unlimited", specs: "4 vCore, 8GB RAM, 200GB NVMe, Offshore Ready", price: "Rp 580.000/bln", icon: "fas fa-database", badge: "BEST VALUE" },
+      { name: "VPS Offshore Anonymous", specs: "No logs, Crypto payment, Offshore jurisdiction", price: "Rp 750.000/bln", icon: "fas fa-globe", badge: "PREMIUM" }
     ],
     script: [
-      { name: "Bot Telegram Premium", desc: "Auto reply, group manager, AI", price: "Rp 10.000", icon: "fab fa-telegram" },
-      { name: "Panel Hosting + Theme", desc: "WHMCS like, auto install", price: "Rp 10.000", icon: "fas fa-panel" },
-      { name: "AI Tools Script", desc: "ChatGPT clone, image generator", price: "Rp 3.000", icon: "fas fa-robot" },
-      { name: "E-commerce Fullstack", desc: "Laravel + React, ready use", price: "Rp 15.000", icon: "fas fa-store" }
+      { name: "Telegram Bot Suite", specs: "Auto reply, AI integration, group manager, full source", price: "Rp 249.000", icon: "fab fa-telegram", badge: "READY" },
+      { name: "Premium Hosting Panel", specs: "WHMCS like, auto deploy, multi theme", price: "Rp 399.000", icon: "fas fa-panel", badge: "FULL FEATURE" },
+      { name: "AI ChatGPT Clone", specs: "GPT-4 API, image generation, voice support", price: "Rp 350.000", icon: "fas fa-robot", badge: "LIMITED" },
+      { name: "E-Commerce Fullstack", specs: "Laravel + React, payment gateway, admin panel", price: "Rp 599.000", icon: "fas fa-store", badge: "BEST" }
     ],
     hosting: [
-      { name: "Shared Hosting", desc: "10GB, 1 domain, SSL", price: "Rp 15.000/thn", icon: "fas fa-cloud" },
-      { name: "Reseller Hosting", desc: "Unlimited accounts, WHM", price: "Rp 100.000/bln", icon: "fas fa-chart-line" },
-      { name: "Cloud Hosting", desc: "High availability, 99.9% uptime", price: "Rp 50.000/bln", icon: "fas fa-cloud-upload-alt" }
+      { name: "Shared Hosting Starter", specs: "10GB SSD, 1 domain, SSL, unlimited email", price: "Rp 120.000/thn", icon: "fas fa-cloud", badge: "HEMAT" },
+      { name: "Reseller Hosting Pro", specs: "Unlimited accounts, WHM, free billing", price: "Rp 380.000/bln", icon: "fas fa-chart-line", badge: "PRO" },
+      { name: "Cloud Hosting Enterprise", specs: "High availability, 99.99% uptime, 24/7 support", price: "Rp 280.000/bln", icon: "fas fa-cloud-upload-alt", badge: "ELITE" }
     ],
     rekber: [
-      { name: "Rekber Standar", desc: "Mediasi transaksi, aman", price: "Fee 2%", icon: "fas fa-handshake" },
-      { name: "Rekber Premium", desc: "Prioritas + dispute handling", price: "Fee 1.5%", icon: "fas fa-shield-alt" }
+      { name: "Rekber Standar", specs: "Mediasi transaksi aman, fee rendah", price: "Fee 2%", icon: "fas fa-handshake", badge: "TRUSTED" },
+      { name: "Rekber Premium + Dispute", specs: "Prioritas handling, dispute management", price: "Fee 1.5%", icon: "fas fa-shield-alt", badge: "VIP" }
     ],
     dll: [
-      { name: "Install Panel / Script", desc: "Full setup + konfigurasi", price: "Rp 5.000", icon: "fas fa-tools" },
-      { name: "Maintenance Server", desc: "Bulanan support 24/7", price: "Rp 20.000/bln", icon: "fas fa-wrench" },
-      { name: "Custom API Development", desc: "REST API sesuai kebutuhan", price: "Nego", icon: "fas fa-code-branch" }
+      { name: "Installasi Panel / Script", specs: "Full setup + konfigurasi server", price: "Rp 150.000", icon: "fas fa-tools", badge: "FAST" },
+      { name: "Maintenance & Monitoring", specs: "Bulanan support 24/7, backup rutin", price: "Rp 220.000/bln", icon: "fas fa-wrench", badge: "MONTHLY" },
+      { name: "Custom API / Bot Development", specs: "Dibuat sesuai kebutuhan bisnis", price: "Nego (Mulai 500K)", icon: "fas fa-code-branch", badge: "CUSTOM" }
     ]
   };
 
   let currentCategory = "vps";
 
   function renderProducts(category) {
-    const container = document.getElementById("productsContainer");
-    const products = productsData[category];
+    const container = document.getElementById("productsGrid");
+    const products = productsDB[category];
     if (!products) return;
     container.innerHTML = "";
     products.forEach(prod => {
       const card = document.createElement("div");
-      card.className = "product-card";
+      card.className = "product-card-premium";
       card.innerHTML = `
-        <div class="product-icon"><i class="${prod.icon}"></i></div>
-        <div class="product-title">${prod.name}</div>
-        <div class="product-desc">${prod.desc}</div>
-        <div class="product-price">${prod.price}</div>
-        <button class="order-product" data-name="${prod.name}" data-price="${prod.price}">ORDER NOW <i class="fas fa-arrow-right"></i></button>
+        <div class="product-badge">${prod.badge}</div>
+        <div class="product-icon-lg"><i class="${prod.icon}"></i></div>
+        <div class="product-title-lg">${prod.name}</div>
+        <div class="product-spec">${prod.specs}</div>
+        <div class="product-price-premium">${prod.price}</div>
+        <button class="order-now-btn" data-name="${prod.name}" data-price="${prod.price}">ORDER SEKARANG <i class="fas fa-arrow-right"></i></button>
       `;
       container.appendChild(card);
     });
-    // attach event ke tombol order
-    document.querySelectorAll(".order-product").forEach(btn => {
+    // attach order event
+    document.querySelectorAll(".order-now-btn").forEach(btn => {
       btn.addEventListener("click", (e) => {
-        const name = btn.getAttribute("data-name");
-        const price = btn.getAttribute("data-price");
-        showOrderModal(name, price);
+        const pName = btn.getAttribute("data-name");
+        const pPrice = btn.getAttribute("data-price");
+        showOrderModal(pName, pPrice);
       });
     });
   }
 
   function showOrderModal(productName, productPrice) {
-    modalText.innerHTML = `🛒 ORDER: ${productName}<br><span style="font-size:1rem;">${productPrice}</span>`;
-    modalExtra.innerHTML = `<div style="margin:15px 0; display:flex; flex-direction:column; gap:10px;">
-      <button id="contactOwnerModal" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi Owner (MiaaBack)</button>
-      <button id="contactCoModal" style="background:#1f5f4c; border:none; padding:10px; border-radius:40px;">📱 Hubungi Co-Owner (skyzenix)</button>
-    </div>`;
+    modalTitle.innerHTML = `🛒 ORDER: ${productName}`;
+    modalDetail.innerHTML = `<div style="margin:10px 0;">Harga: <strong>${productPrice}</strong></div>
+      <div style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
+        <button id="contactOwnerModal" style="background:#1f5f4c; border:none; padding:12px; border-radius:60px; font-weight:bold;">📱 Hubungi Owner (MiaaBack)</button>
+        <button id="contactCoModal" style="background:#1f5f4c; border:none; padding:12px; border-radius:60px; font-weight:bold;">📱 Hubungi Co-Owner (skyzenix)</button>
+      </div>`;
     modal.style.display = "flex";
     modalCopyBtn.style.display = "none";
     setTimeout(() => {
       const ownerBtn = document.getElementById("contactOwnerModal");
       const coBtn = document.getElementById("contactCoModal");
-      if(ownerBtn) ownerBtn.onclick = () => { copyToClipboard("@MiaaBack"); showToast("Username Owner disalin"); closeModal(); };
+      if(ownerBtn) ownerBtn.onclick = () => { copyToClipboard("@MiaaBack"); showToast("Username Owner disalin, hubungi Telegram"); closeModal(); };
       if(coBtn) coBtn.onclick = () => { copyToClipboard("@skyzenix"); showToast("Co-Owner disalin"); closeModal(); };
     }, 10);
   }
 
-  // PAYMENT DETAILS
-  const paymentDetails = {
+  // PAYMENT DETAILS (LENGKAP)
+  const paymentInfo = {
     dana: "085608969326",
     gopay: "Close",
     ovo: "Close",
@@ -500,29 +570,29 @@
 
   function showPaymentModal(method) {
     if(method === "qris") {
-      modalText.innerHTML = `💳 QRIS Payment`;
-      modalExtra.innerHTML = `<img src="${paymentDetails.qrisImg}" style="max-width:200px; border-radius:20px; margin:10px auto;"><div>Scan menggunakan aplikasi OVO/DANA/GOPAY</div>`;
+      modalTitle.innerHTML = "💳 QRIS Payment";
+      modalDetail.innerHTML = `<img src="${paymentInfo.qrisImg}" style="max-width:200px; border-radius:24px; margin:10px auto;"><div>Scan menggunakan OVO / DANA / GOPAY</div>`;
       modalCopyBtn.style.display = "none";
     } else {
-      let value = paymentDetails[method];
-      modalText.innerHTML = `💎 ${method.toUpperCase()}`;
-      modalExtra.innerHTML = `<div style="font-size:2rem; font-weight:bold;">${value}</div><div style="font-size:0.7rem;">Nomor resmi, transfer sesuai total</div>`;
+      let value = paymentInfo[method];
+      modalTitle.innerHTML = `💎 ${method.toUpperCase()} OFFICIAL`;
+      modalDetail.innerHTML = `<div style="font-size:2rem; font-weight:800;">${value}</div><div style="font-size:0.8rem;">Nomor resmi, transfer sesuai total</div>`;
       modalCopyBtn.style.display = "inline-block";
       currentCopyValue = value;
     }
     modal.style.display = "flex";
   }
 
-  // Global modal & copy
-  const modal = document.getElementById("modalGlobal");
-  const modalText = document.getElementById("modalText");
-  const modalExtra = document.getElementById("modalExtra");
+  // MODAL GLOBAL
+  const modal = document.getElementById("premiumModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDetail = document.getElementById("modalDetail");
   const modalCopyBtn = document.getElementById("modalCopyBtn");
-  const closeModalBtn = document.getElementById("closeModal");
+  const modalClose = document.getElementById("modalCloseBtn");
   let currentCopyValue = "";
 
-  function closeModal() { modal.style.display = "none"; modalExtra.innerHTML = ""; }
-  closeModalBtn.addEventListener("click", closeModal);
+  function closeModal() { modal.style.display = "none"; modalDetail.innerHTML = ""; }
+  modalClose.addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
   modalCopyBtn.addEventListener("click", () => {
     if(currentCopyValue) {
@@ -531,51 +601,56 @@
     }
   });
 
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text);
-  }
+  function copyToClipboard(text) { navigator.clipboard.writeText(text); }
   function showToast(msg) {
-    const toast = document.getElementById("toastMsg");
+    const toast = document.getElementById("toastMessage");
     toast.innerText = msg;
     toast.style.opacity = "1";
     setTimeout(() => toast.style.opacity = "0", 2000);
   }
 
-  // event kategori
-  document.querySelectorAll(".cat-btn").forEach(btn => {
+  // CATEGORY CLICK
+  document.querySelectorAll(".cat-premium").forEach(btn => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".cat-premium").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       currentCategory = btn.getAttribute("data-cat");
       renderProducts(currentCategory);
     });
   });
 
-  // payment click
-  document.querySelectorAll(".payment-item").forEach(item => {
-    item.addEventListener("click", () => {
-      const method = item.getAttribute("data-pay");
+  // PAYMENT BUTTONS
+  document.querySelectorAll(".pay-btn-premium").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const method = btn.getAttribute("data-pay");
       showPaymentModal(method);
     });
   });
 
-  // owner buttons
-  document.querySelectorAll(".owner-btn").forEach(btn => {
+  // OWNER BUTTONS (copy username)
+  document.querySelectorAll(".owner-btn-detail").forEach(btn => {
     btn.addEventListener("click", () => {
-      const ownerName = btn.getAttribute("data-owner");
-      copyToClipboard(`@${ownerName}`);
-      showToast(`Username @${ownerName} disalin, hubungi via Telegram`);
+      const owner = btn.getAttribute("data-owner");
+      copyToClipboard(`@${owner}`);
+      showToast(`Username @${owner} disalin, hubungi via Telegram`);
     });
   });
 
-  // MUSIC
+  // MUSIC TOGGLE
   const audio = document.getElementById("bgAudio");
   const musicBtn = document.getElementById("musicToggle");
   const musicStatusSpan = document.getElementById("musicStatus");
   let isPlaying = false;
   function toggleMusic() {
     if(audio.paused) {
-      audio.play().then(() => { isPlaying = true; musicStatusSpan.innerText = "ON"; musicBtn.innerHTML = '<i class="fas fa-volume-up"></i> <span id="musicStatus">ON</span>'; }).catch(() => { isPlaying = true; musicStatusSpan.innerText = "ON"; });
+      audio.play().then(() => {
+        isPlaying = true;
+        musicStatusSpan.innerText = "ON";
+        musicBtn.innerHTML = '<i class="fas fa-volume-up"></i> <span id="musicStatus">ON</span>';
+      }).catch(() => {
+        isPlaying = true;
+        musicStatusSpan.innerText = "ON";
+      });
     } else {
       audio.pause();
       isPlaying = false;
@@ -587,22 +662,19 @@
   window.addEventListener("load", () => { audio.play().catch(e=>{}); });
 
   // SPLASH SCREEN
-  const splashDiv = document.getElementById("splash");
-  const mainApp = document.getElementById("mainApp");
-  const enterSplash = document.getElementById("enterSplash");
+  const splashDiv = document.getElementById("splashScreen");
+  const mainDiv = document.getElementById("mainContent");
+  const enterSplash = document.getElementById("enterBtn");
   enterSplash.addEventListener("click", () => {
     splashDiv.style.opacity = "0";
     setTimeout(() => {
       splashDiv.style.display = "none";
-      mainApp.classList.add("visible");
+      mainDiv.classList.add("visible");
     }, 800);
   });
 
-  // render default
+  // INIT RENDER
   renderProducts("vps");
-
-  // tambahan copy telegram (optional)
-  // juga tombol order dari product sudah dihandle
 </script>
 </body>
 </html>
